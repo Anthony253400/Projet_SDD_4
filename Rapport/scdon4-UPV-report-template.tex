@@ -1,0 +1,363 @@
+\documentclass[mstat,12pt]{unswthesis}
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% OK...Now we get to some actual input.  The first part sets up
+% the title etc that will appear on the front page
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Rapport de groupe en Sciences des Données 4  }
+
+\authornameonly{Victor Hugo, Albert Enstein. }
+
+
+\author{\Authornameonly}
+
+\copyrightfalse
+\figurespagefalse
+\tablespagefalse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  And now the document begins
+%  The \beforepreface and \afterpreface commands puts the
+%  contents page etc in
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{header.tex}
+
+\renewcommand{\contentsname}{Table des matières}
+
+\renewcommand{\chaptername}{Chapitre}
+
+
+
+\begin{document}
+
+\beforepreface
+
+%\afterpage{\blankpage}
+
+% plagiarism
+
+\prefacesection{Déclaration de non plagiat}
+
+\vskip 2pc \noindent Nous déclarons que ce rapport est le fruit de notre seul travail, à part lorsque cela est indiqué  explicitement. 
+
+\vskip 2pc  \noindent Nous acceptons que la personne évaluant ce rapport puisse, pour les besoins de cette évaluation:
+\begin{itemize}
+\item la reproduire et en fournir une copie à un autre membre de l'université; et/ou,
+\item en communiquer une copie à un service en ligne de détection de plagiat (qui pourra en retenir une copie pour les besoins d'évaluation future).
+\end{itemize}
+
+\vskip 2pc \noindent Nous certifions que nous avons lu et compris les règles ci-dessus.\vspace{24pt}
+
+\vskip 2pc \noindent En signant cette déclaration, nous acceptons ce qui précède.
+\vskip 2pc \noindent
+Signature: \rule{7cm}{0.25pt} \hfill Date: \rule{4cm}{0.25pt} \\[1cm]
+Signature: \rule{7cm}{0.25pt} \hfill Date: \rule{4cm}{0.25pt} \\[1cm]
+\vskip 1pc
+
+%\afterpage{\blankpage}
+
+% Acknowledgements are optional
+
+
+\prefacesection{Remerciements}
+
+{\bigskip}Nos plus sincères remerciements vont à nos encadrants
+pédagogiques pour les conseils avisés sur notre travail.\\[1cm] Nous
+remercions aussi \ldots{}\\[1cm] 
+
+{\bigskip\bigskip\bigskip\noindent} 
+
+%\afterpage{\blankpage}
+
+% Abstract
+
+\prefacesection{Résumé}
+
+L'image ci-dessous vous donne quelques conseils pour rédiger un bon
+résumé.
+
+\par
+
+\bigskip \includegraphics[width=10cm,height=10cm]{img/good-abstract.png}
+
+%\afterpage{\blankpage}
+
+
+\afterpreface
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Now we can start on the first chapter
+% Within chapters we have sections, subsections and so forth
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\afterpage{\blankpage}
+
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+Vous devez introduire votre projet qui a sans doute évolué par rapport à la version de décembre. 
+Quel est le nouveau périmètre du projet si celui-ci a évolué ?
+
+A qui s'adresse t'il ? 
+
+En quoi votre projet est original et se démarque des sites déjà existants ? Comment pourriez vous en faire la publicité ?
+
+Conclure l’introduction par l'url vers la vidéo de démonstration de votre projet ainsi que la vidéo de soutenance.
+
+Donner le plan du mémoire.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypertarget{Gestion-de-projet}{%
+\chapter{Gestion de projet }\label{chapGestionProjet}}
+
+\hypertarget{IntroductionGestionProjet}{%
+\section{Introduction}\label{IntroGestionProjet}}
+
+Vous introduirez ce chapitre et préciserez la méthodologie suivie. Vous donnerez le lien vers le site GitHub.
+
+Donner le plan de la section.
+
+\hypertarget{collaborationGit}{%
+\section{Collaboration avec Git}\label{collaborationGit}}
+Vous décrirez comment vous vous êtes servis de Git pour le développement collaboratif. Avez-vous utilisé des branches ? Comment avez-vous maîtrisé les conflits de merge ? Comment avez-vous alimenté votre fichier .gitignore et pourquoi ? Avez-vous profité de l'historique de commits (\texttt{git log}) pour récupérer du code à partir d'une ancienne version de votre projet ?  etc. 
+
+\hypertarget{contributionParEtudiant}{%
+\section{Contribution}\label{contributionParEtudiant}}
+
+Vous complèterez 2 tableaux :
+\begin{itemize}
+\item un tableau avec la contribution de chacun par tache est obligatoire : par exemple tache 1 : base de données réalisée par l’étudiant X à 30\% et Y à 70\%.
+\item un tableau avec la contribution de chacun par page est obligatoire : par exemple Page d’accueil  :  réalisée par l’étudiant X à 30\% et Y à 70\%.
+\end{itemize} 
+
+Vous expliciterez les différence observable entre la contribution affichée et ce qui est visible sur Github. Commenter le nombre de commit par utilisateur, les dates…
+
+
+\hypertarget{planning}{%
+\section{Planning}\label{Planning}}
+
+Le planning de janvier n’est surement pas celui qui a été suivi ce semestre. Indiquer les deux (l’ancien et le planning mis à jour).
+
+Il faut donc expliquer pourquoi certaines taches ont été plus rapides ou lentes que prévu.  Comment vous vous êtes adaptés ? 
+
+
+
+\hypertarget{ConclusionGestionProjet}{%
+\section{Conclusions}\label{ConcluGestionProjet}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypertarget{BD}{%
+\chapter{Base de données}\label{chapBD}}
+
+
+\hypertarget{IntroductionBD}{%
+\section{Introduction}\label{IntroBD}}
+
+Vous introduirez ici le chapitre et donnerez le ou les url des sites sur lesquels vous avez récupéré des données.
+ 
+  Dans les jeux de données récupérés, expliquer pourquoi vous avez
+  sélectionné certaines tables. Vous devez indiquer
+  comment les données sont stockées (le format), la taille des fichiers,
+  le nombre, \ldots{}
+  
+  Donner le plan de la section.
+
+
+\hypertarget{descriptifTraitementBD}{%
+\section{Traitements réalisés}\label{traitementBD}}
+
+Vous décrirez ici les étapes réalisées pour pré-traiter vos données. Expliquer quels choix vous avez réalisés pour filtrer les lignes et
+  les colonnes (éventuellement réduire le périmètre du projet) et
+  décrire les critères de sélection (e.g., ne garder que 5 colonnes sur
+  les 15, ne garder que les lignes qui correspondent à une ville en
+  particulier, \ldots).
+
+ Préciser les nettoyages réalisés avant l'import comme l'uniformisation
+  des valeurs des champs (\emph{e.g.}, Mr, M., Monsieur, \ldots) ou le
+  remplissage des valeurs manquantes par une valeur moyenne \ldots{}
+
+\hypertarget{descriptif-des-tables}{%
+\section{Descriptif des tables}\label{descriptif-des-tables}}
+
+Pour chaque table conservée, préciser le nombre de lignes et de
+  colonnes après filtrage, lister les colonnes et donner pour chacune le
+  type, la signification du champ et des caractéristiques (unique, clés,
+  valeur manquante, \ldots) en remplissant le tableau ci-dessous.
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{Nom de la table (nombre de lignes \(\times\) nombre de
+colonnes)}\tabularnewline
+\toprule
+Nom colonne & Type & Signification & Caractéristique \\
+\midrule
+\endfirsthead
+\toprule
+Nom colonne & Type & Signification & Caractéristique \\
+\midrule
+\endhead
+& & & \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{MCD}{%
+\section{Modèle conceptuel des données}\label{mcd}}
+
+Pour le MCD, inclure une image réalisée avec le logiciel Mocodo
+  {[}\url{https://www.mocodo.net/}{]} telle que celle visible sur la
+  Figure\(~\)\ref{uml} ci-dessous :
+
+  \begin{figure}
+  \hypertarget{uml}{%
+  \centering
+  \includegraphics[width=8cm,height=4cm]{img/uml.png}
+  \caption{Relations.}\label{uml}
+  }
+  \end{figure}
+  
+\hypertarget{MOD}{%
+\section{Modèle organisationnel des données}\label{mod}}
+
+  Pour le MOD, inclure une image réalisée avec le designer de phpmyadmin
+
+
+\hypertarget{requuxeates-ruxe9alisuxe9es}{%
+\section{Requêtes réalisées}\label{requuxeates-ruxe9alisuxe9es}}
+
+Pour les requêtes importantes dans votre interface, les exprimer en langage naturel puis en SQL. Puis
+donner le résultat obtenu (ou un extrait) et expliquer ce résultat.
+
+
+\hypertarget{concluBD}{%
+\section{Conclusions}\label{concluBD}}
+
+Préciser la durée de la mise en place de la BD et les  principales difficultés rencontrées.
+
+\normalsize
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypertarget{description}{%
+\chapter{Description technique et fonctionnelle}\label{description}}
+
+\hypertarget{introDescription}{%
+\section{Introduction}\label{introDescription}}
+
+
+Introduire le chapitre et donner le plan de la section.
+
+
+\hypertarget{Description technique}{%
+\section{Description technique}\label{DescriptionT}}
+
+Vous listerez les  technologies utilisées (Git, Php, Javascript, Mamp…) 
+
+Vous inclurez un schéma de l’architecture de votre application
+
+
+\hypertarget{Description fonctionnelle}{%
+\section{Description fonctionnelle}\label{DescriptionF}}
+
+
+ Par écran, 
+ \begin{itemize}
+ \item quelles sont les fonctionnalités, que peut faire l’utilisateur ? 
+ \item quelle gestion des erreurs avez vous prévu : par exemple, sur un écran de connexion, on peut vérifier que un email contient un ‘@‘, qu’un mot de passe n’est pas trop facile..
+ \end{itemize}
+
+Ne pas hésiter à lister les fonctionnalités que vous n’avez pas eu le temps d’implémenter pour montrer que vous y avez quand même pensé. Idem pour la gestion des erreurs.
+
+\hypertarget{concluBD}{%
+\section{Conclusions}\label{concluDescription}}
+
+Conclure et lister les difficultés rencontrées.
+
+
+
+\hypertarget{conclusion-et-perspectives}{%
+\chapter{Conclusions et perspectives}\label{conclusion-et-perspectives}}
+
+
+
+
+Résumer vos contributions puis donner des perspectives à vos travaux. C est pour nous la partie importante : s’il l’on vous prenait en stage pour 2 mois sur votre sujet, auriez vous des idées et seriez vous autonomes pour améliorer votre application. 
+Combien de temps auriez vous besoin pour ajouter ces fonctionnalités ? 
+
+On attend de vous deux types de perspectives : des perspectives à court
+terme pour améliorer rapidement votre approche et des perspectives à
+plus long terme qu'elles soient liées à la science des données ou au
+domaine métier pour lequel vous avez travaillé.
+
+
+
+\hypertarget{annexes}{%
+\chapter*{Annexes}\label{annexes}}
+\addcontentsline{toc}{chapter}{Annexes}
+
+
+
+\end{document}
+
