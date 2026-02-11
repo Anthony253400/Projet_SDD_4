@@ -1,56 +1,84 @@
-import tensorflow as tf
-from tensorflow.keras import layers, models
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import LabelEncoder
 
-# 1. Paramètres
-IMG_SIZE = (224, 224)
-BATCH_SIZE = 32
+# 1. Chargement
+df = pd.read_csv('data/public_data_waste_fee.csv')
 
-# Chargement du dossier Train
-train_ds = tf.keras.utils.image_dataset_from_directory(
-    'data/train',
-    image_size=IMG_SIZE,
-    batch_size=BATCH_SIZE)
+# 2. Nettoyage de la cible
+df = df.dropna(subset=['raee'])
 
-# Chargement du dossier Validation
-val_ds = tf.keras.utils.image_dataset_from_directory(
-    'data/val',
-    image_size=IMG_SIZE,
-    batch_size=BATCH_SIZE)
+# Définition des colonnes
+target = 'metal'
+# On ne supprime QUE les autres matériaux pour éviter la corrélation directe
+autres_materiaux = ['plastic', 'organic', 'glass', 'wood', 'paper', 'raee', 'texile', 'other', 'msw_so', 'msw_un', 'msw', 'sor' ]
 
-# Optionnel : Charger le dossier Test pour l'évaluation finale
-test_ds = tf.keras.utils.image_dataset_from_directory(
-    'data/test',
-    image_size=IMG_SIZE,
-    batch_size=BATCH_SIZE)
+X = df.drop(columns=[c for c in autres_materiaux + [target] if c in df.columns])
+y = df[target]
 
-# 3. Optimisation des performances (mémoire vive)
-AUTOTUNE = tf.data.AUTOTUNE
-train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
-val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
+# 3. TRAITEMENT SPÉCIAL POUR GARDER "LES NON LIÉS"
+# On transforme les colonnes de texte (region, province, name, geo) en codes numériques
+le = LabelEncoder()
+for col in X.columns:
+    if X[col].dtype == 'object':
+        # On transforme le texte en nombres (ex: "Nord" -> 1, "Sud" -> 2)
+        X[col] = le.fit_transform(X[col].astype(str))
 
-# 4. Création du modèle avec Transfer Learning (MobileNetV2)
-# On prend un modèle pré-entraîné sur ImageNet sans la dernière couche
-base_model = tf.keras.applications.MobileNetV2(
-    input_shape=(224, 224, 3), 
-    include_top=False, 
-    weights='imagenet'
-)
-base_model.trainable = False # On gèle les poids du modèle de base
+# Remplissage des valeurs manquantes par la moyenne
+X = X.fillna(X.mean(numeric_only=True))
 
-model = models.Sequential([
-    layers.Rescaling(1./255), # Normalisation des pixels [0,1]
-    layers.RandomFlip("horizontal_and_vertical"), # Augmentation de données
-    layers.RandomRotation(0.2),
-    base_model,
-    layers.GlobalAveragePooling2D(),
-    layers.Dense(128, activation='relu'),
-    layers.Dropout(0.2),
-    layers.Dense(len(train_ds.class_names), activation='softmax') # Couche de sortie
-])
+# 4. Entraînement
+rf = RandomForestRegressor(n_estimators=100, random_state=42)
+rf.fit(X, y)
 
-# 5. Compilation et Entraînement
-model.compile(optimizer='adam',
-              loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
+# 5. Extraction et Affichage
+importances = rf.feature_importances_
+importance_table = pd.DataFrame({
+    'Variable': X.columns,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False)
 
-model.fit(train_ds, validation_data=val_ds, epochs=10)
+print("\n" + "="*45)
+print("  POIDS DE TOUTES LES VARIABLES (INCLUANT GEO/NOM)")
+print("="*45)
+for index, row in importance_table.iterrows():
+    print(f"{row['Variable']:20} : {row['Importance']*100:>6.2f}%")
+print("="*45)
+
+# 6. Graphique
+plt.figure(figsize=(12, 10))
+# On affiche le top 20 pour que ce soit lisible
+top_20 = importance_table.head(20).sort_values(by='Importance', ascending=True)
+plt.barh(top_20['Variable'], top_20['Importance'], color='darkorange')
+plt.title('Importance des variables (Top 20 incluant données géographiques)')
+plt.xlabel('Poids dans la prédiction (%)')
+plt.tight_layout()
+plt.show()
+
+
+
+
+importances = rf.fit(X, y).feature_importances_
+features = X.columns
+
+# 2. Créer un DataFrame pour manipuler les résultats facilement
+importance_table = pd.DataFrame({
+    'Variable': features,
+    'Importance_Relative': importances
+})
+
+# 3. Trier par importance décroissante
+importance_table = importance_table.sort_values(by='Importance_Relative', ascending=False)
+
+# 4. Affichage propre dans la console
+print("\n" + "="*40)
+print("  POIDS DES VARIABLES (RANDOM FOREST)")
+print("="*40)
+
+# On affiche en format pourcentage pour plus de clarté
+for index, row in importance_table.iterrows():
+    print(f"{row['Variable']:15} : {row['Importance_Relative']*100:>6.2f}%")
+
+print("="*40)
