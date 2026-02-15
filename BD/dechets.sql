@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 11 fév. 2026 à 08:52
+-- Généré le : dim. 15 fév. 2026 à 18:01
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -46744,7 +46744,7 @@ INSERT INTO `images` (`id_image`, `id_materiau`, `nom`, `chemin_img`) VALUES
 --
 
 CREATE TABLE `materiau` (
-  `id_materiau` int(2) DEFAULT NULL,
+  `id_materiau` int(2) NOT NULL,
   `nom` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46896,6 +46896,7 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (8046, 'Liguria', 'Imperia', 'Pornassio', 275.47, 91.55, 153.93, 27.21, 584, 630, 0, 0, 21.4627, 10431.8, 3, 'STANDARD', 0, 0, 117750, 166100, 283850, 41.48, 3, 41, 0, 16.8635, 7.68237, 2.80999, 9.19169, 7.91284),
 (8047, 'Liguria', 'Imperia', 'Prelà', 283.07, 90.02, 113.95, 14.8, 500, 151, 0, 1, 33.7838, 11498.2, 3, 'STANDARD', 0, 0, 112933, 57240, 170173, 66.36, 3, 100, 0, 16.8635, 7.48526, 1.60543, 9.11008, 7.70982),
 (8048, 'Liguria', 'Imperia', 'Ranzo', 202.93, 117.81, 61.65, 10.86, 556, 124, 0, 0, 51.1971, 16055.8, 3, 'STANDARD', 0, 0, 79746, 94620, 174366, 45.74, 3, 24, 0, 16.8635, 7.22444, 3.1459, 9.26484, 7.44117),
+(8050, 'Liguria', 'Imperia', 'Riva Ligure ', 295.33, 35.53, 92.49, 2.07, 2861, 2, 0, 1, 1382.13, 750623, 2, 'STANDARD', 0, 0, 1257309, 296480, 1553789, 80.92, 3, 17, 0, 16.8635, 7.24319, 5.12663, 9.3972, 7.46048),
 (8052, 'Liguria', 'Imperia', 'San Bartolomeo al Mare', 526.97, 210.57, 171.19, 10.85, 3127, 26, 0, 1, 288.203, 327720, 2, 'STANDARD', 0, 0, 1311739, 2244020, 3555759, 36.89, 3, 25, 0, 16.8635, 7.89408, 4.80522, 9.49351, 8.1309),
 (8053, 'Liguria', 'Imperia', 'San Biagio della Cima', 143.6, 72.29, 22.44, 4.31, 1278, 100, 0, 1, 296.52, 92162, 2, 'STANDARD', 0, 0, 104178, 293040, 397218, 26.23, 3, 7, 0, 16.8635, 6.962, 5.22304, 9.1486, 7.17086),
 (8054, 'Liguria', 'Imperia', 'San Lorenzo al Mare', 507.53, 201.81, 9.13, 1.29, 1373, 6, 0, 1, 1064.34, 658464, 2, 'STANDARD', 0, 0, 596458, 252960, 849418, 70.22, 3, 15, 0, 16.8635, 7.8304, 4.43607, 9.62447, 8.06531),
@@ -47040,9 +47041,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (11032, 'Liguria', 'La Spezia', 'Zignago', 180.39, 62, 25.65, 28.7, 524, 632, 0, 0, 18.2578, 5964.6, 3, 'STANDARD', 0, 0, 136404, 34780, 171184, 79.68, 3, 26, 0, 16.8635, 7.23025, 2.98607, 9.37166, 7.44715),
 (12002, 'Lombardia', 'Varese', 'Albizzate', 86.4, 21.06, 10.84, 3.88, 5292, 334, 0, 0, 1363.92, 578787, 2, 'STANDARD', 0, 1, 1783383, 462310, 2245693, 79.41, 3, 32, 38.5015, 4.55143, 6.90146, 5.10453, 9.73826, 7.10851),
 (12003, 'Lombardia', 'Varese', 'Angera', 141.2, 13.66, 52.77, 17.73, 5622, 205, 0, 0, 317.09, 157914, 2, 'STANDARD', 0, 1, 2358465, 441355, 2799820, 84.24, 3, 50, 38.5015, 4.55143, 6.88082, 4.70881, 9.76197, 7.08724),
-(12004, 'Lombardia', 'Varese', 'Arcisate', 99.84, 19.5, 57.48, 12.13, 9850, 381, 0, 0, 812.036, 417124, 2, 'STANDARD', 0, 1, 4240468, 819240, 5059708, 83.81, 3, 64, 38.5015, 4.55143, 6.6829, 5.04925, 9.36973, 6.88338),
-(12005, 'Lombardia', 'Varese', 'Arsago Seprio', 136.2, 12.34, 42.9, 10.51, 4845, 290, 0, 0, 460.99, 214191, 1, 'STANDARD', 0, 1, 1941514, 309630, 2251144, 86.25, 3, 20, 38.5015, 4.55143, 6.55935, 5.49706, 9.66848, 6.75613);
+(12004, 'Lombardia', 'Varese', 'Arcisate', 99.84, 19.5, 57.48, 12.13, 9850, 381, 0, 0, 812.036, 417124, 2, 'STANDARD', 0, 1, 4240468, 819240, 5059708, 83.81, 3, 64, 38.5015, 4.55143, 6.6829, 5.04925, 9.36973, 6.88338);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(12005, 'Lombardia', 'Varese', 'Arsago Seprio', 136.2, 12.34, 42.9, 10.51, 4845, 290, 0, 0, 460.99, 214191, 1, 'STANDARD', 0, 1, 1941514, 309630, 2251144, 86.25, 3, 20, 38.5015, 4.55143, 6.55935, 5.49706, 9.66848, 6.75613),
 (12006, 'Lombardia', 'Varese', 'Azzate', 94.07, 17.48, 11.88, 4.51, 4554, 332, 0, 0, 1009.76, 445281, 2, 'STANDARD', 0, 1, 1593784, 414432, 2008216, 79.36, 3, 19, 38.5015, 4.55143, 6.87681, 5.51385, 9.80638, 7.08311),
 (12008, 'Lombardia', 'Varese', 'Barasso', 116.11, 19.23, 58.33, 3.92, 1710, 401, 0, 0, 436.224, 215499, 2, 'STANDARD', 0, 1, 663435, 181320, 844755, 78.54, 3, 17, 38.5015, 4.55143, 6.54463, 4.5978, 9.9588, 6.74097),
 (12010, 'Lombardia', 'Varese', 'Bedero Valcuvia', 160.35, 54.85, 35.32, 2.56, 667, 520, 0, 0, 260.547, 109332, 3, 'STANDARD', 0, 1, 168207, 111682, 279889, 60.1, 3, 4, 38.5015, 4.55143, 6.85057, 5.10746, 9.52827, 7.05608),
@@ -47269,9 +47270,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (14028, 'Lombardia', 'Sondrio', 'Faedo Valtellino', 109.54, 45.46, 46.07, 4.8, 545, 557, 0, 0, 113.542, 28366.9, 2, 'STANDARD', 0, 1, 85421, 50740, 136161, 62.74, 3, 7, 38.5015, 4.55143, 7.48906, 4.37486, 9.51452, 7.71373),
 (14029, 'Lombardia', 'Sondrio', 'Forcola', 98.27, 42.05, 42.44, 15.9, 835, 289, 0, 0, 52.5157, 14558.2, 3, 'STANDARD', 0, 1, 135575, 95900, 231475, 58.57, 3, 23, 38.5015, 4.55143, 7.09528, 3.54411, 9.38392, 7.30814),
 (14030, 'Lombardia', 'Sondrio', 'Fusine', 102.71, 47.84, 42.39, 37.6, 611, 285, 0, 0, 16.25, 7655.27, 3, 'STANDARD', 0, 1, 180918, 106920, 287838, 62.85, 3, 19, 38.5015, 4.55143, 7.45557, 3.40993, 9.50421, 7.67924),
-(14031, 'Lombardia', 'Sondrio', 'Gerola Alta', 379.95, 271.22, 53.45, 37.43, 189, 1050, 0, 0, 5.04943, 4324.95, 3, 'STANDARD', 0, 1, 78037, 83846, 161883, 48.21, 3, 27, 38.5015, 4.55143, 8.93444, 1.85821, 9.52083, 9.20247),
-(14032, 'Lombardia', 'Sondrio', 'Gordona', 99.98, 37, 35.19, 62.79, 1903, 283, 0, 0, 30.3074, 11367.9, 3, 'STANDARD', 0, 1, 390032, 323760, 713792, 54.64, 3, 42, 38.5015, 4.55143, 7.08513, 3.85311, 9.43942, 7.29768);
+(14031, 'Lombardia', 'Sondrio', 'Gerola Alta', 379.95, 271.22, 53.45, 37.43, 189, 1050, 0, 0, 5.04943, 4324.95, 3, 'STANDARD', 0, 1, 78037, 83846, 161883, 48.21, 3, 27, 38.5015, 4.55143, 8.93444, 1.85821, 9.52083, 9.20247);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(14032, 'Lombardia', 'Sondrio', 'Gordona', 99.98, 37, 35.19, 62.79, 1903, 283, 0, 0, 30.3074, 11367.9, 3, 'STANDARD', 0, 1, 390032, 323760, 713792, 54.64, 3, 42, 38.5015, 4.55143, 7.08513, 3.85311, 9.43942, 7.29768),
 (14033, 'Lombardia', 'Sondrio', 'Grosio', 78.87, 40.35, 27.16, 126.92, 4619, 656, 0, 0, 36.393, 11020.2, 3, 'STANDARD', 0, 1, 813954, 584730, 1398684, 58.19, 3, 230, 38.5015, 4.55143, 7.08734, 2.9583, 9.50746, 7.29996),
 (14034, 'Lombardia', 'Sondrio', 'Grosotto', 119.35, 57.3, 53.58, 53.12, 1615, 602, 0, 0, 30.4029, 15307.4, 3, 'STANDARD', 0, 1, 494699, 318430, 813129, 60.84, 3, 115, 38.5015, 4.55143, 7.98137, 2.64772, 9.67632, 8.22081),
 (14035, 'Lombardia', 'Sondrio', 'Madesimo', 724.21, 358.06, 227.56, 85.65, 540, 1399, 0, 0, 6.30473, 9915.94, 3, 'STANDARD', 0, 1, 411150, 438150, 849300, 48.41, 3, 29, 38.5015, 4.55143, 8.89451, 2.87573, 9.63085, 9.16135),
@@ -47493,9 +47494,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (16065, 'Lombardia', 'Bergamo', 'Castro', 95.85, 23.22, 34.97, 2.59, 1383, 200, 0, 0, 533.977, 179468, 2, 'STANDARD', 0, 1, 406213, 58610, 464823, 87.39, 3, 7, 38.5015, 4.55143, 6.87089, 5.22881, 9.64228, 7.07702),
 (16066, 'Lombardia', 'Bergamo', 'Cavernago', 117.9, 16.87, 51.7, 7.65, 2508, 199, 0, 0, 327.843, 171641, 3, 'STANDARD', 0, 1, 1094212, 218840, 1313052, 83.33, 3, 31, 38.5015, 4.55143, 6.73676, 4.42427, 9.56586, 6.93887),
 (16067, 'Lombardia', 'Bergamo', 'Cazzano Sant\'Andrea', 76.97, 33.03, 30.62, 2.02, 1594, 504, 0, 0, 789.109, 347452, 2, 'STANDARD', 0, 1, 414514, 287340, 701854, 59.06, 3, 15, 38.5015, 4.55143, 6.4756, 4.71752, 9.66427, 6.66986),
-(16068, 'Lombardia', 'Bergamo', 'Cenate Sopra', 104.63, 30.98, 48.56, 6.97, 2505, 330, 0, 0, 359.397, 137649, 2, 'STANDARD', 0, 1, 862595, 96820, 959415, 89.91, 3, 12, 38.5015, 4.55143, 6.61018, 5.36714, 9.65426, 6.80849),
-(16069, 'Lombardia', 'Bergamo', 'Cenate Sotto', 98.6, 23.45, 53.13, 4.62, 3494, 267, 0, 0, 756.277, 386575, 2, 'PAYT', 1, 1, 1651057, 134920, 1785977, 92.45, 3, 31, 38.5015, 4.55143, 6.57251, 4.81533, 9.88528, 6.76968);
+(16068, 'Lombardia', 'Bergamo', 'Cenate Sopra', 104.63, 30.98, 48.56, 6.97, 2505, 330, 0, 0, 359.397, 137649, 2, 'STANDARD', 0, 1, 862595, 96820, 959415, 89.91, 3, 12, 38.5015, 4.55143, 6.61018, 5.36714, 9.65426, 6.80849);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(16069, 'Lombardia', 'Bergamo', 'Cenate Sotto', 98.6, 23.45, 53.13, 4.62, 3494, 267, 0, 0, 756.277, 386575, 2, 'PAYT', 1, 1, 1651057, 134920, 1785977, 92.45, 3, 31, 38.5015, 4.55143, 6.57251, 4.81533, 9.88528, 6.76968),
 (16070, 'Lombardia', 'Bergamo', 'Cene', 92.44, 39.5, 26.58, 8.6, 4229, 368, 0, 0, 491.744, 202288, 2, 'STANDARD', 0, 1, 1273488, 466190, 1739678, 73.2, 3, 21, 38.5015, 4.55143, 7.05763, 5.31913, 9.6236, 7.26936),
 (16071, 'Lombardia', 'Bergamo', 'Cerete', 166.1, 92.09, 26.33, 14.07, 1646, 612, 0, 0, 116.986, 52992.2, 2, 'STANDARD', 0, 1, 546960, 198640, 745600, 73.36, 3, 15, 38.5015, 4.55143, 6.7811, 4.66783, 9.45574, 6.98453),
 (16072, 'Lombardia', 'Bergamo', 'Chignolo d\'Isola', 65.54, 22.71, 27.31, 5.55, 3214, 229, 0, 0, 579.099, 214470, 2, 'PAYT', 1, 1, 790290, 400020, 1190310, 66.39, 3, 23, 38.5015, 4.55143, 6.43236, 5.00102, 9.57263, 6.62533),
@@ -47719,9 +47720,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (17074, 'Lombardia', 'Brescia', 'Gardone Riviera', 337.58, 88.94, 135.03, 21.39, 2713, 71, 0, 0, 126.835, 104456, 2, 'PAYT', 1, 1, 1817126, 417180, 2234306, 81.33, 3, 40, 38.5015, 4.55143, 7.77809, 4.18123, 9.8858, 8.01143),
 (17075, 'Lombardia', 'Brescia', 'Gardone Val Trompia', 111.7, 25.52, 39.97, 26.66, 11700, 332, 0, 0, 438.86, 184641, 2, 'PAYT', 1, 1, 3873634, 1048900, 4922534, 78.69, 3, 103, 38.5015, 4.55143, 7.13944, 4.72366, 9.61079, 7.35362),
 (17076, 'Lombardia', 'Brescia', 'Gargnano', 287.24, 149.31, 56.15, 76.75, 3033, 66, 0, 0, 39.5179, 34579.2, 3, 'STANDARD', 0, 1, 1132030, 1521920, 2653950, 42.66, 3, 74, 38.5015, 4.55143, 7.91086, 3.65125, 9.66154, 8.14818),
-(17077, 'Lombardia', 'Brescia', 'Gavardo', 121.74, 20.52, 48.54, 29.8, 11686, 199, 0, 0, 392.148, 205463, 2, 'STANDARD', 0, 1, 5022824, 1099971, 6122795, 82.04, 3, 84, 38.5015, 4.55143, 6.89972, 4.97312, 9.56191, 7.10671),
-(17078, 'Lombardia', 'Brescia', 'Ghedi', 105.27, 23.17, 41.08, 60.84, 18321, 85, 0, 0, 301.134, 139761, 2, 'PAYT', 1, 1, 6502454, 2000594, 8503048, 76.47, 3, 156, 38.5015, 4.55143, 6.51626, 4.79243, 9.49939, 6.71175);
+(17077, 'Lombardia', 'Brescia', 'Gavardo', 121.74, 20.52, 48.54, 29.8, 11686, 199, 0, 0, 392.148, 205463, 2, 'STANDARD', 0, 1, 5022824, 1099971, 6122795, 82.04, 3, 84, 38.5015, 4.55143, 6.89972, 4.97312, 9.56191, 7.10671);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(17078, 'Lombardia', 'Brescia', 'Ghedi', 105.27, 23.17, 41.08, 60.84, 18321, 85, 0, 0, 301.134, 139761, 2, 'PAYT', 1, 1, 6502454, 2000594, 8503048, 76.47, 3, 156, 38.5015, 4.55143, 6.51626, 4.79243, 9.49939, 6.71175),
 (17079, 'Lombardia', 'Brescia', 'Gianico', 109.92, 94.63, 0, 13.38, 2196, 281, 0, 0, 164.126, 77545.7, 2, 'PAYT', 1, 1, 892809, 144753, 1037562, 86.05, 3, 31, 38.5015, 4.55143, 6.84033, 4.24017, 9.44473, 7.04554),
 (17080, 'Lombardia', 'Brescia', 'Gottolengo', 99.17, 32.95, 26.99, 29.28, 5238, 53, 0, 0, 178.893, 82355.7, 3, 'STANDARD', 0, 1, 1910014, 501360, 2411374, 79.21, 3, 19, 38.5015, 4.55143, 6.46892, 5.60889, 9.42703, 6.66299),
 (17081, 'Lombardia', 'Brescia', 'Gussago', 110.25, 18.91, 59.1, 25.09, 16403, 186, 0, 0, 653.766, 335735, 2, 'STANDARD', 0, 1, 6721314, 1702287, 8423601, 79.79, 3, 71, 38.5015, 4.55143, 6.7511, 5.46433, 9.76459, 6.95363),
@@ -47945,9 +47946,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (19022, 'Lombardia', 'Cremona', 'Casalmorano', 110.33, 26.24, 30.33, 12.28, 1680, 67, 0, 0, 136.808, 57688.4, 3, 'STANDARD', 0, 1, 550882, 157531, 708413, 77.76, 3, 23, 38.5015, 4.55143, 7.01363, 4.24844, 9.65519, 7.22404),
 (19023, 'Lombardia', 'Cremona', 'Casteldidone', 124.45, 48.13, 48.04, 10.79, 576, 27, 0, 0, 53.3828, 24065.9, 3, 'STANDARD', 0, 1, 224561, 33750, 259671, 86.48, 3, 7, 38.5015, 4.55143, 6.96436, 4.3959, 9.55626, 7.17329),
 (19024, 'Lombardia', 'Cremona', 'Castel Gabbiano', 131.76, 22.04, 26.09, 5.79, 455, 100, 0, 0, 78.5838, 35318.1, 3, 'STANDARD', 0, 1, 171984, 32508, 204492, 84.1, 3, 4, 38.5015, 4.55143, 6.84275, 4.73338, 9.43904, 7.04804),
-(19025, 'Lombardia', 'Cremona', 'Castelleone', 102.95, 24.3, 25.9, 45.08, 9506, 66, 0, 0, 210.87, 105012, 2, 'STANDARD', 0, 1, 3557004, 1176930, 4733934, 75.14, 3, 62, 38.5015, 4.55143, 6.65611, 5.03395, 9.72415, 6.8558),
-(19026, 'Lombardia', 'Cremona', 'Castelverde', 137.33, 67.85, 48.04, 30.89, 5651, 52, 0, 0, 182.939, 95726.8, 3, 'STANDARD', 0, 1, 2217210, 729260, 2957000, 74.98, 3, 59, 38.5015, 4.55143, 6.5964, 4.56805, 9.72561, 6.79429);
+(19025, 'Lombardia', 'Cremona', 'Castelleone', 102.95, 24.3, 25.9, 45.08, 9506, 66, 0, 0, 210.87, 105012, 2, 'STANDARD', 0, 1, 3557004, 1176930, 4733934, 75.14, 3, 62, 38.5015, 4.55143, 6.65611, 5.03395, 9.72415, 6.8558);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(19026, 'Lombardia', 'Cremona', 'Castelverde', 137.33, 67.85, 48.04, 30.89, 5651, 52, 0, 0, 182.939, 95726.8, 3, 'STANDARD', 0, 1, 2217210, 729260, 2957000, 74.98, 3, 59, 38.5015, 4.55143, 6.5964, 4.56805, 9.72561, 6.79429),
 (19028, 'Lombardia', 'Cremona', 'Cella Dati', 172.59, 55.67, 19.42, 18.92, 553, 34, 0, 0, 29.2283, 14390.1, 3, 'STANDARD', 0, 1, 210491, 61770, 272261, 77.31, 3, 26, 38.5015, 4.55143, 7.35138, 2.97326, 9.62063, 7.57192),
 (19029, 'Lombardia', 'Cremona', 'Chieve', 113.22, 30.57, 29.82, 6.19, 2240, 77, 0, 0, 361.874, 180480, 2, 'STANDARD', 0, 1, 928341, 188830, 1117171, 83.1, 3, 22, 38.5015, 4.55143, 7.03998, 4.63631, 9.61016, 7.25118),
 (19030, 'Lombardia', 'Cremona', 'Cicognolo', 124.82, 61.15, 51.15, 6.96, 955, 44, 0, 0, 137.213, 83818.2, 3, 'STANDARD', 0, 1, 499465, 83910, 583375, 85.62, 3, 11, 38.5015, 4.55143, 6.86669, 4.45566, 9.5708, 7.07269),
@@ -48164,9 +48165,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (21072, 'Trentino_Alto_Adige', 'Bolzano', 'Renon/Ritten', 63.67, 21.44, 20.92, 111.36, 7642, 1154, 0, 0, 68.6243, 26683, 3, 'PAYT', 1, 1, 1875717, 1078630, 2971417, 63.13, 3, 356, 18.5396, 11.318, 7.79871, 3.09366, 9.88535, 8.03267),
 (21073, 'Trentino_Alto_Adige', 'Bolzano', 'Rifiano/Riffian', 56.53, 20.35, 31.37, 35.94, 1333, 504, 0, 0, 37.0896, 13207.6, 3, 'PAYT', 1, 1, 333967, 137880, 474682, 70.36, 3, 26, 18.5396, 11.318, 7.93143, 3.95992, 9.67886, 8.16937),
 (21074, 'Trentino_Alto_Adige', 'Bolzano', 'Rio di Pusteria/Mühlbach', 105.62, 55.18, 15.76, 83.82, 2912, 777, 0, 0, 34.7411, 21620, 3, 'PAYT', 1, 1, 1223499, 519070, 1812189, 67.52, 3, 70, 18.5396, 11.318, 7.92804, 3.78969, 9.82923, 8.16588),
-(21075, 'Trentino_Alto_Adige', 'Bolzano', 'Rodengo/Rodeneck', 84.87, 47.43, 14.67, 29.62, 1195, 885, 0, 0, 40.3444, 16821.3, 3, 'PAYT', 1, 1, 320587, 177660, 498247, 64.34, 3, 9, 18.5396, 11.318, 7.83299, 4.91253, 9.76944, 8.06798),
-(21076, 'Trentino_Alto_Adige', 'Bolzano', 'Salorno/Salurn', 73.14, 40.04, 16.92, 33.13, 3533, 224, 0, 0, 106.641, 45284.4, 3, 'PAYT', 1, 1, 1019313, 480960, 1500273, 67.94, 3, 76, 18.5396, 11.318, 7.54508, 3.918, 9.61384, 7.77143);
+(21075, 'Trentino_Alto_Adige', 'Bolzano', 'Rodengo/Rodeneck', 84.87, 47.43, 14.67, 29.62, 1195, 885, 0, 0, 40.3444, 16821.3, 3, 'PAYT', 1, 1, 320587, 177660, 498247, 64.34, 3, 9, 18.5396, 11.318, 7.83299, 4.91253, 9.76944, 8.06798);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(21076, 'Trentino_Alto_Adige', 'Bolzano', 'Salorno/Salurn', 73.14, 40.04, 16.92, 33.13, 3533, 224, 0, 0, 106.641, 45284.4, 3, 'PAYT', 1, 1, 1019313, 480960, 1500273, 67.94, 3, 76, 18.5396, 11.318, 7.54508, 3.918, 9.61384, 7.77143),
 (21077, 'Trentino_Alto_Adige', 'Bolzano', 'San Candido/Innichen', 162.4, 52.52, 47.6, 79.85, 3204, 1175, 0, 0, 40.1252, 31580.5, 3, 'PAYT', 1, 1, 1921439, 587100, 2521699, 76.2, 3, 111, 18.5396, 11.318, 7.91686, 3.41277, 9.95573, 8.15437),
 (21079, 'Trentino_Alto_Adige', 'Bolzano', 'San Genesio Atesino/Jenesien', 60.51, 20.34, 22.95, 68.84, 2937, 1087, 0, 0, 42.6642, 12221.2, 3, 'PAYT', 1, 1, 636490, 204820, 841310, 75.66, 3, 130, 18.5396, 11.318, 7.48424, 3.15871, 9.81099, 7.70876),
 (21080, 'Trentino_Alto_Adige', 'Bolzano', 'San Leonardo in Passiria/St. Leonhard in Passeier', 82.38, 28.41, 41.7, 89.03, 3508, 689, 0, 0, 39.4025, 17248.8, 3, 'PAYT', 1, 1, 981085, 554580, 1535665, 63.89, 3, 45, 18.5396, 11.318, 8.18205, 4.36359, 9.64943, 8.42751),
@@ -48387,9 +48388,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (24124, 'Veneto', 'Vicenza', 'Barbarano Mossano', 96.15, 64.36, 11.54, 33.49, 6352, 72, 0, 0, 189.669, 84692.8, 3, 'STANDARD', 0, 1, 2189482, 487770, 2836362, 77.19, 0, 0, 0, 0, 0, 0, 0, 0),
 (24125, 'Veneto', 'Vicenza', '0', 122.5, 44.32, 43.59, 0, 5031, 0, 0, 0, 0, 0, 0, 'STANDARD', 0, 1, 1515377, 597997, 2113374, 71.7, 0, 0, 0, 0, 0, 0, 0, 0),
 (24126, 'Veneto', 'Vicenza', '0', 75.34, 23.55, 32.58, 0, 5986, 0, 0, 0, 0, 0, 0, 'STANDARD', 0, 1, 1721854, 380870, 2102724, 81.89, 0, 0, 0, 0, 0, 0, 0, 0),
-(24127, 'Veneto', 'Vicenza', '0', 169.56, 70.23, 75.25, 0, 4683, 0, 0, 0, 0, 0, 0, 'STANDARD', 0, 1, 1471450, 701170, 2172620, 67.73, 0, 0, 0, 0, 0, 0, 0, 0),
-(25002, 'Veneto', 'Belluno', 'Alano di Piave', 106.99, 30.5, 52.15, 36.52, 2926, 308, 0, 0, 80.1205, 26542.6, 3, 'STANDARD', 0, 1, 836055, 133280, 969335, 86.25, 3, 84, 9.89818, 11.2968, 6.62203, 3.50689, 9.48291, 6.82069);
+(24127, 'Veneto', 'Vicenza', '0', 169.56, 70.23, 75.25, 0, 4683, 0, 0, 0, 0, 0, 0, 'STANDARD', 0, 1, 1471450, 701170, 2172620, 67.73, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(25002, 'Veneto', 'Belluno', 'Alano di Piave', 106.99, 30.5, 52.15, 36.52, 2926, 308, 0, 0, 80.1205, 26542.6, 3, 'STANDARD', 0, 1, 836055, 133280, 969335, 86.25, 3, 84, 9.89818, 11.2968, 6.62203, 3.50689, 9.48291, 6.82069),
 (25004, 'Veneto', 'Belluno', 'Arsiè', 119.48, 33.65, 67.05, 64.76, 2465, 314, 0, 0, 38.0636, 16015, 3, 'STANDARD', 0, 1, 866340, 170790, 1037130, 83.53, 3, 142, 9.89818, 11.2968, 7.15911, 2.7789, 9.53816, 7.37388),
 (25006, 'Veneto', 'Belluno', 'Belluno', 126.89, 24.45, 43.75, 147.22, 35591, 383, 0, 0, 241.754, 104345, 2, 'PAYT', 1, 1, 12921121, 2440530, 15361651, 84.11, 3, 403, 9.89818, 11.2968, 6.82222, 4.48924, 9.86148, 7.02689),
 (25011, 'Veneto', 'Belluno', 'Cesiomaggiore', 91.29, 24.39, 46.56, 82.09, 4145, 479, 0, 0, 50.4934, 20905.2, 3, 'STANDARD', 0, 1, 1559201, 156910, 1716111, 90.86, 3, 117, 9.89818, 11.2968, 6.58699, 3.52962, 9.63938, 6.7846),
@@ -48610,9 +48611,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (30127, 'Friuli_Venezia_Giulia', 'Udine', 'Tricesimo', 88.28, 36.38, 47.27, 17.68, 7609, 199, 0, 0, 430.373, 216331, 2, 'STANDARD', 0, 1, 3107429, 576248, 3824730, 81.25, 3, 101, 17.4676, 4.8972, 7.20851, 4.33217, 9.79732, 7.42477),
 (30128, 'Friuli_Venezia_Giulia', 'Udine', 'Trivignano Udinese', 99.7, 34.46, 48.54, 18.46, 1689, 43, 0, 0, 91.4951, 41691.4, 3, 'STANDARD', 0, 1, 540626, 223671, 769623, 70.25, 3, 5, 17.4676, 4.8972, 7.43994, 5.78812, 9.6647, 7.66314),
 (30129, 'Friuli_Venezia_Giulia', 'Udine', 'Udine', 117.67, 50.52, 50.83, 57.19, 98287, 113, 0, 0, 1718.6, 1025480, 1, 'STANDARD', 0, 1, 37455840, 19917145, 58647092, 63.87, 3, 345, 17.4676, 4.8972, 7.42741, 5.65896, 9.84306, 7.65024),
-(30130, 'Friuli_Venezia_Giulia', 'Udine', 'Varmo', 111.64, 32.19, 51.18, 34.92, 2830, 18, 0, 0, 81.0424, 27857.4, 3, 'PAYT', 1, 1, 778499, 164622, 972780, 80.03, 3, 29, 17.4676, 4.8972, 6.9062, 4.54792, 9.56444, 7.11339),
-(30131, 'Friuli_Venezia_Giulia', 'Udine', 'Venzone', 127.87, 31.04, 59.73, 54.55, 2230, 230, 0, 0, 40.8799, 16498.3, 3, 'PAYT', 1, 1, 677582, 171799, 899981, 75.29, 3, 183, 17.4676, 4.8972, 7.46972, 2.40189, 9.61527, 7.69381);
+(30130, 'Friuli_Venezia_Giulia', 'Udine', 'Varmo', 111.64, 32.19, 51.18, 34.92, 2830, 18, 0, 0, 81.0424, 27857.4, 3, 'PAYT', 1, 1, 778499, 164622, 972780, 80.03, 3, 29, 17.4676, 4.8972, 6.9062, 4.54792, 9.56444, 7.11339);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(30131, 'Friuli_Venezia_Giulia', 'Udine', 'Venzone', 127.87, 31.04, 59.73, 54.55, 2230, 230, 0, 0, 40.8799, 16498.3, 3, 'PAYT', 1, 1, 677582, 171799, 899981, 75.29, 3, 183, 17.4676, 4.8972, 7.46972, 2.40189, 9.61527, 7.69381),
 (30135, 'Friuli_Venezia_Giulia', 'Udine', 'Visco', 96.05, 38.74, 54.31, 3.54, 775, 24, 0, 0, 218.927, 116845, 3, 'STANDARD', 0, 1, 280681, 122041, 413630, 67.86, 3, 36, 17.4676, 4.8972, 7.04522, 3.08843, 9.61157, 7.25657),
 (30137, 'Friuli_Venezia_Giulia', 'Udine', 'Forgaria nel Friuli', 100.15, 23.25, 57.73, 28.94, 1826, 270, 0, 0, 63.0961, 22268.3, 3, 'STANDARD', 0, 1, 503560, 117231, 644445, 78.14, 3, 46, 17.4676, 4.8972, 7.46461, 3.65677, 9.53294, 7.68855),
 (30188, 'Friuli_Venezia_Giulia', 'Udine', 'Rivignano Teor', 114.65, 40.47, 54.32, 47.75, 6403, 13, 0, 0, 134.094, 66507.1, 3, 'STANDARD', 0, 1, 2426409, 643304, 3175713, 76.41, 3, 99, 17.4676, 4.8972, 7.20902, 4.14761, 9.53444, 7.42529),
@@ -48825,9 +48826,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (37010, 'Emilia_Romagna', 'Bologna', 'Camugnano', 267.65, 139.81, 67.47, 96.6, 2000, 692, 0, 0, 20.7039, 13122.7, 3, 'STANDARD', 0, 1, 487570, 780081, 1267651, 38.46, 3, 285, 33.105, 15.2335, 7.80898, 1.85948, 9.69264, 8.04325),
 (37011, 'Emilia_Romagna', 'Bologna', 'Casalecchio di Reno', 130.43, 28.28, 59.02, 17.33, 35173, 61, 0, 0, 2029.6, 843615, 2, 'STANDARD', 0, 1, 9694348, 4925500, 14619848, 66.31, 3, 1032, 33.105, 15.2335, 7.1105, 3.56461, 9.90175, 7.32382),
 (37012, 'Emilia_Romagna', 'Bologna', 'Casalfiumanese', 138.23, 44.6, 65.32, 82.03, 3461, 125, 0, 0, 42.1919, 30066.9, 3, 'STANDARD', 0, 1, 1564038, 902350, 2466388, 63.41, 3, 76, 33.105, 15.2335, 6.81278, 3.81829, 9.65562, 7.01717),
-(37013, 'Emilia_Romagna', 'Bologna', 'Castel d\'Aiano', 201.42, 98.96, 55.3, 45.26, 1951, 805, 0, 0, 43.1065, 28628.3, 3, 'STANDARD', 0, 1, 632906, 662811, 1295717, 48.85, 3, 180, 33.105, 15.2335, 7.34225, 2.33806, 9.63138, 7.56251),
-(37014, 'Emilia_Romagna', 'Bologna', 'Castel del Rio', 167.07, 55.9, 71.8, 52.59, 1230, 215, 0, 0, 23.3885, 18333.2, 3, 'STANDARD', 0, 1, 596193, 367950, 964143, 61.84, 3, 92, 33.105, 15.2335, 7.11848, 2.58075, 9.59025, 7.33204);
+(37013, 'Emilia_Romagna', 'Bologna', 'Castel d\'Aiano', 201.42, 98.96, 55.3, 45.26, 1951, 805, 0, 0, 43.1065, 28628.3, 3, 'STANDARD', 0, 1, 632906, 662811, 1295717, 48.85, 3, 180, 33.105, 15.2335, 7.34225, 2.33806, 9.63138, 7.56251);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(37014, 'Emilia_Romagna', 'Bologna', 'Castel del Rio', 167.07, 55.9, 71.8, 52.59, 1230, 215, 0, 0, 23.3885, 18333.2, 3, 'STANDARD', 0, 1, 596193, 367950, 964143, 61.84, 3, 92, 33.105, 15.2335, 7.11848, 2.58075, 9.59025, 7.33204),
 (37015, 'Emilia_Romagna', 'Bologna', 'Castel di Casio', 150.38, 60.47, 43.58, 47.33, 3479, 533, 0, 0, 73.5052, 35197.3, 3, 'STANDARD', 0, 1, 724384, 941506, 1665890, 43.48, 3, 92, 33.105, 15.2335, 7.14478, 3.61001, 9.68634, 7.35913),
 (37016, 'Emilia_Romagna', 'Bologna', 'Castel Guelfo di Bologna', 184.85, 38.86, 112.71, 28.61, 4277, 32, 0, 0, 149.493, 130303, 3, 'STANDARD', 0, 1, 3180195, 547770, 3727965, 85.31, 3, 52, 33.105, 15.2335, 7.1513, 4.46691, 9.7251, 7.36584),
 (37017, 'Emilia_Romagna', 'Bologna', 'Castello d\'Argile', 116.03, 21.06, 73.39, 29.07, 6458, 23, 0, 0, 222.153, 103475, 3, 'STANDARD', 0, 1, 2272837, 735170, 3008007, 75.56, 3, 95, 33.105, 15.2335, 6.82367, 4.23837, 9.72139, 7.02838),
@@ -49045,9 +49046,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (46023, 'Toscana', 'Lucca', 'Piazza al Serchio', 216.24, 76.62, 43.85, 27.03, 2458, 536, 0, 0, 90.936, 34334.8, 3, 'STANDARD', 0, 1, 406470, 521600, 928070, 43.8, 2, 45, 12.0758, 31.493, 7.57395, 3.9327, 9.38701, 7.80117),
 (46024, 'Toscana', 'Lucca', 'Pietrasanta', 334.49, 60.41, 185.85, 42.12, 24179, 14, 0, 1, 574.05, 454078, 2, 'STANDARD', 0, 1, 15408718, 3717053, 19125771, 80.57, 2, 161, 12.0758, 31.493, 8.05633, 4.99022, 9.60161, 8.29802),
 (46025, 'Toscana', 'Lucca', 'Pieve Fosciana', 239.81, 68.55, 51.51, 28.75, 2418, 369, 0, 0, 84.1043, 47300.9, 3, 'STANDARD', 0, 1, 879821, 480080, 1359901, 64.7, 2, 80, 12.0758, 31.493, 7.26967, 3.44059, 9.48692, 7.48776),
-(46027, 'Toscana', 'Lucca', 'San Romano in Garfagnana', 241.29, 58.73, 44.13, 26.16, 1459, 555, 0, 0, 55.7722, 25031.5, 3, 'STANDARD', 0, 1, 359685, 295140, 654825, 54.93, 2, 158, 12.0758, 31.493, 8.15901, 2.18232, 9.51414, 8.40378),
-(46028, 'Toscana', 'Lucca', 'Seravezza', 249.85, 51.26, 123.2, 39.47, 13238, 50, 0, 1, 335.394, 191087, 2, 'STANDARD', 0, 1, 6056595, 1485590, 7542185, 80.3, 2, 114, 12.0758, 31.493, 7.13652, 4.72857, 9.4576, 7.35061);
+(46027, 'Toscana', 'Lucca', 'San Romano in Garfagnana', 241.29, 58.73, 44.13, 26.16, 1459, 555, 0, 0, 55.7722, 25031.5, 3, 'STANDARD', 0, 1, 359685, 295140, 654825, 54.93, 2, 158, 12.0758, 31.493, 8.15901, 2.18232, 9.51414, 8.40378);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(46028, 'Toscana', 'Lucca', 'Seravezza', 249.85, 51.26, 123.2, 39.47, 13238, 50, 0, 1, 335.394, 191087, 2, 'STANDARD', 0, 1, 6056595, 1485590, 7542185, 80.3, 2, 114, 12.0758, 31.493, 7.13652, 4.72857, 9.4576, 7.35061),
 (46030, 'Toscana', 'Lucca', 'Stazzema', 229.45, 97.33, 70.81, 80.13, 3318, 158, 0, 0, 41.4077, 18384.6, 3, 'STANDARD', 0, 1, 591318, 881840, 1473158, 40.14, 2, 380, 12.0758, 31.493, 8.0431, 2.08847, 9.29658, 8.2844),
 (46031, 'Toscana', 'Lucca', 'Vagli Sotto', 172.3, 55.05, 41.37, 41.22, 991, 575, 0, 0, 24.0417, 8943.23, 3, 'STANDARD', 0, 1, 64890, 303750, 368640, 17.6, 2, 30, 12.0758, 31.493, 8.4111, 3.42897, 9.47618, 8.66344),
 (46033, 'Toscana', 'Lucca', 'Viareggio', 322.25, 65.88, 154.51, 32.53, 61857, 2, 0, 1, 1901.54, 1408510, 2, 'STANDARD', 0, 1, 31985788, 13373280, 45818798, 69.81, 2, 158, 12.0758, 31.493, 7.8137, 5.97357, 9.65162, 8.04811),
@@ -49271,9 +49272,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (54052, 'Umbria', 'Perugia', 'Todi', 216.05, 17.12, 57.67, 222.86, 16900, 400, 0, 0, 75.8324, 35277.7, 3, 'PAYT', 1, 0, 5757060, 1899730, 7861985, 73.23, 2, 250, 0, 48.264, 7.09951, 4.19606, 9.4793, 7.31249),
 (54053, 'Umbria', 'Perugia', 'Torgiano', 175.16, 11.99, 45.95, 37.67, 6520, 219, 0, 0, 173.082, 82778.4, 3, 'PAYT', 1, 0, 2251092, 781650, 3118262, 72.19, 2, 50, 0, 48.264, 7.29072, 4.89215, 9.564, 7.50944),
 (54055, 'Umbria', 'Perugia', 'Tuoro sul Trasimeno', 206.15, 26.64, 49.23, 55.88, 3850, 309, 0, 0, 68.8976, 37420.1, 3, 'STANDARD', 0, 0, 1171854, 875320, 2091034, 56.04, 0, 0, 0, 0, 0, 0, 0, 0),
-(54056, 'Umbria', 'Perugia', 'Umbertide', 156.72, 14.64, 32.47, 200.83, 16481, 247, 0, 0, 82.0644, 44471.8, 2, 'STANDARD', 0, 0, 6247095, 2515300, 8931265, 69.95, 2, 1800, 0, 48.264, 7.61815, 2.22238, 9.49894, 7.8467),
-(54057, 'Umbria', 'Perugia', 'Valfabbrica', 185.33, 41.99, 108.06, 92.3, 3502, 289, 0, 0, 37.9415, 15674.1, 3, 'STANDARD', 0, 0, 1050271, 347720, 1446720, 72.6, 2, 154, 0, 48.264, 7.50336, 3.09015, 9.31836, 7.72846);
+(54056, 'Umbria', 'Perugia', 'Umbertide', 156.72, 14.64, 32.47, 200.83, 16481, 247, 0, 0, 82.0644, 44471.8, 2, 'STANDARD', 0, 0, 6247095, 2515300, 8931265, 69.95, 2, 1800, 0, 48.264, 7.61815, 2.22238, 9.49894, 7.8467);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(54057, 'Umbria', 'Perugia', 'Valfabbrica', 185.33, 41.99, 108.06, 92.3, 3502, 289, 0, 0, 37.9415, 15674.1, 3, 'STANDARD', 0, 0, 1050271, 347720, 1446720, 72.6, 2, 154, 0, 48.264, 7.50336, 3.09015, 9.31836, 7.72846),
 (55001, 'Umbria', 'Terni', 'Acquasparta', 173.25, 39.68, 76.38, 81.61, 4929, 320, 0, 0, 60.397, 24971.7, 3, 'STANDARD', 0, 0, 1396733, 618680, 2037944, 68.54, 2, 193, 0, 48.264, 7.56781, 3.1925, 9.38878, 7.79484),
 (55002, 'Umbria', 'Terni', 'Allerona', 202.15, 45.7, 63.6, 82.61, 1859, 472, 0, 0, 22.5033, 8853.06, 3, 'STANDARD', 0, 0, 494822, 230256, 731351, 67.66, 2, 106, 0, 48.264, 7.37612, 2.81473, 9.41613, 7.5974),
 (55003, 'Umbria', 'Terni', 'Alviano', 189.39, 26.16, 163.22, 23.9, 1514, 251, 0, 0, 63.3473, 21485.1, 3, 'STANDARD', 0, 0, 352224, 156284, 513495, 68.59, 2, 56, 0, 48.264, 8.22005, 3.25964, 9.33907, 8.46666),
@@ -49505,9 +49506,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (61020, 'Campania', 'Caserta', 'Casaluce', 183.55, 110.66, 70.45, 9.56, 10001, 25, 0, 0, 1046.13, 493638, 1, 'STANDARD', 0, 0, 1301602, 3355780, 4719182, 27.58, 0, 0, 0, 0, 0, 0, 0, 0),
 (61022, 'Campania', 'Caserta', 'Caserta', 192.52, 175.65, 15.6, 54.07, 75640, 68, 0, 0, 1398.93, 694659, 1, 'STANDARD', 0, 0, 18854084, 18221560, 37560213, 50.2, 1, 320, 27.877, 3.60271, 7.91441, 5.45936, 9.57494, 8.15185),
 (61023, 'Campania', 'Caserta', 'Castel Campagnano', 203.01, 52.74, 135.44, 17.48, 1608, 58, 0, 0, 91.9909, 37534.6, 3, 'STANDARD', 0, 0, 381225, 274880, 656105, 58.1, 1, 37, 27.877, 3.60271, 8.54216, 3.7208, 9.07323, 8.79843),
-(61024, 'Campania', 'Caserta', 'Castel di Sasso', 84.97, 57.22, 23.72, 20.32, 1193, 200, 0, 0, 58.7106, 14696.4, 3, 'STANDARD', 0, 0, 174910, 123720, 298630, 58.57, 1, 23, 27.877, 3.60271, 7.50035, 3.90592, 8.91323, 7.72536),
-(61026, 'Campania', 'Caserta', 'Castel Morrone', 169.3, 42.93, 105.8, 25.34, 3934, 251, 0, 0, 155.249, 54432.2, 3, 'STANDARD', 0, 0, 846851, 532460, 1379311, 61.4, 1, 62, 27.877, 3.60271, 7.6517, 4.11797, 9.0258, 7.88125);
+(61024, 'Campania', 'Caserta', 'Castel di Sasso', 84.97, 57.22, 23.72, 20.32, 1193, 200, 0, 0, 58.7106, 14696.4, 3, 'STANDARD', 0, 0, 174910, 123720, 298630, 58.57, 1, 23, 27.877, 3.60271, 7.50035, 3.90592, 8.91323, 7.72536);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(61026, 'Campania', 'Caserta', 'Castel Morrone', 169.3, 42.93, 105.8, 25.34, 3934, 251, 0, 0, 155.249, 54432.2, 3, 'STANDARD', 0, 0, 846851, 532460, 1379311, 61.4, 1, 62, 27.877, 3.60271, 7.6517, 4.11797, 9.0258, 7.88125),
 (61028, 'Campania', 'Caserta', 'Cervino', 185.76, 40.38, 88.73, 8.21, 5024, 152, 0, 0, 611.937, 206860, 2, 'STANDARD', 0, 0, 1305840, 392480, 1698320, 76.89, 1, 50, 27.877, 3.60271, 6.33442, 4.61236, 8.73446, 6.52446),
 (61032, 'Campania', 'Caserta', 'Curti', 178.14, 76.34, 25.59, 1.69, 7110, 40, 0, 0, 4207.1, 1890590, 2, 'STANDARD', 0, 0, 1525690, 1613740, 3195090, 47.75, 1, 21, 27.877, 3.60271, 7.08168, 5.81507, 9.21231, 7.29413),
 (61033, 'Campania', 'Caserta', 'Dragoni', 188.08, 136.41, 42.81, 25.78, 2167, 130, 0, 0, 84.0574, 32255.5, 3, 'STANDARD', 0, 0, 526718, 304830, 831548, 63.34, 1, 85, 27.877, 3.60271, 7.6259, 3.22104, 9.00856, 7.85467),
@@ -49732,9 +49733,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (64039, 'Campania', 'Avellino', 'Grottolella', 124.91, 30.43, 16.7, 7.13, 1955, 565, 0, 0, 274.194, 79315, 2, 'STANDARD', 0, 0, 316816, 248700, 565516, 56.02, 0, 0, 0, 0, 0, 0, 0, 0),
 (64041, 'Campania', 'Avellino', 'Lacedonia', 129.59, 59.7, 41.29, 82.08, 2465, 732, 0, 0, 30.0317, 9917.76, 3, 'STANDARD', 0, 0, 322030, 452300, 814050, 39.56, 0, 0, 0, 0, 0, 0, 0, 0),
 (64042, 'Campania', 'Avellino', 'Lapio', 113.91, 23.42, 33.45, 15.25, 1648, 500, 0, 0, 108.066, 28482.7, 3, 'STANDARD', 0, 0, 297381, 136980, 434361, 68.46, 1, 34, 27.877, 3.60271, 7.39781, 3.81205, 9.05124, 7.61975),
-(64044, 'Campania', 'Avellino', 'Lioni', 136.57, 92.72, 22.18, 46.51, 6335, 550, 0, 0, 136.207, 47441.7, 2, 'STANDARD', 0, 0, 1576112, 630400, 2206512, 71.43, 1, 191, 27.877, 3.60271, 7.51074, 3.4751, 9.13282, 7.73607),
-(64045, 'Campania', 'Avellino', 'Luogosano', 170.68, 90.02, 72.19, 6.07, 1238, 390, 0, 0, 203.954, 68438.9, 3, 'STANDARD', 0, 0, 314324, 101100, 415424, 75.66, 1, 23, 27.877, 3.60271, 8.50384, 3.92412, 8.99992, 8.75895);
+(64044, 'Campania', 'Avellino', 'Lioni', 136.57, 92.72, 22.18, 46.51, 6335, 550, 0, 0, 136.207, 47441.7, 2, 'STANDARD', 0, 0, 1576112, 630400, 2206512, 71.43, 1, 191, 27.877, 3.60271, 7.51074, 3.4751, 9.13282, 7.73607);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(64045, 'Campania', 'Avellino', 'Luogosano', 170.68, 90.02, 72.19, 6.07, 1238, 390, 0, 0, 203.954, 68438.9, 3, 'STANDARD', 0, 0, 314324, 101100, 415424, 75.66, 1, 23, 27.877, 3.60271, 8.50384, 3.92412, 8.99992, 8.75895),
 (64046, 'Campania', 'Avellino', 'Manocalzati', 178.95, 38.41, 68.64, 8.75, 3234, 450, 0, 0, 369.6, 140935, 2, 'STANDARD', 0, 0, 833120, 400060, 1233180, 67.56, 1, 62, 27.877, 3.60271, 8.26854, 3.93813, 9.19892, 8.51659),
 (64048, 'Campania', 'Avellino', 'Melito Irpino', 146, 61.13, 54.64, 20.68, 1936, 461, 0, 0, 93.617, 26283.6, 3, 'STANDARD', 0, 0, 375835, 167710, 543545, 69.15, 1, 53, 27.877, 3.60271, 8.22369, 3.59343, 8.81275, 8.4704),
 (64049, 'Campania', 'Avellino', 'Mercogliano', 185.63, 158.97, 26.66, 19.92, 12403, 550, 0, 0, 622.641, 219576, 2, 'STANDARD', 0, 0, 2359819, 2014140, 4373959, 53.95, 1, 66, 27.877, 3.60271, 7.27895, 5.23329, 9.40526, 7.49732),
@@ -49960,9 +49961,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (68013, 'Abruzzo', 'Pescara', 'Civitaquana', 119.63, 79.85, 6.23, 21.88, 1322, 550, 0, 0, 60.4205, 12478.8, 3, 'STANDARD', 0, 0, 190576, 82460, 273036, 69.8, 1, 136, 0, 37.2417, 7.83187, 2.19804, 9.12096, 8.06683),
 (68017, 'Abruzzo', 'Pescara', 'Cugnoli', 94.99, 14.65, 25.33, 15.96, 1590, 331, 0, 0, 99.6241, 23253.1, 3, 'STANDARD', 0, 0, 327720, 43400, 371120, 88.31, 1, 67, 0, 37.2417, 8.25649, 3.09059, 9.14679, 8.50419),
 (68018, 'Abruzzo', 'Pescara', 'Elice', 62.01, 46.96, 6.62, 14.31, 1729, 259, 0, 0, 120.825, 38189.4, 3, 'STANDARD', 0, 0, 368990, 177500, 546490, 67.52, 1, 30, 0, 37.2417, 7.14216, 4.03805, 9.12885, 7.35642),
-(68019, 'Abruzzo', 'Pescara', 'Farindola', 129.04, 0, 122.55, 45.47, 1601, 530, 0, 0, 35.21, 9089.25, 3, 'STANDARD', 0, 0, 291088, 122200, 413288, 70.43, 1, 94, 0, 37.2417, 7.12167, 2.74514, 9.13955, 7.33532),
-(68021, 'Abruzzo', 'Pescara', 'Loreto Aprutino', 186.72, 43.42, 110.18, 59.5, 7619, 294, 0, 0, 128.05, 40356.5, 3, 'STANDARD', 0, 0, 1851851, 549360, 2401211, 77.12, 1, 132, 0, 37.2417, 6.7249, 4.02224, 9.17882, 6.92664);
+(68019, 'Abruzzo', 'Pescara', 'Farindola', 129.04, 0, 122.55, 45.47, 1601, 530, 0, 0, 35.21, 9089.25, 3, 'STANDARD', 0, 0, 291088, 122200, 413288, 70.43, 1, 94, 0, 37.2417, 7.12167, 2.74514, 9.13955, 7.33532);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(68021, 'Abruzzo', 'Pescara', 'Loreto Aprutino', 186.72, 43.42, 110.18, 59.5, 7619, 294, 0, 0, 128.05, 40356.5, 3, 'STANDARD', 0, 0, 1851851, 549360, 2401211, 77.12, 1, 132, 0, 37.2417, 6.7249, 4.02224, 9.17882, 6.92664),
 (68023, 'Abruzzo', 'Pescara', 'Montebello di Bertona', 144.57, 4.32, 120.84, 21.5, 1023, 615, 0, 0, 47.5814, 12253.5, 3, 'STANDARD', 0, 0, 176220, 87230, 263450, 66.89, 1, 79, 0, 37.2417, 7.53993, 2.47672, 9.23892, 7.76612),
 (68025, 'Abruzzo', 'Pescara', 'Moscufo', 121.06, 32.28, 20.45, 20.26, 3264, 246, 0, 0, 161.106, 63742, 3, 'STANDARD', 0, 0, 1011073, 280340, 1291413, 78.29, 1, 84, 0, 37.2417, 6.7075, 3.63004, 9.21653, 6.90873),
 (68026, 'Abruzzo', 'Pescara', 'Nocciano', 112.46, 54.97, 39.74, 13.76, 1800, 301, 0, 0, 130.814, 27457.3, 3, 'STANDARD', 0, 0, 285332, 92480, 377812, 75.52, 1, 216, 0, 37.2417, 6.93688, 2.12303, 9.1759, 7.14499),
@@ -50192,9 +50193,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (75038, 'Puglia', 'Lecce', 'Lizzanello', 203.49, 68.05, 17.19, 25.42, 11549, 45, 0, 1, 454.327, 169551, 2, 'STANDARD', 0, 0, 1377550, 2931420, 4309990, 31.96, 1, 103, 4.04645, 45.4119, 7.04344, 4.74741, 9.13753, 7.25474),
 (75042, 'Puglia', 'Lecce', 'Matino', 157.26, 64.76, 7.22, 26.63, 11704, 75, 0, 1, 439.504, 176540, 2, 'STANDARD', 0, 0, 2696320, 2004950, 4701270, 57.35, 1, 110, 4.04645, 45.4119, 6.71516, 4.64973, 9.00401, 6.91662),
 (75043, 'Puglia', 'Lecce', 'Melendugno', 372.55, 139.48, 43.25, 92.31, 9646, 36, 0, 1, 104.496, 111684, 2, 'STANDARD', 0, 0, 2767890, 7541640, 10309530, 26.85, 1, 379, 4.04645, 45.4119, 7.48785, 3.2727, 9.17629, 7.71249),
-(75045, 'Puglia', 'Lecce', 'Melpignano', 298.03, 100.92, 63.16, 11.1, 2209, 89, 0, 0, 199.009, 97533.3, 2, 'STANDARD', 0, 0, 675300, 407320, 1082620, 62.38, 0, 0, 0, 0, 0, 0, 0, 0),
-(75046, 'Puglia', 'Lecce', 'Miggiano', 167.59, 76.55, 19.55, 7.8, 3684, 107, 0, 1, 472.308, 183018, 2, 'STANDARD', 0, 0, 407740, 1019800, 1427540, 28.56, 1, 48, 4.04645, 45.4119, 7.25977, 4.29729, 9.0814, 7.47757);
+(75045, 'Puglia', 'Lecce', 'Melpignano', 298.03, 100.92, 63.16, 11.1, 2209, 89, 0, 0, 199.009, 97533.3, 2, 'STANDARD', 0, 0, 675300, 407320, 1082620, 62.38, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(75046, 'Puglia', 'Lecce', 'Miggiano', 167.59, 76.55, 19.55, 7.8, 3684, 107, 0, 1, 472.308, 183018, 2, 'STANDARD', 0, 0, 407740, 1019800, 1427540, 28.56, 1, 48, 4.04645, 45.4119, 7.25977, 4.29729, 9.0814, 7.47757),
 (75049, 'Puglia', 'Lecce', 'Montesano Salentino', 158.4, 66.47, 15.51, 8.53, 2677, 106, 0, 1, 313.834, 108491, 2, 'STANDARD', 0, 0, 238760, 686670, 925430, 25.8, 1, 39, 4.04645, 45.4119, 7.40783, 4.22761, 9.07202, 7.63007),
 (75050, 'Puglia', 'Lecce', 'Morciano di Leuca', 232.92, 62.97, 72.6, 13.57, 3416, 130, 0, 1, 251.732, 126675, 2, 'STANDARD', 0, 0, 687100, 1031880, 1718980, 39.97, 0, 0, 0, 0, 0, 0, 0, 0),
 (75051, 'Puglia', 'Lecce', 'Muro Leccese', 171.42, 56.74, 60.43, 16.77, 5091, 82, 0, 0, 303.578, 126490, 2, 'STANDARD', 0, 0, 691050, 1430180, 2121230, 32.58, 1, 73, 4.04645, 45.4119, 7.06014, 4.21742, 9.16136, 7.27194),
@@ -50420,9 +50421,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (81002, 'Sicilia', 'Trapani', 'Buseto Palizzolo', 200.3, 57.66, 119.5, 72.81, 3031, 249, 0, 0, 41.6289, 14042, 3, 'STANDARD', 0, 0, 576735, 445660, 1022395, 56.41, 1, 220, 0, 76.686, 7.91222, 2.58343, 9.05968, 8.14959),
 (81003, 'Sicilia', 'Trapani', 'Calatafimi-Segesta', 165.69, 58.4, 88.55, 154.86, 6938, 338, 0, 0, 44.8018, 14097.2, 2, 'STANDARD', 0, 0, 1448338, 734760, 2183098, 66.34, 1, 76, 0, 76.686, 7.47341, 4.44949, 9.05116, 7.69761),
 (81006, 'Sicilia', 'Trapani', 'Castelvetrano', 226.17, 118.09, 79.36, 209.76, 31824, 187, 0, 1, 151.716, 63821, 2, 'STANDARD', 0, 0, 4082130, 9304960, 13387090, 30.49, 1, 121, 0, 76.686, 7.64436, 5.56205, 9.02087, 7.87369),
-(81009, 'Sicilia', 'Trapani', 'Favignana', 191.81, 36.66, 155.15, 38.31, 4185, 6, 1, 1, 109.24, 76497.8, 3, 'STANDARD', 0, 0, 2102410, 828220, 2930630, 71.74, 1, 136, 0, 76.686, 7.89944, 3.47049, 9.31752, 8.13642),
-(81010, 'Sicilia', 'Trapani', 'Gibellina', 191.7, 66.59, 99.87, 46.57, 4264, 233, 0, 0, 91.5611, 38219.3, 3, 'STANDARD', 0, 0, 1206901, 572970, 1779871, 67.81, 1, 29, 0, 76.686, 7.25183, 4.92573, 9.17385, 7.46938);
+(81009, 'Sicilia', 'Trapani', 'Favignana', 191.81, 36.66, 155.15, 38.31, 4185, 6, 1, 1, 109.24, 76497.8, 3, 'STANDARD', 0, 0, 2102410, 828220, 2930630, 71.74, 1, 136, 0, 76.686, 7.89944, 3.47049, 9.31752, 8.13642);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(81010, 'Sicilia', 'Trapani', 'Gibellina', 191.7, 66.59, 99.87, 46.57, 4264, 233, 0, 0, 91.5611, 38219.3, 3, 'STANDARD', 0, 0, 1206901, 572970, 1779871, 67.81, 1, 29, 0, 76.686, 7.25183, 4.92573, 9.17385, 7.46938),
 (81011, 'Sicilia', 'Trapani', 'Marsala', 170.37, 56.32, 60.19, 243.26, 80218, 12, 0, 1, 329.762, 126219, 2, 'STANDARD', 0, 0, 19928925, 10775110, 30704035, 64.91, 0, 0, 0, 0, 0, 0, 0, 0),
 (81012, 'Sicilia', 'Trapani', 'Mazara del Vallo', 247.51, 153.53, 54.95, 274.74, 49995, 8, 0, 1, 181.972, 77363, 2, 'STANDARD', 0, 0, 15349544, 5905160, 21254704, 72.22, 1, 310, 0, 76.686, 6.75097, 5.10752, 8.97179, 6.9535),
 (81013, 'Sicilia', 'Trapani', 'Paceco', 161.38, 44.45, 83.99, 58.01, 11487, 36, 0, 1, 198.018, 58822.3, 2, 'STANDARD', 0, 0, 2438973, 973310, 3412283, 71.48, 1, 116, 0, 76.686, 6.79807, 4.57959, 9.1548, 7.00201),
@@ -50655,9 +50656,9 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 (90064, 'Sardegna', 'Sassari', 'Sassari', 207.05, 84, 56, 547.03, 123782, 225, 0, 1, 226.28, 110608, 1, 'STANDARD', 0, 0, 34545048, 25271710, 60505978, 57.09, 1, 1098, 8.90497, 39.5241, 7.35107, 4.74888, 9.49166, 7.57161),
 (90067, 'Sardegna', 'Sassari', 'Sennori', 149.14, 17.29, 87.79, 31.34, 7375, 277, 0, 1, 235.322, 80922.8, 2, 'STANDARD', 0, 0, 2053852, 401530, 2536122, 80.98, 1, 11, 8.90497, 39.5241, 7.62038, 6.47754, 9.08377, 7.84899),
 (90069, 'Sardegna', 'Sassari', 'Sorso', 178.87, 157.92, 14.91, 67.01, 14300, 136, 0, 1, 213.401, 98651.9, 2, 'STANDARD', 0, 0, 4931941, 1384280, 6610661, 74.61, 1, 290, 8.90497, 39.5241, 8.04751, 3.92924, 9.1349, 8.28893),
-(90074, 'Sardegna', 'Sassari', 'Trinità d\'Agultu e Vignola', 599.02, 124.32, 172.36, 134, 2155, 365, 0, 1, 16.0821, 20163.2, 3, 'STANDARD', 0, 0, 1730054, 953745, 2701869, 64.03, 1, 0, 8.90497, 39.5241, 0, 0, 8.92768, 0),
-(90080, 'Sardegna', 'Sassari', 'Telti', 128.92, 41.52, 30.9, 83.25, 2222, 332, 0, 0, 26.6907, 8943.42, 3, 'STANDARD', 0, 0, 526475, 185030, 744540, 70.71, 1, 0, 8.90497, 39.5241, 0, 0, 8.91768, 0);
+(90074, 'Sardegna', 'Sassari', 'Trinità d\'Agultu e Vignola', 599.02, 124.32, 172.36, 134, 2155, 365, 0, 1, 16.0821, 20163.2, 3, 'STANDARD', 0, 0, 1730054, 953745, 2701869, 64.03, 1, 0, 8.90497, 39.5241, 0, 0, 8.92768, 0);
 INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cout_total_habitant`, `cout_dechets_non_tries`, `cout_dechets_tries`, `superficie`, `nb_habitant`, `altitude`, `ile`, `bord_de_mer`, `densite_population`, `quantite_dechets_km`, `indice_urbanisation`, `tarification_dechets`, `redevance_incitative`, `utilisation_redevance`, `quantite_dechets_tries_kg`, `quantite_dechets_non_tries_kg`, `quantite_totale_dechets_kg`, `taux_dechets_tries`, `geographie`, `longueur_route`, `part_dechets_usine_valorisation`, `part_dechets_decharge`, `niveau_revenus_habitants`, `rapport_nbhab_routes`, `revenu_moyen_imposable_habitant`, `revenus_municipalite`) VALUES
+(90080, 'Sardegna', 'Sassari', 'Telti', 128.92, 41.52, 30.9, 83.25, 2222, 332, 0, 0, 26.6907, 8943.42, 3, 'STANDARD', 0, 0, 526475, 185030, 744540, 70.71, 1, 0, 8.90497, 39.5241, 0, 0, 8.91768, 0),
 (90084, 'Sardegna', 'Sassari', 'Loiri Porto San Paolo', 294.6, 116.11, 135, 118.52, 3234, 100, 0, 1, 27.2865, 23073.8, 3, 'STANDARD', 0, 0, 1925233, 735145, 2734708, 70.4, 1, 0, 8.90497, 39.5241, 0, 0, 8.92266, 0),
 (90085, 'Sardegna', 'Sassari', 'Sant\'Antonio di Gallura', 160.77, 39, 16.04, 81.69, 1619, 355, 0, 0, 19.8188, 6240.87, 3, 'STANDARD', 0, 0, 443747, 57110, 509817, 87.04, 1, 0, 8.90497, 39.5241, 0, 0, 8.91768, 0),
 (90089, 'Sardegna', 'Sassari', 'Stintino', 658.55, 294.62, 142.79, 59.04, 1501, 9, 0, 1, 25.4234, 37312.4, 3, 'STANDARD', 0, 0, 1584325, 522600, 2202925, 71.92, 1, 43, 8.90497, 39.5241, 8.46012, 3.6215, 9.50546, 8.71392),
@@ -51177,13 +51178,22 @@ INSERT INTO `municipalite` (`id_municipalite`, `region`, `province`, `nom`, `cou
 -- Index pour la table `consommation`
 --
 ALTER TABLE `consommation`
-  ADD PRIMARY KEY (`id_conso`);
+  ADD PRIMARY KEY (`id_conso`),
+  ADD KEY `id_mat` (`id_materiau`),
+  ADD KEY `id_mun` (`id_municipalite`);
 
 --
 -- Index pour la table `images`
 --
 ALTER TABLE `images`
-  ADD PRIMARY KEY (`id_image`);
+  ADD PRIMARY KEY (`id_image`),
+  ADD KEY `id_materiau` (`id_materiau`);
+
+--
+-- Index pour la table `materiau`
+--
+ALTER TABLE `materiau`
+  ADD PRIMARY KEY (`id_materiau`);
 
 --
 -- Index pour la table `municipalite`
@@ -51212,6 +51222,23 @@ ALTER TABLE `images`
 --
 ALTER TABLE `municipalite`
   MODIFY `id_municipalite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111108;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `consommation`
+--
+ALTER TABLE `consommation`
+  ADD CONSTRAINT `id_mat` FOREIGN KEY (`id_materiau`) REFERENCES `materiau` (`id_materiau`),
+  ADD CONSTRAINT `id_mun` FOREIGN KEY (`id_municipalite`) REFERENCES `municipalite` (`id_municipalite`);
+
+--
+-- Contraintes pour la table `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `id_materiau` FOREIGN KEY (`id_materiau`) REFERENCES `materiau` (`id_materiau`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
