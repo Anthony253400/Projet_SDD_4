@@ -6,7 +6,6 @@ import os
 file_path = "data/public_data_waste_fee.csv"
 
 
-
 df = pd.read_csv(file_path)
 
 categories = ['organic', 'paper', 'glass', 'wood', 'metal', 'plastic', 'raee', 'texile', 'other']
