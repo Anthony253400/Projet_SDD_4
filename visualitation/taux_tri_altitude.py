@@ -4,23 +4,23 @@ import os
 
 # 1. Chargement des données
 try:
-    df = pd.read_csv('municipalite.csv') 
+    df = pd.read_csv('data/public_data_waste_fee.csv') 
     
-    # Nettoyage des données (on s'assure que l'altitude et le taux sont exploitables)
-    df['altitude'] = pd.to_numeric(df['altitude'], errors='coerce')
-    df['taux_dechets_tries'] = pd.to_numeric(df['taux_dechets_tries'], errors='coerce')
-    df = df.dropna(subset=['altitude', 'taux_dechets_tries'])
+    # Nettoyage des données (on s'assure que l'alt et le taux sont exploitables)
+    df['alt'] = pd.to_numeric(df['alt'], errors='coerce')
+    df['sor'] = pd.to_numeric(df['sor'], errors='coerce')
+    df = df.dropna(subset=['alt', 'sor'])
 
-    # 2. Création des classes d'altitude (Discrétisation)
+    # 2. Création des classes d'alt (Discrétisation)
     # On définit les coupures : 0-250, 250-750, et 750 jusqu'au maximum
-    bins = [0, 250, 750, df['altitude'].max()]
+    bins = [0, 250, 750, df['alt'].max()]
     labels = ['0-250m', '250-750m', '+750m']
-    df['classe_altitude'] = pd.cut(df['altitude'], bins=bins, labels=labels)
+    df['classe_alt'] = pd.cut(df['alt'], bins=bins, labels=labels)
 
     # 3. Calcul de la moyenne de tri par classe
-    analyse = df.groupby('classe_altitude')['taux_dechets_tries'].mean()
+    analyse = df.groupby('classe_alt')['sor'].mean()
 
-    print("--- Taux de tri moyen par tranche d'altitude ---")
+    print("--- Taux de tri moyen par tranche d'alt ---")
     print(analyse)
 
     # 4. Création du graphique
@@ -35,12 +35,12 @@ try:
 
     # 5. Sauvegarde et affichage
     plt.tight_layout()
-    plt.savefig('analyse_altitude.png')
+    plt.savefig('analyse_alt.png')
     
-    print("\n✅ Analyse terminée ! Image 'analyse_altitude.png' créée.")
+    print("\n✅ Analyse terminée ! Image 'analyse_alt.png' créée.")
     
     # Force l'ouverture sur ton Mac pour voir le résultat
-    os.system('open analyse_altitude.png')
+    os.system('open analyse_alt.png')
     plt.show()
 
 except FileNotFoundError:
