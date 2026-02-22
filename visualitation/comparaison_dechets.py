@@ -9,6 +9,13 @@ df_top = df.nlargest(20, 'msw')
 df_plot = df_top.melt(id_vars='region', value_vars=['msw', 'msw_so', 'msw_un'], 
                       var_name='Type_Dechet', value_name='Tonnes')
 
+nom_legende = {
+    'msw': 'Déchets Totaux',
+    'msw_so': 'Déchets Triés',
+    'msw_un': 'Déchets Non Triés'
+}
+df_plot['Type_Dechet'] = df_plot['Type_Dechet'].map(nom_legende)
+
 plt.figure(figsize=(15, 8))
 sns.set_style("whitegrid")
 
