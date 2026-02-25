@@ -33,7 +33,7 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
 # test_ds = tf.keras.utils.image_dataset_from_directory(
 #     'test',
 #     image_size=(img_height, img_width),
-#     batch_size=batch_size
+#     batch_size=batch_size 
 # )
 
 class_names = train_ds.class_names
