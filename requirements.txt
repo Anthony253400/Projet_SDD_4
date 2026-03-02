@@ -1,3 +1,9 @@
 numpy
-matplotlib
 pandas
+random
+
+matplotlib
+seaborn
+geopandas
+
+os
