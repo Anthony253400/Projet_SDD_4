@@ -6,9 +6,9 @@ set.seed(123)
 # Quelle variable on utlise pour la prediciton ?
 # Comment bien repartir les données d'entrainement et de test ?
 # Comment bien évaluer le model ?
+getwd()
 
-
-df <- read.csv("data/public_data_waste_fee.csv")
+df <- read.csv("../../data/public_data_waste_fee.csv")
 dechets_colonnes <- c("organic", "paper", "glass", "wood", "metal", "plastic", "raee", "texile", "other")
 
 df[dechets_colonnes][is.na(df[dechets_colonnes])] <- 0
