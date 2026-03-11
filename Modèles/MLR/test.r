@@ -1,6 +1,8 @@
 library(nnet)
 set.seed(123)
 
+# changer repertoire travail 
+
 # Quelle variable on utlise pour la prediciton ?
 # Comment bien repartir les données d'entrainement et de test ?
 # Comment bien évaluer le model ?
@@ -22,4 +24,3 @@ modele_dechets <- multinom(Y_train ~ gdp + pden + alt + pop + urb,
                            maxit = 500)
 
 summary(modele_dechets)
-
