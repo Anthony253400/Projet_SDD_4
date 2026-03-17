@@ -1,7 +1,7 @@
 library(nnet)
 set.seed(123)
 
-# changer repertoire travail 
+# Changer repertoire travail (Session --> Set Working Directory --> To Source File Location)
 
 # Quelle variable on utlise pour la prediciton ?
 # Comment bien repartir les données d'entrainement et de test ?
@@ -24,3 +24,4 @@ modele_dechets <- multinom(Y_train ~ gdp + pden + alt + pop + urb,
                            maxit = 500)
 
 summary(modele_dechets)
+
