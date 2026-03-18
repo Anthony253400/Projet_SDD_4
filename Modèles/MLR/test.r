@@ -13,15 +13,23 @@ dechets_colonnes <- c("organic", "paper", "glass", "wood", "metal", "plastic", "
 
 df[dechets_colonnes][is.na(df[dechets_colonnes])] <- 0
 
-index <- sample(1:nrow(df), size = 0.8 * nrow(df))
+index <- sample(1:nrow(df), size = 0.6 * nrow(df))
 train_set <- df[index, ]
 test_set  <- df[-index, ]
 
 Y_train <- as.matrix(train_set[, dechets_colonnes])
-
-modele_dechets <- multinom(Y_train ~ gdp + pden + alt + pop + urb, 
+ 
+modele_dechets <- multinom(Y_train ~ log(pop) + gdp + wage + alt + urb, 
                            data = train_set, 
                            maxit = 500)
 
 summary(modele_dechets)
+
+predictions <- predict(modele_dechets, newdata = test_set)
+
+vrai_label <- dechets_colonnes[max.col(test_set[, dechets_colonnes])]
+accuracy <- sum(diag(table_matrice)) / sum(table_matrice)
+
+print(table_matrice)
+print(paste("Précision globale :", round(accuracy * 100, 2), "%"))
 
