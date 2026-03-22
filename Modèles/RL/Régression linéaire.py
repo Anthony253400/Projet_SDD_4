@@ -14,26 +14,26 @@ waste_types = ["organic", "paper", "glass", "plastic", "metal", "wood", "texile"
 # Boucle par déchet
 for waste in waste_types:
 
-    # 1. Masque pour isoler les données valides pour CE déchet
+    #Masque pour isoler les données valides pour ce déchet
     mask = df[waste].notna()
     X_current = df.loc[mask, features]
     y_current = df.loc[mask, waste]
 
-    # 2. Vérification du volume de données
+    #Vérification du volume de données
     if len(y_current) < 10:
         print(f"Pas assez de données pour {waste}, passage au suivant.")
         continue
 
-    # 3. Séparation 80/20
+    #Séparation 80/20
     X_train, X_test, y_train, y_test = train_test_split(
         X_current, y_current, test_size=0.2, random_state=42
     )
 
-    # 4. Entraînement
+    #Entraînement
     model = HistGradientBoostingRegressor(random_state=42)
     model.fit(X_train, y_train)
 
-    # 5. Évaluation
+    #Évaluation
     y_pred = model.predict(X_test)
     r2 = r2_score(y_test, y_pred)
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
@@ -43,7 +43,6 @@ for waste in waste_types:
     print(f"R² Score : {r2:.4f}")
     print(f"RMSE : {rmse:.4f}")
 
-    # 6. AFFICHAGE DES PRÉDICTIONS (Tableau comparatif)
     # On crée un petit tableau pour comparer les 10 premières valeurs de test
     comparison_df = pd.DataFrame({
         'Valeur Réelle': y_test.values,
@@ -55,7 +54,6 @@ for waste in waste_types:
     print(comparison_df.head(10).to_string(index=False))
     print("\n" + "="*40 + "\n")
 
-    # --- VISUALISATION ---
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x=y_test, y=y_pred, alpha=0.7, color='teal')
 
