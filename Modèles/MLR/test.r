@@ -1,35 +1,49 @@
-library(nnet)
-set.seed(123)
+accuracies <- c()
+all_preds <- c()
+all_vrais_labels <- c()
 
-# Changer repertoire travail (Session --> Set Working Directory --> To Source File Location)
+for(i in 1:k){
+  test_indices <- which(folds == i, arr.ind = TRUE)
+  train_cv <- df_final[-test_indices, ]
+  test_cv  <- df_final[test_indices, ]
+  
+  Y_train_cv <- as.matrix(train_cv[, dechets_colonnes])
+  model_cv <- multinom(Y_train_cv ~ log(pop) + gdp + wage + alt + urb, 
+                       data = train_cv, trace = FALSE, maxit = 200)
+  
+  preds_cv <- predict(model_cv, newdata = test_cv)
+  vrai_label_cv <- dechets_colonnes[max.col(test_cv[, dechets_colonnes])]
+  
+  all_preds <- c(all_preds, as.character(preds_cv))
+  all_vrais_labels <- c(all_vrais_labels, as.character(vrai_label_cv))
+  
+  acc <- mean(as.character(preds_cv) == as.character(vrai_label_cv), na.rm = TRUE)
+  accuracies <- c(accuracies, acc)
+  
+  print(paste("Pli", i, "- Précision :", round(acc * 100, 2), "%"))
+}
 
-# Quelle variable on utlise pour la prediciton ?
-# Comment bien repartir les données d'entrainement et de test ?
-# Comment bien évaluer le model ?
-getwd()
+# Matrice de confusion
+preds_factor <- factor(all_preds, levels = dechets_colonnes)
+vrai_factor  <- factor(all_vrais_labels, levels = dechets_colonnes)
 
-df <- read.csv("../../data/public_data_waste_fee.csv")
-dechets_colonnes <- c("organic", "paper", "glass", "wood", "metal", "plastic", "raee", "texile", "other")
+table_carree <- table(Prédit = preds_factor, Réel = vrai_factor)
 
-df[dechets_colonnes][is.na(df[dechets_colonnes])] <- 0
+# Calcul des métriques
+diag_vector <- diag(table_carree)
+row_sums    <- rowSums(table_carree)
+col_sums    <- colSums(table_carree)
 
-index <- sample(1:nrow(df), size = 0.6 * nrow(df))
-train_set <- df[index, ]
-test_set  <- df[-index, ]
+precision <- ifelse(row_sums > 0, diag_vector / row_sums, 0)
+rappel    <- ifelse(col_sums > 0, diag_vector / col_sums, 0)
+f1_score  <- ifelse((precision + rappel) > 0, 2 * (precision * rappel) / (precision + rappel), 0)
 
-Y_train <- as.matrix(train_set[, dechets_colonnes])
- 
-modele_dechets <- multinom(Y_train ~ log(pop) + gdp + wage + alt + urb, 
-                           data = train_set, 
-                           maxit = 500)
 
-summary(modele_dechets)
+rapport_classes <- data.frame(
+  Classe = dechets_colonnes,
+  Precision = round(precision * 100, 2),
+  Rappel = round(rappel * 100, 2),
+  F1_Score = round(f1_score * 100, 2)
+)
 
-predictions <- predict(modele_dechets, newdata = test_set)
-
-vrai_label <- dechets_colonnes[max.col(test_set[, dechets_colonnes])]
-accuracy <- sum(diag(table_matrice)) / sum(table_matrice)
-
-print(table_matrice)
-print(paste("Précision globale :", round(accuracy * 100, 2), "%"))
-
+print(rapport_classes)
