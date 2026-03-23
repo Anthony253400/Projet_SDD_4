@@ -10,3 +10,4 @@ sklearn.metrics
 rpy2
 
 tensorflow
+tensorboard
