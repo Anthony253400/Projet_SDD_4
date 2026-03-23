@@ -5,5 +5,8 @@ random
 matplotlib
 seaborn
 geopandas
+sklearn.metrics
 
-os
+rpy2
+
+tensorflow
