@@ -1,13 +1,13 @@
 numpy
 pandas
-random
+
 
 matplotlib
 seaborn
 geopandas
-sklearn.metrics
+scikit-learn
 
 rpy2
 
-tensorflow
-tensorboard
+tensorflow==2.20.0
+tensorboard==2.20.0
