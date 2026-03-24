@@ -1,9 +1,13 @@
 numpy
 pandas
-random
+
 
 matplotlib
 seaborn
 geopandas
+scikit-learn
 
-os
+rpy2
+
+tensorflow==2.20.0
+tensorboard==2.20.0
