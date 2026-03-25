@@ -8,7 +8,7 @@ from sklearn.metrics import r2_score, mean_squared_error
 
 # 1. Configuration et Chargement
 # ---------------------------------------------------------
-df = pd.read_csv('../public_data_waste_fee.csv')
+df = pd.read_csv('data/public_data_waste_fee.csv')
 
 # Correction du nom de la colonne (erreur de frappe historique)
 df.rename(columns={'texile': 'textile'}, inplace=True)
@@ -25,7 +25,7 @@ for col in features + targets:
 
 modeles_experts = {}
 
-print("--- ENTRAÎNEMENT DES EXPERTS OPTIMISÉS (RF BOOSTÉ) ---")
+print("--- ENTRAÎNEMENT RF ---")
 
 # 2. Boucle d'entraînement
 # ---------------------------------------------------------
