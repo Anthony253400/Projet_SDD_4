@@ -1,21 +1,20 @@
-# 1. Chargement des bibliothèques nécessaires
+
 if(!require(randomForest)) install.packages("randomForest")
 library(randomForest)
 
-# 2. Chargement des données
-df <- read.csv("~/public_data_waste_fee.csv", stringsAsFactors = FALSE)
+df <- read.csv("data/public_data_waste_fee.csv", stringsAsFactors = FALSE)
 
-# --- CORRECTION DE L'ERREUR DE NOMMAGE ---
+
 colnames(df)[colnames(df) == "texile"] <- "textile"
 
-# 3. Préparation des variables
+
 features <- c("pop", "pden", "alt", "sea", "wage", "finance", 
               "gdp", "d_fee", "sor", "msw", "urb", "region")
 
 targets <- c("organic", "paper", "glass", "wood", "metal", 
              "plastic", "raee", "textile", "other")
 
-# Transformation en FACTEURS
+
 df$region <- as.factor(df$region)
 df$urb <- as.factor(df$urb)
 
@@ -23,7 +22,7 @@ experts_results <- list()
 
 cat("--- Entraînement et Test (Métriques R² et RMSE) ---\n")
 
-# 4. Boucle d'entraînement des Experts
+# 4. Boucle d'entraînement
 for (cat_name in targets) {
   
   if (!(cat_name %in% colnames(df))) {
@@ -49,17 +48,19 @@ for (cat_name in targets) {
   preds <- predict(expert_model, test_data)
   actuals <- test_data[[cat_name]]
   
-  # --- CALCUL DU R² ---
+  # calcul r2
   r2 <- 1 - sum((actuals - preds)^2) / sum((actuals - mean(actuals))^2)
   
-  # --- CALCUL DU RMSE ---
-  # Formule : Racine carrée de la moyenne des erreurs au carré
+  # calcul rmse
   rmse <- sqrt(mean((actuals - preds)^2))
   
   experts_results[[cat_name]] <- list(model = expert_model, score_r2 = r2, score_rmse = rmse)
   
-  # Affichage des résultats avec RMSE
+  
   cat(sprintf("Expert [%-8s] | R²: %.2f | RMSE: %.2f%%\n", cat_name, r2, rmse))
 }
+
+
+
 
 
