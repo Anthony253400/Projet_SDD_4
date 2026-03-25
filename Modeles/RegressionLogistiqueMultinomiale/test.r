@@ -3,7 +3,7 @@ set.seed(123)
 
 # Changer de répartoire de travail : Session --> Set Working Directory --> To source file location
 
-df <- read.csv("../../data/public_data_waste_fee.csv")
+df <- read.csv("../../Data/public_data_waste_fee.csv")
 dechets_colonnes <- c("organic", "paper", "glass", "wood", "metal", "plastic", "raee", "texile", "other")
 
 df[dechets_colonnes][is.na(df[dechets_colonnes])] <- 0
