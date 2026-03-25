@@ -7,7 +7,7 @@ from sklearn.metrics import r2_score, mean_squared_error
 df = pd.read_csv("data/public_data_waste_fee.csv")
 
 features = ['pop', 'msw', 'sor', 'tc', 'wage', 'area', 'isle', 'sea', 'urb', 'gdp', 'alt', 'roads', 'pden']
-waste_types = ["organic", "paper", "glass", "wood", "metal", "plastic", "raee", "textile", "other"]
+waste_types = ["organic", "paper", "glass", "wood", "metal", "plastic", "raee", "texile", "other"]
 
 print(f"{'DÉCHET':<12} | {'Lignes':<6} | {'R²':<6} | {'RMSE (%)':<10}")
 print("-" * 45)
