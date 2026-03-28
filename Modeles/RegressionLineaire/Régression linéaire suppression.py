@@ -20,6 +20,7 @@ for waste in waste_types:
     temp_df = df[colone].dropna()
 
     delta.append(len(df) -len(temp_df) )
+    print((len(df)))
 
 
 
