@@ -1,7 +1,7 @@
 library(nnet)
 set.seed(123)
 
-# Changer de répartoire de travail : Session --> Set Working Directory --> To source file location
+# Changer de répertoire de travail : Session --> Set Working Directory --> To source file location
 
 df <- read.csv("../../Data/public_data_waste_fee.csv")
 dechets_colonnes <- c("organic", "paper", "glass", "wood", "metal", "plastic", "raee", "texile", "other")
@@ -14,7 +14,7 @@ test_set  <- df[-index, ]
 
 Y_train <- as.matrix(train_set[, dechets_colonnes])
 
-modele_dechets <- multinom(Y_train ~ gdp + pden + alt + pop + urb, 
+modele_dechets <- multinom(Y_train ~ gdp + pden + alt + pop + urb + province, 
                            data = train_set, 
                            maxit = 500)
 
@@ -41,10 +41,19 @@ for(i in 1:k){
   test_cv  <- df_final[test_indices, ]
   
   Y_train_cv <- as.matrix(train_cv[, dechets_colonnes])
-  model_cv <- multinom(Y_train_cv ~ log(pop) + gdp + wage + alt + urb, 
+  model_cv <- multinom(Y_train_cv ~ log(pop) + gdp + wage + alt + urb + province, 
                        data = train_cv, trace = FALSE, maxit = 200)
   
-  preds_cv <- predict(model_cv, newdata = test_cv)
+  preds_cv <- tryCatch({
+    predict(model_cv, newdata = test_cv)
+  }, error = function(e) {
+    return(NULL) 
+  })
+  
+  if(is.null(preds_cv)) {
+    print(paste("Pli", i, "passé : contient des provinces inconnues au modèle"))
+    next
+  }
   vrai_label_cv <- dechets_colonnes[max.col(test_cv[, dechets_colonnes])]
   
   all_preds <- c(all_preds, as.character(preds_cv))
