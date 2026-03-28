@@ -56,7 +56,18 @@ rapport_erreurs <- data.frame(
   Classe = dechets_colonnes,
   Erreur_Moyenne_Points_Pct = round(colMeans(erreurs_totale, na.rm = TRUE) * 100, 2)
 )
-print(rapport_erreurs)
+rmse_par_classe <- sqrt(colMeans(erreurs_totale^2, na.rm = TRUE)) * 100
+
+rapport_complet <- data.frame(
+  Classe = dechets_colonnes,
+  MAE = rapport_erreurs$Erreur_Moyenne_Points_Pct,
+  RMSE = round(rmse_par_classe, 2)
+)
+
+print(rapport_complet)
+
+rmse_global <- sqrt(mean(as.matrix(erreurs_totale)^2, na.rm = TRUE)) * 100
+cat("\nRMSE Global du modèle :", round(rmse_global, 2), "%\n")
 
 # Exemple 
 exemple_mix <- predict(model_cv, newdata = df_final[1,], type = "probs")
