@@ -7,7 +7,7 @@ colnames(df)[colnames(df) == "texile"] <- "textile"
 
 # Liste des variables
 features <- c("pop", "pden", "urb", "gdp", "wage", "roads", 
-                "alt", "d_fee", "tc", "area", "region")
+                "alt", "d_fee", "area", "region")
 
 targets <- c("organic", "paper", "glass", "wood", "metal", 
              "plastic", "raee", "textile", "other")
