@@ -29,6 +29,8 @@ folds_indices <- createFolds(df_final$region, k = k, list = TRUE)
 
 erreurs_totale <- data.frame()
 
+reels_totaux <- data.frame()
+
 for(i in 1:k){
   test_indices <- folds_indices[[i]]
   train_cv <- df_final[-test_indices, ]
@@ -36,7 +38,7 @@ for(i in 1:k){
   
   Y_train_cv <- as.matrix(train_cv[, dechets_colonnes])
   
-  model_cv <- multinom(Y_train_cv ~ log(pop) + gdp + wage + alt + pden + d_fee + sea + urb + finance + region, 
+  model_cv <- multinom(Y_train_cv ~ pop + gdp + wage + alt + pden + d_fee + roads + urb + region + area, 
                        data = train_cv, trace = FALSE, maxit = 200)
   
   preds_probs <- predict(model_cv, newdata = test_cv, type = "probs")
@@ -46,24 +48,30 @@ for(i in 1:k){
   
   erreur_pli <- abs(reels_probs - preds_probs)
   erreurs_totale <- rbind(erreurs_totale, as.data.frame(erreur_pli))
+  reels_totaux <- rbind(reels_totaux, as.data.frame(reels_probs))
 }
-
-rapport_erreurs <- data.frame(
-  Classe = dechets_colonnes,
-  Erreur_Moyenne_Points_Pct = round(colMeans(erreurs_totale, na.rm = TRUE) * 100, 2)
-)
+mae_par_classe <- colMeans(abs(erreurs_totale), na.rm = TRUE) * 100
 rmse_par_classe <- sqrt(colMeans(erreurs_totale^2, na.rm = TRUE)) * 100
+
+# NRMSE = RMSE divisé / moyenne de la classe réelle
+moyennes_reelles <- colMeans(reels_totaux, na.rm = TRUE) * 100
+nrmse_par_classe <- (rmse_par_classe / moyennes_reelles) * 100
 
 rapport_complet <- data.frame(
   Classe = dechets_colonnes,
-  MAE = rapport_erreurs$Erreur_Moyenne_Points_Pct,
-  RMSE = round(rmse_par_classe, 2)
+  MAE = round(mae_par_classe, 2),
+  RMSE = round(rmse_par_classe, 2),
+  NRMSE_pct = round(nrmse_par_classe, 2)
 )
 
 print(rapport_complet)
 
 rmse_global <- sqrt(mean(as.matrix(erreurs_totale)^2, na.rm = TRUE)) * 100
-cat("RMSE Global du modèle :", round(rmse_global, 2), "%\n")
+
+nrmse_global <- (rmse_global / mean(as.matrix(reels_totaux) * 100)) * 100
+
+cat("RMSE Global :", round(rmse_global, 2), "%")
+cat("NRMSE Global :", round(nrmse_global, 2), "% (Erreur relative à la moyenne)")
 
 # Intervalle de confiance à 95%
 erreurs_propres <- na.omit(as.matrix(erreurs_totale)) #suppression lignes vides
