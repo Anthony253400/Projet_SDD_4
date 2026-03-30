@@ -65,6 +65,20 @@ print(rapport_complet)
 rmse_global <- sqrt(mean(as.matrix(erreurs_totale)^2, na.rm = TRUE)) * 100
 cat("RMSE Global du modèle :", round(rmse_global, 2), "%\n")
 
+# Intervalle de confiance à 95%
+erreurs_propres <- na.omit(as.matrix(erreurs_totale)) #suppression lignes vides
+n <- nrow(erreurs_propres)
+mae_par_ville <- rowMeans(erreurs_propres) * 100
+se <- sd(mae_par_ville, na.rm = TRUE) / sqrt(n) 
+ic_95 <- qt(0.975, df = n-1) * se
+
+mae_moyen <- mean(mae_par_ville, na.rm = TRUE)
+
+cat("MAE Global :", round(mae_moyen, 2), "%")
+cat("Intervalle de confiance à 95% : [", 
+    round(mae_moyen - ic_95, 2), "% ,", 
+    round(mae_moyen + ic_95, 2), "% ]\n")
+
 # Exemple de la première ligne
 exemple_mix <- predict(model_cv, newdata = df_final[1,], type = "probs")
 print(round(exemple_mix * 100, 2))
