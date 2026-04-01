@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tri Déchets | L3 MIASHS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .hero { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 40px 0; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="hero text-center">
+    <h1>♻️ Projet Tri des Déchets</h1>
+    <p>Modèles IA & Analyse des Déchets</p>
+    <a href="prediction.html">Prédiction</a>
+    <a href="graphiques.html">Graphiques</a>
+    <a href="CNN.html">CNN</a>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h3>📊 Simulateur Économique</h3>
+                <p class="text-muted">Basé sur notre régression multinomiale.</p>
+                <div class="mb-3">
+                    <label class="form-label">PIB par habitant (€)</label>
+                    <input type="range" class="form-range" id="gdpRange" min="10000" max="50000" step="1000">
+                    <span id="gdpVal">30000</span>€
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="paytCheck">
+                    <label class="form-check-label">Taxe incitative (PAYT)</label>
+                </div>
+                <button onclick="updateStats()" class="btn btn-success w-100">Calculer le taux de tri</button>
+                <h4 class="mt-4 text-center">Résultat : <span id="resultatTri">--</span>%</h4>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h3>🤖 Classification IA</h3>
+                <p class="text-muted">Détection via CNN AlexNet.</p>
+                <input type="file" class="form-control mb-3" id="imageInput">
+                <div id="preview" class="text-center mb-3"></div>
+                <button class="btn btn-outline-success w-100">Lancer l'analyse AlexNet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateStats() {
+        const gdp = document.getElementById('gdpRange').value;
+        const payt = document.getElementById('paytCheck').checked;
+        
+        fetch('/predict-stats', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({gdp: gdp, payt: payt})
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('resultatTri').innerText = data.taux_tri;
+        });
+    }
+
+    document.getElementById('gdpRange').oninput = function() {
+        document.getElementById('gdpVal').innerText = this.value;
+    }
+</script>
+</body>
+</html>
