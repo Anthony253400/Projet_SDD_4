@@ -58,25 +58,37 @@
         
         <div class="col-md-6">
             <div class="card p-4">
-                <h5 class="fw-bold">Matrice de Corrélation</h5>
-                <img src="../visualitation/images/carte_tri_regions.png" class="graph-img">
-                <p class="text-muted small">Analyse des relations entre les variables du dataset (poids, densité, etc.).</p>
+                <h5 class="fw-bold">Répartition du tri par région en Italie</h5>
+                <img src="../visualisation/images/carte_tri_regions.png" class="graph-img">
+                <p class="text-muted small"> Voici une carte représentant la répartition du tri par région en Italie. Plus le vert est foncé, plus la région trie de déchets. Une tendance se dégage avec un taux plus élevé dans les régions du nord.</p>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="card p-4">
-                <h5 class="fw-bold">Répartition par Régions</h5>
-                <img src="../visualitation/images/carte_tri_regions.png" class="graph-img">
-                <p class="text-muted small">Cartographie du taux de tri moyen selon les zones géographiques étudiées.</p>
+                <h5 class="fw-bold">Répartition de tri par matière</h5>
+                <img src="../visualisation/images/dechets_plus_triés.png" class="graph-img">
+                <p class="text-muted small">Ce graphique montre que les matières organiques dominent largement le tri en Italie,
+                                             avec plus de 20 kg par habitant. Le papier et le verre suivent, tandis que le bois, le métal
+                                              et les déchets électroniques (RAEE) ferment la marche avec des volumes bien plus faibles.</p>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="card p-4">
                 <h5 class="fw-bold">Précision du Modèle</h5>
-                <img src="../visualisation/images/performanceVStaille.png" class="graph-img">
-                <p class="text-muted small">Évolution du score de prédiction en fonction de la taille de l'échantillon.</p>
+                <img src="../visualisation/images/taux_tri_altitude.png" class="graph-img">
+                
+                <div class="text-muted small">
+                    <p>Le taux de tri chute de 70 % en plaine à 56 % en montagne. 
+                    Cet écart s'explique par trois freins logistiques majeurs en altitude :</p>
+
+                    <ul>
+                        <li><strong>Accessibilité :</strong> Collecte difficile pour les camions.</li>
+                        <li><strong>Infrastructures :</strong> Éloignement des centres de traitement.</li>
+                        <li><strong>Saisonnalité :</strong> Pics de déchets liés au tourisme de montagne.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
