@@ -11,6 +11,8 @@
         button:hover { background: #0056b3; }
         #status { margin-top: 1rem; font-weight: bold; }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -22,38 +24,7 @@
     <p id="status"></p>
 </div>
 
-<script>
-    async function uploadImage() {
-        const input = document.getElementById('imageInput');
-        const status = document.getElementById('status');
-        
-        if (input.files.length === 0) {
-            status.innerText = "Veuillez choisir un fichier.";
-            return;
-        }
 
-        const formData = new FormData();
-        formData.append('file', input.files[0]);
-
-        status.innerText = "Envoi en cours...";
-
-        try {
-            const response = await fetch('http://127.0.0.1:8000/upload', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-            status.style.color = "green";
-            status.innerText = "Succès : " + result.message + " (" + result.filename + ")";
-            console.log(result);
-        } catch (error) {
-            status.style.color = "red";
-            status.innerText = "Erreur lors de l'envoi.";
-            console.error(error);
-        }
-    }
-</script>
 
 </body>
 </html>
