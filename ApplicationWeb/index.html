@@ -8,6 +8,7 @@
         body { background-color: #f8f9fa; }
         .hero { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 40px 0; }
         .card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .main-container { display: flex; height: calc(100vh - 150px); position: relative; }
 
         #italy-map-container {
             max-width: 800px;
@@ -30,14 +31,7 @@
         .region:hover {
             fill: #27ae60; 
         }
-
-        #region-name-display {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #27ae60;
-            height: 30px;
-        }
+        .region.active { fill: #1e8449; stroke: #000; } 
     </style>
 </head>
 <body>
@@ -52,7 +46,7 @@
 <div id="italy-map-container">
     
     <svg id="italy-map" viewBox="0 0 612 735" xmlns="http://www.w3.org/2000/svg">
-        <path id="Piémont" class="region" d="M79.634,47.228 
+        <path id="Piemont" class="region" d="M79.634,47.228 
             c1.592-1.213,3.004-2.87,5.694-2.251c0.204,3.029,0.987,6.042-1.072,8.84c-0.295,0.402-0.527,1.177-0.337,1.551
             c0.756,1.488,1.413,3.207,2.619,4.244c2.057,1.769,3.585,3.814,4.746,6.197c0.833,1.71,2.272,2.474,4.044,2.602
             c1.946,3.362,1.325,6.248-1.105,8.909c-0.576,0.63-1.064,1.351-1.691,1.921c-1.67,1.517-2.377,3.356-2.148,5.596
@@ -141,7 +135,7 @@
             c-1.247-0.259-2.236-0.394-2.567-1.904c-0.595-2.712-1.15-2.855-3.596-1.465c-0.978-0.456-1.941-0.905-3.13-1.459
             c-0.199,1.018-0.321,1.639-0.467,2.389c-0.665,0.151-1.374,0.375-2.099,0.467c-3.276,0.415-4.903,2.655-5.827,5.47
             c-0.86,2.62-1.564,5.235-3.655,7.255c-1.016,0.981-0.19,1.946,0.597,2.672C124.663,152.02,125.631,152.738,126.741,153.644z"/>
-         <path id="Émilie-Romagne" class="region" d="M228.77,148.336
+         <path id="Emilie_Romagne" class="region" d="M228.77,148.336
             c1.604,1.238,2.717,2.736,4.053,2.972c1.856,0.328,3.982,0.13,5.655-1.236c0.809-0.66,1.591-1.354,2.425-1.979
             c2.211-1.657,4.715-2.656,7.449-2.061c2.459,0.535,4.851,0.31,7.283,0.167c0.451-0.027,1.096-0.1,1.336,0.151
             c2.526,2.638,5.72,1.222,8.833,1.571c0.384,1.806,0.808,3.663-0.393,5.499c-0.231,0.353-0.247,0.864-0.305,1.309
@@ -319,7 +313,7 @@
             c-1.223-0.719-2.392-1.549-3.67-2.15c-5.03-2.369-10.534-1.297-14.398,2.713c-0.247,0.256-0.575,0.434-1.214,0.906
             c-0.53-1.145-1.015-2.098-1.419-3.084c-1.929-4.716-4.974-8.242-10.104-9.574c-0.184-0.048-0.382-0.165-0.549-0.131
             c-2.428,0.497-4.223-0.685-6.095-2.004C285.117,370.768,283.877,371.152,282.85,371.152z"/>
-         <path id="Trentin-Haut-Adige" class="region" d="M177.909,30.455
+         <path id="Trentin_Haut_Adige" class="region" d="M177.909,30.455
             c1.423-2.678,1.956-5.221,2.322-9.072c0.092-0.969,0.786-1.882,1.322-3.087c1.259,0.15,2.524,0.301,3.928,0.469
             c1.097-0.59,2.329-1.474,3.702-1.935c1.776-0.597,2.556,1.256,3.832,1.888c-0.735,2.803-0.694,2.83,2.035,3.377
             c1.177,0.236,2.308,0.726,3.49,0.908c1.274,0.196,2.587,0.124,3.875,0.251c0.927,0.091,1.852,0.27,2.757,0.491
@@ -532,7 +526,7 @@
             c-0.33,0.278-0.908,0.481-1.319,0.411c-2.673-0.458-5.491-0.248-7.929-1.819c-1.259-0.812-2.631-1.447-3.952-2.162
             c-0.33-0.178-0.777-0.273-0.971-0.547c-1.999-2.827-5.248-2.791-8.117-3.401c-3.234-0.688-4.94,1.478-4.049,4.746
             C352.071,373.355,352.255,373.979,352.426,374.578z"/>
-         <path id="Vallée d'Aoste" class="region" d="M9.717,88.4c2.883-1.377,5.557-2.516,8.068-3.94
+         <path id="Aoste" class="region" d="M9.717,88.4c2.883-1.377,5.557-2.516,8.068-3.94
             c0.745-0.423,1.035-1.649,1.714-2.818c0.531,0.904,1.042,1.827,1.607,2.714c0.289,0.454,0.593,1.015,1.035,1.231
             c1.187,0.579,1.816-1.648,3.303-0.651c1.387,0.93,1.915-0.483,2.891-1.192c1.5-1.089,3.444-2.096,5.493-1.545
             c1.517,0.408,2.425-0.213,3.562-1.045c1.954-1.43,4.116-2.576,6.303-3.909c0.642,0.196,1.542,0.807,2.206,0.613
@@ -542,7 +536,7 @@
             c-1.084-0.15-2.231-0.198-3.221-0.605c-3.084-1.266-4.208-1.019-6.242,1.631c-0.81,1.055-1.657,1.702-3.233,1.841
             c-2.053,0.182-4.347,0.797-5.953,2.004c-1.756,1.32-3.598,0.824-4.595,0.165c-1.629-1.078-3.959-1.952-4.301-4.325
             c-0.271-1.872-0.446-3.834-0.179-5.686c0.289-1.998-0.128-3.074-2.152-3.026C10.804,97.622,8.007,92.647,9.717,88.4z"/>
-         <path id="Frioul-Vénétie Julienne" class="region" d="M337.955,95.388
+         <path id="Frioul_Venetie_Julienne" class="region" d="M337.955,95.388
             c-0.467-1.35-1.107-2.493-2.816-2.818c-0.931-0.177-1.956-0.92-2.53-1.706c-1.184-1.62-2.656-2.037-4.312-1.942
             c-1.733-3.102-0.782-5.894,0.895-8.69c0.47-0.784,0.513-1.825,0.906-3.34c-1.574,0.525-2.507,0.882-3.465,1.146
             c-1.781,0.491-4.764-2.076-3.959-3.522c0.67-1.204,0.529-2.23,0.261-3.379c3.04-2.27,6.701-3.711,8.408-7.558
@@ -567,7 +561,7 @@
             c-0.602-1.953-0.359-3.023,0.942-4.017c0.933-0.712,1.867-0.878,2.707,0.167c0.005-0.065,0.016-0.133,0.029-0.203
             c0.962,0.701,1.935,1.392,2.775,2.218c1.601,1.577,3.425,3.109,4.443,5.036c0.724,1.37,1.574,2.4,2.792,3.25
             c-0.295,0.705-0.529,1.262-0.841,2.006c2.302,0.192,2.735-1.452,3.677-2.983C339.184,98.575,338.528,97.041,337.955,95.388z"/>
-         <path id="Vénétie" class="region" d="M300.505,94.029
+         <path id="Venetie" class="region" d="M300.505,94.029
             c-0.384-0.925-1.032-1.765-1.283-2.717c-0.468-1.772-0.734-3.598-1.099-5.48c-0.394,0.13-1.057,0.141-1.236,0.442
             c-1.218,2.039-2.689,1.871-4.493,0.822c-0.695-0.404-1.657-0.319-2.464-0.564c-1.297-0.394-2.373-0.46-3.096,1.02
             c-0.188,0.386-0.885,0.632-1.39,0.735c-2.014,0.409-4.024,0.165-5.812-0.769c-1.029-0.538-2.353-1.469-2.555-2.431
@@ -644,33 +638,50 @@
             c0.706-0.624,1.476-1.177,2.179-1.805c1.494-1.336,3.012-2.271,5.198-2.495c3.164-0.324,5.104-2.719,6.398-5.466
             c0.422-0.896,0.952-1.441,1.665-2.086c1.453-1.316,2.602-2.968,3.872-4.485C112.257,393.585,112.598,393.143,113.051,392.579z"/>
         </svg>
+        <br>
+      </div>
+      <aside id="details-region" class="card" style="position: fixed; top: 100px; right: 20px; width: 300px; display: none; z-index: 1000;">
+         <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h5 id="nom_region" class="mb-0">Région</h5>
+            <button type="button" class="btn-close btn-close-white" onclick="$('#details-region').fadeOut()"></button>
+         </div>
+         <div class="card-body">
+            <div class="mb-3">
+                  <label class="text-muted small">Taux de tri</label>
+                  <div class="h4" id="taux_tri">-</div>
+            </div>
+        
+            <div id="comparaison_box" class="p-2 rounded mb-3" style="background-color: #f8f9fa; border-left: 4px solid #28a745;">
+                  <p id="comparaison_texte" class="small mb-0">Analyse en cours...</p>
+            </div>
 
-    <div id="region-name-display">Passez la souris sur une région</div>
-</div>
+            <ul class="list-group list-group-flush small">
+               <li class="list-group-item d-flex justify-content-between">
+                  <span><i class="bi bi-trash"></i> Déchets totaux</span>
+                  <span id="total_dechets" class="fw-bold">-</span>
+               </li>
 
-<script>
-    const regions = document.querySelectorAll('.region');
-    const display = document.getElementById('region-name-display');
+               <li class="list-group-item bg-light"><strong>Richesse</strong></li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Revenu moyen / hab</span>
+                  <span id="richesse" class="fw-bold text-primary">-</span>
+               </li>
 
-    regions.forEach(region => {
-        region.addEventListener('click', function() {
-            const name = this.getAttribute('title');
-            display.innerText = "Région sélectionnée : " + name;
-            
-            regions.forEach(r => r.style.fill = "#cccccc");
-            this.style.fill = "#27ae60";
-        });
+               <li class="list-group-item bg-light"><strong>📍 Géographie</strong></li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Altitude moyenne</span>
+                  <span id="altitude" class="fw-bold">-</span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Type de zone</span>
+                  <span id="geographie" class="fw-bold">-</span>
+               </li>
+            </ul>
+         </div>
+      </aside>		
+      
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        region.addEventListener('mouseenter', function() {
-            display.innerText = this.getAttribute('id');
-        });
-
-        region.addEventListener('mouseleave', function() {
-            display.innerText = "Cliquez sur une région";
-        });
-    });
-</script>
-
-
-</body>
+   <script src="script.js"></script>
+	</body>
 </html>
