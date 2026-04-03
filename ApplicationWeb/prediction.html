@@ -9,6 +9,7 @@
         .hero { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 40px 0; }
         .card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -26,11 +27,15 @@
                 <form id="formPrediction">
                     <div class="mb-3">
                         <label class="form-label">Nombre d'habitants</label>
-                        <input type="number" step="0.1" class="form-control" id="pop" placeholder="ex: 10.5" required>
+                        <input type="number" step="0.1" class="form-control" id="pop" placeholder="ex: 1000" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Densité de la population</label>
+                        <input type="number" step="any" class="form-control" id="pden" placeholder="ex: 733.76" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Niveau de revenus par habitants</label>
-                        <input type="number" class="form-control" id="gdp" placeholder="ex: 35000" required>
+                        <input type="number" step="any" class="form-control" id="gdp" placeholder="ex: 188.85" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Indice d'urbanisation</label>
@@ -39,7 +44,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Revenu moyen imposable par habitant</label>
-                        <input type="number" class="form-control" id="wage" placeholder="ex: 500" required>
+                        <input type="number" step="any" class="form-control" id="wage" placeholder="ex: 500.24" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Longueur route(en km)</label>
@@ -55,7 +60,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Superficie</label>
-                        <input type="number" class="form-control" id="area" placeholder="ex: 500" required>
+                        <input type="number" step="any" class="form-control" id="area" placeholder="ex: 500.24" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Région</label>
@@ -95,5 +100,58 @@
     </div>
 </div>
 
+<script>
+$(document).ready(function() {
+    $("#formPrediction").on("submit", function(e) {
+        e.preventDefault(); // Empêche le rechargement de la page
+
+        // Afficher le loader et cacher les anciens résultats
+        $("#loader").show();
+        $("#resultatsContainer").hide();
+
+        // 2. Préparation des données au format JSON pour FastAPI
+        const donnéesVille = {
+            pop: parseFloat($("#pop").val()),
+            pden: parseFloat($("#pden").val()),
+            gdp: parseFloat($("#gdp").val()),
+            urb: parseInt($("#urb").val()),
+            wage: parseFloat($("#wage").val()),
+            roads: parseFloat($("#roads").val()),
+            alt: parseFloat($("#alt").val()),
+            d_fee: parseInt($("#d_fee").val()),
+            area: parseFloat($("#area").val()),
+            region: $("#region").val(),
+            model_type: $("#modelSelect").val()
+        };
+
+        // 3. Appel à ton serveur FastAPI (Python)
+        $.ajax({
+            url: "http://127.0.0.1:8001/predict",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(donnéesVille), // On transforme l'objet en texte JSON
+            success: function(reponse) {
+                console.log("Réponse reçue du serveur :", reponse);
+                $("#loader").hide();
+                $("#resultatsContainer").fadeIn();
+
+                // 4. Mise à jour des résultats dans la page
+                $("#res_org").text(reponse.organic || "0");
+                $("#res_pap").text(reponse.paper || "0");
+                $("#res_pla").text(reponse.plastic || "0");
+                $("#res_ver").text(reponse.glass || "0");
+                
+                console.log("Affichage mis à jour !");
+            },
+            error: function(xhr) {
+                $("#loader").hide();
+                alert("Erreur : Le serveur IA n'est pas lancé ou les données sont incorrectes.");
+                console.log(xhr.responseText);
+            }
+        });
+        
+    });
+});
+</script>
 </body>
 </html>

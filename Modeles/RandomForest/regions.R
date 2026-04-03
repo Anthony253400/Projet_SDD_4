@@ -6,7 +6,7 @@ df <- read.csv("data/public_data_waste_fee.csv", stringsAsFactors = FALSE)
 colnames(df)[colnames(df) == "texile"] <- "textile"
 
 # Liste des variables
-features <- c("pop", "pden", "urb", "gdp", "wage", "roads", 
+features <- c("pop", "pden","gdp", "urb", "wage", "roads", 
                 "alt", "d_fee", "area", "region")
 
 targets <- c("organic", "paper", "glass", "wood", "metal", 
