@@ -10,15 +10,15 @@ $resMoy = $conn->query("SELECT AVG(taux_dechets_tries) as moyenne_nationale FROM
 $moyenneTable = $resMoy->fetch_assoc();
 $moyenneGlobale = $moyenneTable['moyenne_nationale'];
 
-// 2. Infos de la région cliquée
-// On fait un AVG car une région contient plusieurs municipalités dans ta base
 $sql = "SELECT region, 
         AVG(taux_dechets_tries) as moyenne_region,
         SUM(quantite_totale_dechets_kg) as total_dechets,
         AVG(cout_total_habitant) as cout_moyen,
-        AVG(revenu_moyen_imposable_habitant) as richesse,
+        SUM(nb_habitant) as total_pop, 
+        AVG(revenu_moyen_imposable_habitant) as richesse, 
         AVG(altitude) as altitude,
-        MAX(bord_de_mer) as littoral
+        MAX(bord_de_mer) as bord_de_mer,
+        AVG(geographie) as code_geo
         FROM municipalite 
         WHERE region = ? 
         GROUP BY region";
@@ -30,13 +30,18 @@ $result = $stmt->get_result();
 $data = $result->fetch_assoc();
 
 if ($data) {
-    $data['moyenne_nationale'] = round($moyenneGlobale, 2);
-    $data['moyenne_region'] = round($data['moyenne_region'], 2);
-    // On ajoute un petit texte de comparaison
-    $diff = $data['moyenne_region'] - $data['moyenne_nationale'];
-    $data['comparaison'] = ($diff > 0) ? "supérieur de ".abs($diff)."%" : "inférieur de ".abs($diff)."%";
-    
-    echo json_encode($data);
+    echo json_encode([
+        "region" => $data['region'],
+        "moyenne_region" => round($data['moyenne_region'], 2),
+        "total_dechets" => $data['total_dechets'],
+        "cout_moyen" => round($data['cout_moyen'], 2),
+        "population" => $data['total_pop'],
+        "richesse" => round($data['richesse'], 2),
+        "altitude" => round($data['altitude'], 0),
+        "bord_de_mer" => $data['bord_de_mer'],
+        "code_geo" => round($data['code_geo'], 0), // Pour savoir si montagne/plaine
+        "moyenne_nationale" => round($moyenneGlobale, 2)
+    ]);
 } else {
     echo json_encode(["error" => "Région non trouvée"]);
 }

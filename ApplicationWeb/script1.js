@@ -1,5 +1,3 @@
-// Mapping entre les IDs du SVG (en français/ID) et les noms dans ta base SQL
-// Mapping : ID HTML (Français) => Nom dans la Base de Données (Italien)
 const regionMapping = {
     "Piemont": "piemonte",
     "Lombardie": "Lombardia",
@@ -26,10 +24,9 @@ const regionMapping = {
 $(document).ready(function () {
     let lastClicked = null;
 
-    // --- INITIALISATION COULEURS ---
     $("path").attr("fill", "#D4D4D4").attr("stroke", "#FFFFFF").attr("stroke-width", "0.5");
 
-    // --- CLIC SUR UNE RÉGION ---
+    
     $(".region").click(function () {
         let svgId = $(this).attr("id"); // Récupère l'ID français (ex: "Sicile")
         console.log("ID cliqué : '" + svgId + "'");
@@ -40,15 +37,15 @@ $(document).ready(function () {
             return;
         }
 
-        // Effet visuel
+        
         if (lastClicked) $(lastClicked).attr("fill", "#D4D4D4");
         $(this).attr("fill", "#27ae60");
         lastClicked = this;
 
-        // AFFICHER LE PANNEAU (Aside)
+        
         $("#details-region").fadeIn();
 
-        // APPEL AJAX
+        
         $.get("donneeDechets.php?code=" + encodeURIComponent(dbName), function (data) {
             if (data.error) {
                 $("#nom_region").text("Erreur");
@@ -56,18 +53,30 @@ $(document).ready(function () {
                 return;
             }
 
-            // Remplissage des données
-            $("#nom_region").text(data.region); // Affiche le nom italien venant de la DB
+            
+            $("#nom_region").text(data.region); 
             $("#taux_tri").text(data.moyenne_region + " %");
             $("#total_dechets").text(new Intl.NumberFormat().format(data.total_dechets) + " kg");
             $("#cout_moyen").text(data.cout_moyen + " € / hab");
-            $("#richesse").text(new Intl.NumberFormat().format(data.revenu_moyen_imposable_habitant) + " €");
+            $("#nb_habitants").text(new Intl.NumberFormat().format(data.population) + " hab.");
+            $("#richesse").text(new Intl.NumberFormat().format(data.richesse) + " € / hab");
             $("#altitude").text(data.altitude + " m");
             let zone = (data.bord_de_mer == 1) ? "Littoral (Bord de mer) 🏖️" : "Terres / Montagnes ⛰️";
 $           ("#geographie").text(zone);
 
-            // Calcul de la comparaison (Moyenne nationale)
-            // Note: assure-toi que ton PHP renvoie 'moyenne_nationale'
+            let typeGeo = "";
+            if (data.bord_de_mer == 1) {
+                typeGeo = "Littoral 🏖️";
+            } else if (data.code_geo >= 3) {
+                typeGeo = "Montagne ⛰️";
+            } else if (data.code_geo == 2) {
+                typeGeo = "Collines 🌄";
+            } else {
+                typeGeo = "Plaine / Terres 🌾";
+            }
+            $("#geographie").text(typeGeo);
+
+            
             let diff = (data.moyenne_region - data.moyenne_nationale).toFixed(2);
             let message = "";
             let color = "";
@@ -87,7 +96,7 @@ $           ("#geographie").text(zone);
         });
     });
 
-    // --- HOVER ---
+    
     $("path").mouseover(function () { if (this !== lastClicked) $(this).attr("fill", "#bdc3c7"); });
     $("path").mouseout(function () { if (this !== lastClicked) $(this).attr("fill", "#D4D4D4"); });
 });
