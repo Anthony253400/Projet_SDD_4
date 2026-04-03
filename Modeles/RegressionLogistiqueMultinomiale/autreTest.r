@@ -90,3 +90,5 @@ cat("Intervalle de confiance à 95% : [",
 # Exemple de la première ligne
 exemple_mix <- predict(model_cv, newdata = df_final[1,], type = "probs")
 print(round(exemple_mix * 100, 2))
+
+saveRDS(model_cv, "model_multinom.rds")
