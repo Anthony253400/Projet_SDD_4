@@ -5,21 +5,10 @@
     <title>Tri Déchets | L3 MIASHS</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background-color: #f8f9fa; }
-        .hero { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 40px 0; }
-        .card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <?php include 'navbar.php'; ?>
-
-<div class="hero text-center">
-    <h1>♻️ Projet Tri des Déchets</h1>
-    <p>Modèles IA & Analyse des Déchets</p>
-    <a href="index.html">Accueil</a>
-</div>
 
 <div class="container mt-5">
     <div class="row">

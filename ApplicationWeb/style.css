@@ -58,4 +58,51 @@ body{font-family:var(--sans);
 .nav-cta{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all .18s}
 .nav-cta:hover{background:var(--g600);transform:translateY(-1px)}
  
-  
+.card {
+    background: var(--surface);
+    border: 1px solid var(--borderl) !important; 
+    border-radius: var(--r2) !important;       
+    box-shadow: 0 10px 30px rgba(26, 46, 26, 0.05); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(26, 46, 26, 0.08);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid var(--borderl);
+    padding: 10px 12px;
+    font-family: var(--sans);
+    font-size: 14px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accentbg);
+}
+
+.btn-success {
+    background-color: var(--accent) !important;
+    border: none !important;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.btn-success:hover {
+    background-color: var(--g600) !important;
+    transform: translateY(-1px);
+}
