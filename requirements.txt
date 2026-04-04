@@ -15,4 +15,4 @@ tensorboard==2.20.0
 fastapi
 uvicorn
 python-multipart
-git lfs install
+#git lfs install

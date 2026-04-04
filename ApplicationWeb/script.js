@@ -22,7 +22,7 @@ async function uploadImage() {
         //document.getElementById("status").textContent = "Résultat : " + JSON.stringify(result.prediction);
         const probabilites = result.prediction[0];
 
-        const nomsDesClasses = ["Carton", "Verre", "métale", "Papier", "Plastique", "Ordure Ménager"];
+        const nomsDesClasses = ["Carton", "Verre", "Métal", "Papier", "Plastique", "Ordure Ménager"];
 
         let indexMax = 0;
         let probaMax = probabilites[0];
