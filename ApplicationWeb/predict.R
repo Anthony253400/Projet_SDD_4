@@ -5,20 +5,16 @@ library(nnet)
 # 2. Récupération des arguments envoyés par Python
 args <- commandArgs(trailingOnly = TRUE)
 
-# Sécurité : on vérifie qu'on a bien nos 11 arguments
-if(length(args) < 11) stop("Erreur : Pas assez d'arguments envoyés")
+# Sécurité : on vérifie qu'on a bien nos 7 arguments
+if(length(args) < 7) stop("Erreur : Pas assez d'arguments envoyés")
 
 pop        <- args[1]
-pden       <- args[2]
-gdp        <- args[3]
-urb        <- args[4]
-wage       <- args[5]
-roads      <- args[6]
-alt        <- args[7]
-d_fee      <- args[8]
-area       <- args[9]
-region     <- args[10]
-model_type <- args[11]
+urb        <- args[2]
+wage       <- args[3]
+d_fee      <- args[4]
+area       <- args[5]
+region     <- args[6]
+model_type <- args[7]
 
 # 3. Chargement du modèle pour analyse de structure
 # Remarque : on le charge AVANT de créer le dataframe pour copier ses types
@@ -28,12 +24,8 @@ trained_model <- model_list[['paper']]$model
 # 4. Création du DataFrame initial (tout en brut)
 input_df <- data.frame(
   pop = as.numeric(pop),
-  pden = as.numeric(pden),
-  gdp = as.numeric(gdp),
-  urb = urb, 
+  urb = as.numeric(urb), 
   wage = as.numeric(wage),
-  roads = as.numeric(roads),
-  alt = as.numeric(alt),
   d_fee = as.numeric(d_fee),
   area = as.numeric(area),
   region = as.character(region),
@@ -56,7 +48,7 @@ if ("region" %in% target_names) {
 }
 
 # Sécurité pour les autres colonnes numériques
-numeric_cols <- c("pop", "pden", "gdp", "wage", "roads", "alt", "d_fee", "area")
+numeric_cols <- c("pop", "wage", "d_fee", "area")
 for (col in numeric_cols) {
   input_df[[col]] <- as.numeric(input_df[[col]])
 }

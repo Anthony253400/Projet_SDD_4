@@ -30,14 +30,6 @@
                         <input type="number" step="0.1" class="form-control" id="pop" placeholder="ex: 1000" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Densité de la population</label>
-                        <input type="number" step="any" class="form-control" id="pden" placeholder="ex: 733.76" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Niveau de revenus par habitants</label>
-                        <input type="number" step="any" class="form-control" id="gdp" placeholder="ex: 188.85" required>
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label">Indice d'urbanisation</label>
                         <input type="number" class="form-control" id="urb" placeholder="ex: 1" required>
                         <div  class="form-text" >1 ⭢ faiblement urbain, 2 ⭢ moyennement urbain, 3 ⭢ fortement urbain</div>
@@ -45,14 +37,6 @@
                     <div class="mb-3">
                         <label class="form-label">Revenu moyen imposable par habitant</label>
                         <input type="number" step="any" class="form-control" id="wage" placeholder="ex: 500.24" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Longueur route(en km)</label>
-                        <input type="number" class="form-control" id="roads" placeholder="ex: 500" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Altitude</label>
-                        <input type="number" class="form-control" id="alt" placeholder="ex: 500" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Redevance incitative</label>
@@ -110,14 +94,10 @@ $(document).ready(function() {
         $("#resultatsContainer").hide();
 
         // 2. Préparation des données au format JSON pour FastAPI
-        const donnéesVille = {
+        const donneesVille = {
             pop: parseFloat($("#pop").val()),
-            pden: parseFloat($("#pden").val()),
-            gdp: parseFloat($("#gdp").val()),
             urb: parseInt($("#urb").val()),
             wage: parseFloat($("#wage").val()),
-            roads: parseFloat($("#roads").val()),
-            alt: parseFloat($("#alt").val()),
             d_fee: parseInt($("#d_fee").val()),
             area: parseFloat($("#area").val()),
             region: $("#region").val(),
@@ -129,7 +109,7 @@ $(document).ready(function() {
             url: "http://127.0.0.1:8001/predict",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify(donnéesVille), // On transforme l'objet en texte JSON
+            data: JSON.stringify(donneesVille), // On transforme l'objet en texte JSON
             success: function(reponse) {
                 console.log("Réponse reçue du serveur :", reponse);
                 $("#loader").hide();

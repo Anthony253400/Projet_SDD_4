@@ -14,12 +14,11 @@ app.add_middleware(
 )
 
 class DataVille(BaseModel):
-    pop: float; pden: float; gdp: float; urb: int; wage: float; roads: float; 
-    alt: float; d_fee: int; area: float; region: str; model_type: str
+    pop: float; urb: int; wage: float; d_fee: int; 
+    area: float; region: str; model_type: str
 
 @app.post("/predict")
 def predict(data: DataVille):
-    print("\n--- NOUVELLE REQUÊTE REÇUE ---")
     print(f"Modèle demandé : {data.model_type}")
     
     script_path = r"C:\MAMP\htdocs\Projet_SDD_4\ApplicationWeb\predict.R"
@@ -27,8 +26,8 @@ def predict(data: DataVille):
 
     cmd = [
         r_exe, script_path,
-        str(data.pop), str(data.pden), str(data.gdp), str(data.urb),
-        str(data.wage), str(data.roads), str(data.alt), str(data.d_fee),
+        str(data.pop), str(data.urb),
+        str(data.wage), str(data.d_fee),
         str(data.area), data.region, data.model_type
     ]
 

@@ -2,12 +2,11 @@ if(!require(randomForest)) install.packages("randomForest")
 library(randomForest)
 
 # 1. Chargement et Nettoyage
-df <- read.csv("data/public_data_waste_fee.csv", stringsAsFactors = FALSE)
+df <- read.csv("../../data/public_data_waste_fee.csv", stringsAsFactors = FALSE)
 colnames(df)[colnames(df) == "texile"] <- "textile"
 
 # Liste des variables
-features <- c("pop", "pden","gdp", "urb", "wage", "roads", 
-                "alt", "d_fee", "area", "region")
+features <- c("pop", "urb", "wage", "d_fee", "area", "region")
 
 targets <- c("organic", "paper", "glass", "wood", "metal", 
              "plastic", "raee", "textile", "other")
@@ -73,3 +72,6 @@ for (cat_name in targets) {
   cat(sprintf("[%-8s] | %-6d | %-5.2f | %-10.2f | ±%-8.2f%%\n", 
               cat_name, nrow(df_temp), r2, mae, nrmse))
 }
+chemin_sauvegarde <- "C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/experts_waste_rf.rds"
+
+saveRDS(experts_results, file = chemin_sauvegarde)
