@@ -27,29 +27,66 @@
                 <form id="formPrediction">
                     <div class="mb-3">
                         <label class="form-label">Nombre d'habitants</label>
-                        <input type="number" step="0.1" class="form-control" id="pop" placeholder="ex: 1000" required>
+                        <input type="number" min="1" step="1" class="form-control" id="pop" placeholder="ex: 1000" required>
+                        <div class="form-text">Entrez un nombre entier positif.</div>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Indice d'urbanisation</label>
-                        <input type="number" class="form-control" id="urb" placeholder="ex: 1" required>
-                        <div  class="form-text" >1 ⭢ faiblement urbain, 2 ⭢ moyennement urbain, 3 ⭢ fortement urbain</div>
+                        <select class="form-select" id="urb" required>
+                            <option value="" disabled selected>Niveau d'urbanisation...</option>
+                            <option value="1">1 ⭢ Faiblement urbain</option>
+                            <option value="2">2 ⭢ Moyennement urbain</option>
+                            <option value="3">3 ⭢ Fortement urbain</option>
+                        </select>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Revenu moyen imposable par habitant</label>
-                        <input type="number" step="any" class="form-control" id="wage" placeholder="ex: 500.24" required>
+                        <input type="number" min="0" step="0.01" class="form-control" id="wage" placeholder="ex: 25000" required>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Redevance incitative</label>
-                        <input type="number" class="form-control" id="d_fee" placeholder="ex: 0 ou 1" required>
+                        <select class="form-select" id="d_fee" required>
+                            <option value="" disabled selected>La commune applique-t-elle la redevance ?</option>
+                            <option value="0">Non (0)</option>
+                            <option value="1">Oui (1)</option>
+                        </select>
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label">Superficie</label>
-                        <input type="number" step="any" class="form-control" id="area" placeholder="ex: 500.24" required>
+                        <label class="form-label">Superficie (km²)</label>
+                        <input type="number" min="0.1" step="0.01" class="form-control" id="area" placeholder="ex: 50.5" required>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Région</label>
-                        <input type="text" class="form-control" id="region" placeholder="ex: Toscane" required>
+                        <select class="form-select" id="region" required style="border: 1px solid #ced4da;">
+                            <option value="" disabled selected>Choisissez une région...</option>
+                            <option value="Toscane">Toscane</option>
+                            <option value="Piemont">Piedmont</option>
+                            <option value="Vallee d'Aoste">Vallée d'Aoste</option>
+                            <option value="Lombardie">Lombardie</option>
+                            <option value="Trentin-Haut-Adige">Trentin-Haut-Adige</option>
+                            <option value="Venetie">Vénétie</option>
+                            <option value="Frioul-Venetie Julienne">Frioul-Vénétie Julienne</option>
+                            <option value="Ligurie">Ligurie</option>
+                            <option value="Emilie-Romagne">Émilie-Romagne</option>
+                            <option value="Ombrie">Ombrie</option>
+                            <option value="Marches">Marche</option>
+                            <option value="Latium">Latium</option>
+                            <option value="Abruzzes">Abruzzes</option>
+                            <option value="Molise">Molise</option>
+                            <option value="Campanie">Campanie</option>
+                            <option value="Pouilles">Pouilles</option>
+                            <option value="Basilicate">Basilicate</option>
+                            <option value="Calabre">Calabre</option>
+                            <option value="Sicile">Sicile</option>
+                            <option value="Sardaigne">Sardaigne</option>
+                        </select>
                     </div>
+
                     <div class="mb-4">
                         <label class="form-label fw-bold">Choix du modèle d'IA</label>
                         <select class="form-select" id="modelSelect" style="border: 2px solid #2ecc71;">
@@ -57,7 +94,6 @@
                             <option value="multinomial">📊 Régression Logistique Multinomiale</option>
                             <option value="linear">📈 Régression Linéaire Multiple</option>
                         </select>
-                    <div class="form-text">Le modèle Random Forest est recommandé pour sa précision.</div>
                     </div>
 
                     <button type="submit" class="btn btn-success w-100">Lancer la prédiction</button>
