@@ -38,7 +38,7 @@ for(i in 1:k){
   
   Y_train_cv <- as.matrix(train_cv[, dechets_colonnes])
   
-  model_cv <- multinom(Y_train_cv ~ pop + gdp + wage + alt + pden + d_fee + roads + urb + region + area, 
+  model_cv <- multinom(Y_train_cv ~ pop + wage + d_fee + urb + region + area, 
                        data = train_cv, trace = FALSE, maxit = 200)
   
   preds_probs <- predict(model_cv, newdata = test_cv, type = "probs")
@@ -91,4 +91,4 @@ cat("Intervalle de confiance à 95% : [",
 exemple_mix <- predict(model_cv, newdata = df_final[1,], type = "probs")
 print(round(exemple_mix * 100, 2))
 
-saveRDS(model_cv, "model_multinom.rds")
+#saveRDS(model_cv, "model_multinom.rds")

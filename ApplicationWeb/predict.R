@@ -2,11 +2,9 @@
 library(randomForest)
 library(nnet)
 
-# 2. Récupération des arguments envoyés par Python
+# 2. Récupération des arguments
 args <- commandArgs(trailingOnly = TRUE)
-
-# Sécurité : on vérifie qu'on a bien nos 7 arguments
-if(length(args) < 7) stop("Erreur : Pas assez d'arguments envoyés")
+if(length(args) < 7) stop("Erreur : Pas assez d'arguments")
 
 pop        <- args[1]
 urb        <- args[2]
@@ -16,12 +14,7 @@ area       <- args[5]
 region     <- args[6]
 model_type <- args[7]
 
-# 3. Chargement du modèle pour analyse de structure
-# Remarque : on le charge AVANT de créer le dataframe pour copier ses types
-model_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/experts_waste_rf.rds")
-trained_model <- model_list[['paper']]$model
-
-# 4. Création du DataFrame initial (tout en brut)
+# 3. Création du DataFrame de base (Neutre)
 input_df <- data.frame(
   pop = as.numeric(pop),
   urb = as.numeric(urb), 
@@ -32,38 +25,57 @@ input_df <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# 5. SYNCHRONISATION FORCÉE DES TYPES (Pour éviter l'erreur "Type mismatch")
-target_names <- names(trained_model$forest$xlevels) 
-
-# Conversion de URB (Facteur ou Numérique selon le modèle)
-if ("urb" %in% target_names) {
-  input_df$urb <- factor(input_df$urb, levels = trained_model$forest$xlevels$urb)
-} else {
-  input_df$urb <- as.numeric(input_df$urb)
-}
-
-# Conversion de REGION
-if ("region" %in% target_names) {
-  input_df$region <- factor(input_df$region, levels = trained_model$forest$xlevels$region)
-}
-
-# Sécurité pour les autres colonnes numériques
-numeric_cols <- c("pop", "wage", "d_fee", "area")
-for (col in numeric_cols) {
-  input_df[[col]] <- as.numeric(input_df[[col]])
-}
-
-# 6. PRÉDICTION
+# 4. PRÉDICTION
 options(warn=-1)
 
+# --- CAS 1 : RANDOM FOREST ---
 if (model_type == "random_forest") {
-  # Prédiction Random Forest
-  res <- predict(trained_model, input_df)
-  cat(paste0('{"paper":', round(as.numeric(res[1]), 2), ', "organic":0, "plastic":0, "glass":0}'))
+    model_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/experts_waste_rf.rds")
+    
+    # Synchronisation des types spécifique au RF
+    # On utilise le premier expert (paper) pour récupérer la structure des facteurs
+    ref_model <- model_list[['paper']]$model
+    input_df$urb <- factor(input_df$urb, levels = ref_model$forest$xlevels$urb)
+    input_df$region <- factor(input_df$region, levels = ref_model$forest$xlevels$region)
 
-} else {
-  # Prédiction Multinomial (si besoin)
-  model_m <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/model_multinom.rds")
-  res_m <- predict(model_m, input_df, type='probs')
-  cat(paste0('{"organic":', round(as.numeric(res_m[1])*100, 2), ', "paper":', round(as.numeric(res_m[2])*100, 2), ', "plastic":0, "glass":0}'))
+    p_pap <- round(as.numeric(predict(model_list[['paper']]$model,   input_df)), 2)
+    p_org <- round(as.numeric(predict(model_list[['organic']]$model, input_df)), 2)
+    p_pla <- round(as.numeric(predict(model_list[['plastic']]$model, input_df)), 2)
+    p_gla <- round(as.numeric(predict(model_list[['glass']]$model,   input_df)), 2)
+    
+    cat(paste0('{"paper":', p_pap, ', "organic":', p_org, ', "plastic":', p_pla, ', "glass":', p_gla, '}'))
+
+# --- CAS 2 : MULTINOMIAL ---
+} else if (model_type == "multinomial") {
+    model_m <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/model_multinom.rds")
+    
+    input_df$urb <- as.numeric(urb) 
+    input_df$region <- as.factor(region)
+    
+    res_m <- predict(model_m, input_df, type='probs')
+    
+    p_org <- round(as.numeric(res_m["organic"]) * 100, 2)
+    p_pap <- round(as.numeric(res_m["paper"]) * 100, 2)
+    p_pla <- round(as.numeric(res_m["plastic"]) * 100, 2)
+    p_gla <- round(as.numeric(res_m["glass"]) * 100, 2)
+
+    cat(paste0('{"organic":', p_org, ', "paper":', p_pap, ', "plastic":', p_pla, ', "glass":', p_gla, '}'))
+
+# --- CAS 3 : RÉGRESSION LINÉAIRE (NOUVEAU) ---
+} else if (model_type == "linear") {
+    # Chargement de la liste des experts linéaires
+    linear_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/model_linear.rds")
+    
+    # Types requis
+    input_df$urb <- as.numeric(urb)
+    input_df$region <- as.factor(region)
+    
+    # On récupère les prédictions pour chaque déchet
+    # On utilise max(0, ...) car la régression linéaire peut donner des chiffres négatifs
+    p_pap <- round(max(0, as.numeric(predict(linear_list[['paper']]$model,   input_df))), 2)
+    p_org <- round(max(0, as.numeric(predict(linear_list[['organic']]$model, input_df))), 2)
+    p_pla <- round(max(0, as.numeric(predict(linear_list[['plastic']]$model, input_df))), 2)
+    p_gla <- round(max(0, as.numeric(predict(linear_list[['glass']]$model,   input_df))), 2)
+
+    cat(paste0('{"paper":', p_pap, ', "organic":', p_org, ', "plastic":', p_pla, ', "glass":', p_gla, '}'))
 }
