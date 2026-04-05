@@ -14,7 +14,17 @@
 <main class="content-wrapper">
     <div class="card_CNN">
         <h2>Prédire l'image</h2>
-        <input type="file" id="imageInput" accept="image/*">
+        <div class="title-separator mx-auto mb-4"></div>
+        
+        <div class="upload-container">
+            <input type="file" id="imageInput" accept="image/*" hidden>
+            <label for="imageInput" class="upload-label">
+                <i class="fa-solid fa-cloud-arrow-up fa-2x mb-2"></i>
+                <span>Choisir une photo</span>
+                <small id="fileNameDisplay" class="text-muted d-block mt-1">Aucun fichier sélectionné</small>
+            </label>
+        </div>
+
         <img id="preview" alt="Aperçu">
         <button id="uploadBtn">Lancer la prédiction</button>
         <div id="result"></div>
