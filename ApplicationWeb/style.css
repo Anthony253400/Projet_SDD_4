@@ -278,3 +278,33 @@ nav{position:sticky;
     border-radius: 2px;
     margin-top: 15px;
 }
+
+.about-text {
+    max-width: 850px;
+    line-height: 1.8;
+}
+
+.list-group-item-action {
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.list-group-item-action:hover {
+    background-color: #27ae60 !important;
+    color: white !important;
+    transform: translateY(-3px);
+}
+
+.btn-github {
+    background-color: #24292e;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.btn-github:hover {
+    background-color: #444;
+    color: white;
+}
