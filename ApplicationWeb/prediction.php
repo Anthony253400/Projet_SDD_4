@@ -114,13 +114,11 @@
 <script>
 $(document).ready(function() {
     $("#formPrediction").on("submit", function(e) {
-        e.preventDefault(); // Empêche le rechargement de la page
+        e.preventDefault(); 
 
-        // Afficher le loader et cacher les anciens résultats
         $("#loader").show();
         $("#resultatsContainer").hide();
 
-        // 2. Préparation des données au format JSON pour FastAPI
         const donneesVille = {
             pop: parseFloat($("#pop").val()),
             urb: parseInt($("#urb").val()),
@@ -131,12 +129,12 @@ $(document).ready(function() {
             model_type: $("#modelSelect").val()
         };
 
-        // 3. Appel à ton serveur FastAPI (Python)
+        // Appel au serveur FastAPI 
         $.ajax({
             url: "http://127.0.0.1:8001/predict",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify(donneesVille), // On transforme l'objet en texte JSON
+            data: JSON.stringify(donneesVille), 
             success: function(reponse) {
                 console.log("Réponse reçue du serveur :", reponse);
                 $("#loader").hide();
