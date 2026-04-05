@@ -33,7 +33,7 @@ Le projet repose sur une architecture hybride permettant de faire communiquer R 
 
 * **Interface :** PHP / HTML5 / CSS3 / JavaScript (jQuery).
 * **Serveur d'Intelligence Artificielle :** FastAPI (Python 3.10) pour servir les modèles.
-* **Modèles :** Scripts **R**(Random Forest, Régression Linéaire Multiple et Régression Logistique Multinomiale) et **Python**(CNN).
+* **Modèles :** Scripts **R** (Random Forest, Régression Linéaire Multiple et Régression Logistique Multinomiale) et **Python** (CNN).
 * **Base de données :** MySQL (MAMP).
 
 ## Installation
