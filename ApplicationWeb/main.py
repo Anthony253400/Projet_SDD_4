@@ -1,48 +1,68 @@
-import subprocess
-import json
-from fastapi import FastAPI
+import os
+import uuid
+import uvicorn
+import random
+import mysql.connector
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-class DataVille(BaseModel):
-    pop: float; urb: int; wage: float; d_fee: int; 
-    area: float; region: str; model_type: str
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",      
+        password="root",
+        database="dechets",
+        port=8889
+    )
 
-@app.post("/predict")
-def predict(data: DataVille):
-    print(f"Modèle demandé : {data.model_type}")
-    
-    script_path = r"C:\MAMP\htdocs\Projet_SDD_4\ApplicationWeb\predict.R"
-    r_exe = r"C:\Program Files\R\R-4.4.2\bin\Rscript.exe"
+FEEDBACK_DIR = "dataset_feedback"
+if not os.path.exists(FEEDBACK_DIR):
+    os.makedirs(FEEDBACK_DIR)
 
-    cmd = [
-        r_exe, script_path,
-        str(data.pop), str(data.urb),
-        str(data.wage), str(data.d_fee),
-        str(data.area), data.region, data.model_type
-    ]
 
+@app.post("/feedback")
+async def save_feedback(label: str = Form(...), file: UploadFile = File(...)):
     try:
-        process = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8')
+        # 1. Création du dossier
+        class_path = os.path.join(FEEDBACK_DIR, label)
+        os.makedirs(class_path, exist_ok=True)
         
-        if process.returncode == 0:
-            output = process.stdout.strip().split('\n')[-1]
-            return json.loads(output)
-        else:
-            return {"error": "R a planté", "details": process.stderr}
+        # 2. Génération du nom de fichier unique
+        file_extension = os.path.splitext(file.filename)[1] or ".jpg"
+        unique_filename = f"{uuid.uuid4()}{file_extension}"
+        file_path = os.path.join(class_path, unique_filename)
+        
+        # 3. Écriture du fichier (utilisation de chunks pour plus de sécurité)
+        with open(file_path, "wb") as f:
+            content = await file.read()
+            f.write(content)
+
+        # 4. Insertion BDD
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        sql = "INSERT INTO feedbacks (image_path, label_correct) VALUES (%s, %s)"
+        cursor.execute(sql, (file_path, label))
+        
+        conn.commit()
+        cursor.close()
+        conn.close()
             
+        return {"status": "success", "message": "Feedback enregistré"}
+    
     except Exception as e:
-        return {"error": str(e)}
+        print(f"Erreur détaillée : {str(e)}") # Pour voir l'erreur dans votre console Python
+        return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8001)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
