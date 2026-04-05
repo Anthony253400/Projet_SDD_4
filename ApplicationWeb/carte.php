@@ -10,6 +10,28 @@
 <body>
 <?php include 'navbar.php'; ?>
 
+   <div id="controls" class="card shadow-sm p-3 mb-3">
+      <label class="fw-bold mb-2"><i class="fa-solid fa-filter"></i> Analyser par :</label>
+      <select id="categorySelect" class="form-select">
+         <option value="none">-- Choisir une catégorie --</option>
+         <option value="taux_tri">Taux de tri (%)</option>
+         <option value="richesse">Richesse (Revenu moyen)</option>
+         <option value="population">Densité de population</option>
+         <option value="dechets">Quantité de déchets</option>
+      </select>
+
+      <div id="legend-container" class="mt-3" style="display:none;">
+         <div class="d-flex justify-content-between small fw-bold mb-1">
+               <span id="min-val">Min</span>
+               <span id="max-val">Max</span>
+         </div>
+         <div style="height: 12px; width: 100%; background: linear-gradient(to right, rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 1)); border-radius: 5px; border: 1px solid #ddd;"></div>
+      
+         <div id="phrase-explication" class="text-center small text-muted mt-2"></div>
+      </div>
+   </div>
+
+
 
    <div id="italy-map-container">
     <svg id="italy-map" viewBox="0 0 612 735" xmlns="http://www.w3.org/2000/svg">

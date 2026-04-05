@@ -1,24 +1,24 @@
 const regionMapping = {
-    "Piemont": "piemonte",
-    "Lombardie": "Lombardia",
-    "Emilie-Romagne": "Emilia_Romagna",
-    "Toscane": "Toscana",
-    "Sicile": "Sicilia",
-    "Pouilles": "Puglia",
-    "Latium": "Lazio",
-    "Trentin_Haut_Adige": "Trentino_Alto_Adige",
-    "Calabre": "Calabria",
-    "Campanie": "Campania",
-    "Abruzzes": "Abruzzo",
-    "Marches": "Marche",
-    "Basilicate": "Basilicata",
-    "Ombrie": "Umbria",
-    "Ligurie": "Liguria",
+    "Piemont": "Piemont",
+    "Lombardie": "Lombardie",
+    "Trentin_Haut_Adige": "Trentin-Haut-Adige",
+    "Venetie": "Venetie",
+    "Frioul_Venetie_Julienne": "Frioul-Venezia Julienne",
+    "Ligurie": "Ligurie",
+    "Emilie_Romagne": "Emilie-Romagne",
+    "Toscane": "Toscane",
+    "Ombrie": "Ombrie",
+    "Marches": "Marches",
+    "Latium": "Latium",
+    "Abruzzes": "Abruzzes",
     "Molise": "Molise",
-    "Aoste": "Valle_d'Aosta",
-    "Frioul-Venetie Julienne": "Friuli_Venezia_Giulia",
-    "Venetie": "Veneto",
-    "Sardaigne": "Sardegna"
+    "Campanie": "Campania",
+    "Pouilles": "Pouilles",
+    "Basilicate": "Basilicate",
+    "Calabre": "Calabre",
+    "Sicile": "Sicile",
+    "Sardaigne": "Sardaigne",
+    "Aoste": "Vallee d’Aoste"
 };
 
 $(document).ready(function () {
@@ -99,4 +99,54 @@ $(document).ready(function () {
     
     $("path").mouseover(function () { if (this !== lastClicked) $(this).attr("fill", "#bdc3c7"); });
     $("path").mouseout(function () { if (this !== lastClicked) $(this).attr("fill", "#D4D4D4"); });
+
+    // --- GESTION DE LA COLORATION DE LA CARTE ---
+    // --- GESTION DE LA COLORATION DE LA CARTE ---
+    $("#categorySelect").change(function() {
+        let choix = $(this).val();
+
+        if (choix === "none") {
+            $("path").attr("fill", "#D4D4D4"); 
+            $("#legend").html(""); // On vide la légende
+            return;
+        }
+
+        $.get("data_carte.php", function(toutesLesRegions) {
+            let valeurs = toutesLesRegions.map(r => parseFloat(r[choix]));
+            let max = Math.max(...valeurs);
+            let min = Math.min(...valeurs);
+
+            toutesLesRegions.forEach(reg => {
+                let nomBaseNettoyé = reg.region.toLowerCase().trim();
+                let idSVG = Object.keys(regionMapping).find(key => {
+                    return regionMapping[key].toLowerCase().trim() === nomBaseNettoyé;
+                });
+
+                if (idSVG) {
+                    let score = parseFloat(reg[choix]);
+                    let intensite = (max === min) ? 0.5 : (score - min) / (max - min);
+                    let couleur = `rgba(39, 174, 96, ${0.1 + (intensite * 0.9)})`;
+                    $("#" + idSVG).attr("fill", couleur).css("fill", couleur);
+                }
+            });
+
+            if (choix !== "none") {
+    // 1. On récupère le nom de l'option (ex: Taux de tri)
+                var nomCategorie = $("#categorySelect option:selected").text();
+
+    // 2. On met à jour les chiffres Min et Max
+                $("#min-val").text(Math.round(min).toLocaleString());
+                $("#max-val").text(Math.round(max).toLocaleString());
+
+    // 3. On crée la phrase à l'ancienne avec des +
+                var texte = "Plus le vert est foncé, plus le/la " + nomCategorie + " est élevé(e).";
+    
+    // 4. On affiche tout
+                $("#phrase-explication").text(texte);
+                $("#legend-container").show();
+            } else {
+                $("#legend-container").hide();
+            }
+        }); 
+    });
 });

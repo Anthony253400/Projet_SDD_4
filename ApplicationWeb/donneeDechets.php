@@ -6,7 +6,7 @@ $conn = new mysqli($host, $user, $pass, $db);
 $code = $_GET['code'] ?? '';
 
 // 1. Moyenne nationale de tri (pour la comparaison)
-$resMoy = $conn->query("SELECT AVG(taux_dechets_tries) as moyenne_nationale FROM municipalite");
+$resMoy = $conn->query("SELECT AVG(taux_dechets_tries) as moyenne_nationale FROM municipalites");
 $moyenneTable = $resMoy->fetch_assoc();
 $moyenneGlobale = $moyenneTable['moyenne_nationale'];
 
@@ -19,7 +19,7 @@ $sql = "SELECT region,
         AVG(altitude) as altitude,
         MAX(bord_de_mer) as bord_de_mer,
         AVG(geographie) as code_geo
-        FROM municipalite 
+        FROM municipalites
         WHERE region = ? 
         GROUP BY region";
 
@@ -43,5 +43,5 @@ if ($data) {
         "moyenne_nationale" => round($moyenneGlobale, 2)
     ]);
 } else {
-    echo json_encode(["error" => "Région non trouvée"]);
+    echo json_encode(["error" => "Région non trouvée" . $code]);
 }
