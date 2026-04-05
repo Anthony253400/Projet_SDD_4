@@ -23,19 +23,20 @@ a {
 }
  
 body{font-family:var(--sans);
-  background:var(--blanc);
+  /*background:var(--blanc);*/
+  background: radial-gradient(circle at top right, var(--surface2), var(--blanc)); 
   color:var(--text);
   min-height:100vh;
   display:flex;
   flex-direction:column}
-  
-  /* ─── Navbar ─── */
-  nav{position:sticky;
-    top:0;z-index:300;
-    background:rgba(245,250,242,0.9);
-    backdrop-filter:blur(18px);
 
-    border-bottom:1px solid var(--borderl)}
+/* ─── Navbar ─── */
+nav{position:sticky;
+  top:0;z-index:300;
+  background:rgba(245,250,242,0.9);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--borderl)}
+
 .nav-inner{max-width:1160px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;gap:32px}
 
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
@@ -45,6 +46,11 @@ body{font-family:var(--sans);
 .logo-name em{color:var(--accent);font-style:normal}
 
 .nav-links{display:flex;align-items:center;gap:2px;flex:1}
+.nav-links a{
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
 .nav-btn{display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:8px;border:none;background:transparent;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--textm);cursor:pointer;transition:all .18s;white-space:nowrap;position:relative}
 .nav-btn:hover{background:var(--accentbg);color:var(--accent)}
 .nav-btn.active{background:var(--accentbg);color:var(--accent);font-weight:700}

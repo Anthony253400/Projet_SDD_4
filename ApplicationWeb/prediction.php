@@ -26,9 +26,9 @@
                         <label class="form-label">Indice d'urbanisation</label>
                         <select class="form-select" id="urb" required>
                             <option value="" disabled selected>Niveau d'urbanisation...</option>
-                            <option value="1">1 ⭢ Faiblement urbain</option>
-                            <option value="2">2 ⭢ Moyennement urbain</option>
-                            <option value="3">3 ⭢ Fortement urbain</option>
+                            <option value="1">Faiblement urbain</option>
+                            <option value="2">Moyennement urbain</option>
+                            <option value="3">Fortement urbain</option>
                         </select>
                     </div>
 
@@ -41,8 +41,8 @@
                         <label class="form-label">Redevance incitative</label>
                         <select class="form-select" id="d_fee" required>
                             <option value="" disabled selected>La commune applique-t-elle la redevance ?</option>
-                            <option value="0">Non (0)</option>
-                            <option value="1">Oui (1)</option>
+                            <option value="0">Non</option>
+                            <option value="1">Oui</option>
                         </select>
                     </div>
 
@@ -102,6 +102,11 @@
                         <div class="col-6"><strong>Papier :</strong> <span id="res_pap">--</span>%</div>
                         <div class="col-6"><strong>Plastique :</strong> <span id="res_pla">--</span>%</div>
                         <div class="col-6"><strong>Verre :</strong> <span id="res_ver">--</span>%</div>
+                        <div class="col-6"><strong>Bois :</strong> <span id="res_wood">--</span>%</div>
+                        <div class="col-6"><strong>Métal :</strong> <span id="res_met">--</span>%</div>
+                        <div class="col-6"><strong>RAEE :</strong> <span id="res_raee">--</span>%</div>
+                        <div class="col-6"><strong>Textile :</strong> <span id="res_tex">--</span>%</div>
+                        <div class="col-6"><strong>Autre :</strong> <span id="res_oth">--</span>%</div>
                     </div>
                 </div>
                 
@@ -145,6 +150,11 @@ $(document).ready(function() {
                 $("#res_pap").text(reponse.paper || "0");
                 $("#res_pla").text(reponse.plastic || "0");
                 $("#res_ver").text(reponse.glass || "0");
+                $("#res_wood").text(reponse.wood || "0");
+                $("#res_met").text(reponse.metal || "0");
+                $("#res_raee").text(reponse.raee || "0");
+                $("#res_tex").text(reponse.texile || "0");
+                $("#res_oth").text(reponse.other || "0");
                 
                 console.log("Affichage mis à jour !");
             },

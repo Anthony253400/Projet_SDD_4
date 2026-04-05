@@ -1,5 +1,4 @@
 <?php
-// On récupère le nom du fichier actuel (ex: index.php)
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
