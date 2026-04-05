@@ -10,8 +10,8 @@
 <body>
 <?php include 'navbar.php'; ?>
 
-<div id="italy-map-container">
-    
+
+   <div id="italy-map-container">
     <svg id="italy-map" viewBox="0 0 612 735" xmlns="http://www.w3.org/2000/svg">
         <path id="Piemont" class="region" d="M79.634,47.228 
             c1.592-1.213,3.004-2.87,5.694-2.251c0.204,3.029,0.987,6.042-1.072,8.84c-0.295,0.402-0.527,1.177-0.337,1.551
@@ -606,7 +606,7 @@
             c0.422-0.896,0.952-1.441,1.665-2.086c1.453-1.316,2.602-2.968,3.872-4.485C112.257,393.585,112.598,393.143,113.051,392.579z"/>
         </svg>
         <br>
-</div>
+   </div>
       <aside id="details-region" class="card" style="position: fixed; top: 100px; right: 20px; width: 300px; display: none; z-index: 1000;">
          <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
             <h5 id="nom_region" class="mb-0">Région</h5>
