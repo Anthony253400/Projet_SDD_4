@@ -11,7 +11,7 @@
 <?php include 'navbar.php'; ?>
 
    <div id="controls" class="card shadow-sm p-3 mb-3">
-      <label class="fw-bold mb-2"><i class="fa-solid fa-filter"></i> Analyser par :</label>
+      <label>Analyser par :</label>
       <select id="categorySelect" class="form-select">
          <option value="none">-- Choisir une catégorie --</option>
          <option value="taux_tri">Taux de tri (%)</option>
