@@ -605,7 +605,7 @@
             c0.422-0.896,0.952-1.441,1.665-2.086c1.453-1.316,2.602-2.968,3.872-4.485C112.257,393.585,112.598,393.143,113.051,392.579z"/>
         </svg>
         <br>
-      </div>
+</div>
       <aside id="details-region" class="card" style="position: fixed; top: 100px; right: 20px; width: 300px; display: none; z-index: 1000;">
          <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
             <h5 id="nom_region" class="mb-0">Région</h5>

@@ -1,7 +1,7 @@
 const regionMapping = {
     "Piemont": "piemonte",
     "Lombardie": "Lombardia",
-    "Emilie_Romagne": "Emilia_Romagna",
+    "Emilie-Romagne": "Emilia_Romagna",
     "Toscane": "Toscana",
     "Sicile": "Sicilia",
     "Pouilles": "Puglia",
@@ -16,7 +16,7 @@ const regionMapping = {
     "Ligurie": "Liguria",
     "Molise": "Molise",
     "Aoste": "Valle_d'Aosta",
-    "Frioul_Venetie_Julienne": "Friuli_Venezia_Giulia",
+    "Frioul-Venetie Julienne": "Friuli_Venezia_Giulia",
     "Venetie": "Veneto",
     "Sardaigne": "Sardegna"
 };
@@ -62,7 +62,7 @@ $(document).ready(function () {
             $("#richesse").text(new Intl.NumberFormat().format(data.richesse) + " € / hab");
             $("#altitude").text(data.altitude + " m");
             let zone = (data.bord_de_mer == 1) ? "Littoral (Bord de mer) 🏖️" : "Terres / Montagnes ⛰️";
-$           ("#geographie").text(zone);
+            $("#geographie").text(zone);
 
             let typeGeo = "";
             if (data.bord_de_mer == 1) {
