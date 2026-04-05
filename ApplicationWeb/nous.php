@@ -26,9 +26,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Ambre Faizandier</h5>
-                <p class="text-success small fw-bold">Étudiante</p>
+                <p class="text-success small fw-bold">Étudiante L3 MIASHS</p>
                 <p class="text-muted small">ambre.faizandier@etu.univ-montp3.fr</p>
-                <a class="text-muted small" href="https://github.com/Ambre0108">Github</a>
+                <a href="https://github.com/Ambre0108" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
 
@@ -38,9 +40,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Anthony Miranda</h5>
-                <p class="text-success small fw-bold">Étudiant</p>
+                <p class="text-success small fw-bold">Étudiant L3 MIASHS</p>
                 <p class="text-muted small">anthony.miranda@etu.univ-montp3.fr.</p>
-                <a class="text-muted small" href="https://github.com/Anthony253400">Github</a>
+                <a href="https://github.com/Anthony253400" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
 
@@ -50,9 +54,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Nina Valentin</h5>
-                <p class="text-success small fw-bold">Étudiante</p>
+                <p class="text-success small fw-bold">Étudiante L3 MIASHS</p>
                 <p class="text-muted small">nina.valentin@etu.univ-montp3.fr</p>
-                <a class="text-muted small" href="https://github.com/Nina253">Github</a>
+                <a href="https://github.com/Nina253" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
 
@@ -62,19 +68,47 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Victor Croenne</h5>
-                <p class="text-success small fw-bold">Étudiant</p>
+                <p class="text-success small fw-bold">Étudiant L3 MIASHS</p>
                 <p class="text-muted small">victor.croenne@etu.univ-montp3.fr</p>
-                <a class="text-muted small" href="https://github.com/vcroenne">Github</a>
+                <a href="https://github.com/vcroenne" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
     </div>
 
-    <section class="mt-5 pt-5 text-center">
-        <h3 class="fw-bold">À propos du projet</h3>
-        <p class="text-muted mx-auto" style="max-width: 800px;">
-            Ce projet a été réalisé dans le cadre de l'UE Science des Données du parcours L3 MIASHS à l'Université de Montpellier Paul Valéry. 
-            Notre objectif est d'utiliser les outils statistiques modernes pour mieux comprendre et anticiper les enjeux écologiques de demain.
+    <section class="about-section mt-5 pt-5 text-center">
+    <div class="container">
+        <h3 class="fw-bold mb-4">À propos du projet</h3>
+        
+        <p class="text-muted mx-auto about-text">
+            Ce projet a été réalisé dans le cadre de l'UE <strong>Science des Données 4</strong> du parcours L3 MIASHS à l'Université de Montpellier Paul Valéry. 
+            Notre mission est double : prédire les flux de déchets communaux via l'IA et accompagner les citoyens dans leur geste de tri grâce à la reconnaissance d'images.
         </p>
+
+        <div class="row justify-content-center my-4">
+            <div class="col-md-8">
+                <h5 class="text-secondary fw-bold mb-3">Nos sources de données (Kaggle)</h5>
+                <div class="list-group list-group-horizontal-md justify-content-center">
+                    <a href="https://www.kaggle.com/datasets/shashwatwork/municipal-waste-management-cost-prediction" 
+                       class="list-group-item list-group-item-action border-success text-success d-flex align-items-center justify-content-center" target="_blank">
+                        <i class="fa-solid fa-database me-2"></i> Waste Management Cost
+                    </a>
+                    <a href="https://www.kaggle.com/datasets/hassnainzaidi/garbage-classification" 
+                       class="list-group-item list-group-item-action border-success text-success d-flex align-items-center justify-content-center" target="_blank">
+                        <i class="fa-solid fa-images me-2"></i> Garbage Classification
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <p class="mb-2 text-muted">Retrouvez l'intégralité du code source et de la documentation :</p>
+            <a href="https://github.com/Anthony253400/Projet_SDD_4" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                <i class="fa-brands fa-github me-2"></i> Voir sur GitHub
+            </a>
+        </div>
+    </div>
     </section>
 </main>
 
