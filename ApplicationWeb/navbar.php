@@ -43,6 +43,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </button>
         </a>
 
+        <a href="nous.php">
+            <button class="nav-btn <?php echo ($currentPage == 'nous.php') ? 'active' : ''; ?>" id="nb-nous">
+                Qui sommes-nous ?
+            </button>
+        </a>
+
     </div>
   </div>
 </nav>

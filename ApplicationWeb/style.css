@@ -243,3 +243,38 @@ nav{position:sticky;
     color: #27ae60;
     transform: scale(1.05);
 }
+
+/* Qui sommes-nous ?*/
+.page-header {
+    padding: 20px 0;
+}
+
+.team-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.team-img-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #2ecc71;
+}
+
+.title-separator {
+    width: 60px;
+    height: 4px;
+    background-color: white; /* Blanc ici pour contraster avec le fond vert */
+    border-radius: 2px;
+    margin-top: 15px;
+}
