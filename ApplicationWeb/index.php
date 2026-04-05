@@ -5,35 +5,6 @@
     <title>Tri Déchets | L3 MIASHS</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background-color: #f8f9fa; }
-        .hero { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 40px 0; }
-        .card { border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .main-container { display: flex; height: calc(100vh - 150px); position: relative; }
-
-        #italy-map-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .region {
-            fill: #cccccc;
-            stroke: #ffffff;
-            stroke-width: 0.5;
-            transition: fill 0.3s, transform 0.2s;
-            cursor: pointer;
-        }
-
-        .region:hover {
-            fill: #27ae60; 
-        }
-        .region.active { fill: #1e8449; stroke: #000; } 
-    </style>
 </head>
 <body>
 <?php include 'navbar.php'; ?>

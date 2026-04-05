@@ -112,3 +112,35 @@ nav{position:sticky;
     background-color: var(--g600) !important;
     transform: translateY(-1px);
 }
+
+/* Carte */
+/* ─── Styles de la Carte d'Italie ─── */
+#italy-map-container {
+    max-width: 700px; /* Légèrement réduit pour l'esthétique */
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--surface);
+    border-radius: var(--r2);
+    box-shadow: 0 10px 30px rgba(26, 46, 26, 0.05);
+    text-align: center;
+    border: 1px solid var(--borderl);
+}
+
+.region {
+    fill: #d1e8d1; /* Un vert très clair par défaut */
+    stroke: #ffffff;
+    stroke-width: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.region:hover {
+    fill: var(--accentl); /* Utilise ton vert --accentl */
+    transform: scale(1.01);
+}
+
+.region.active {
+    fill: var(--accent);
+    stroke: var(--text);
+    stroke-width: 1.5;
+}
