@@ -660,6 +660,16 @@
                   <span id="richesse" class="fw-bold text-primary">-</span>
                </li>
 
+               <li class="list-group-item bg-light"><strong>🌱 Performance Écologique</strong></li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Part en décharge</span>
+                  <span id="decharge" class="fw-bold">-</span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Type de taxe</span>
+                  <span id="redevance" class="fw-bold">-</span>
+               </li>
+
                <li class="list-group-item bg-light"><strong>📍 Géographie</strong></li>
                <li class="list-group-item d-flex justify-content-between">
                   <span>Altitude moyenne</span>

@@ -76,6 +76,11 @@ $(document).ready(function () {
             }
             $("#geographie").text(typeGeo);
 
+            $("#decharge").text(data.decharge + " %");
+
+            let texteRedevance = (data.redevance == 1) ? "Activée (Paiement au poids) ⚖️" : "Forfaitaire (Fixe) 💸";
+            $("#redevance").text(texteRedevance);
+
             
             let diff = (data.moyenne_region - data.moyenne_nationale).toFixed(2);
             let message = "";
@@ -100,8 +105,8 @@ $(document).ready(function () {
     $("path").mouseover(function () { if (this !== lastClicked) $(this).attr("fill", "#bdc3c7"); });
     $("path").mouseout(function () { if (this !== lastClicked) $(this).attr("fill", "#D4D4D4"); });
 
-    // --- GESTION DE LA COLORATION DE LA CARTE ---
-    // --- GESTION DE LA COLORATION DE LA CARTE ---
+    
+
     $("#categorySelect").change(function() {
         let choix = $(this).val();
 
@@ -139,10 +144,13 @@ $(document).ready(function () {
                 $("#max-val").text(Math.round(max).toLocaleString());
 
     // 3. On crée la phrase à l'ancienne avec des +
-                var texte = "Plus le vert est foncé, plus le/la " + nomCategorie + " est élevé(e).";
-    
-    // 4. On affiche tout
-                $("#phrase-explication").text(texte);
+                var contenuHTML = "Plus le vert est foncé, plus le/la <strong>" + nomCategorie + "</strong> est élevé(e)." + 
+                                "<br>" + 
+                                "<span style='color: #157347; font-weight: bold; display: inline-block; mt-2;'>" +
+                                "➔ Cliquez sur une région pour plus d'infos." +
+                                "</span>";
+
+                $("#phrase-explication").html(contenuHTML);
                 $("#legend-container").show();
             } else {
                 $("#legend-container").hide();
