@@ -64,6 +64,7 @@ nav{position:sticky;
 .nav-cta{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all .18s}
 .nav-cta:hover{background:var(--g600);transform:translateY(-1px)}
  
+/* Card */
 .card {
     background: var(--surface);
     border: 1px solid var(--borderl) !important; 
@@ -114,7 +115,6 @@ nav{position:sticky;
 }
 
 /* Carte */
-/* ─── Styles de la Carte d'Italie ─── */
 #italy-map-container {
     max-width: 700px; /* Légèrement réduit pour l'esthétique */
     margin: 40px auto;
@@ -127,7 +127,7 @@ nav{position:sticky;
 }
 
 .region {
-    fill: #d1e8d1; /* Un vert très clair par défaut */
+    fill: #d1e8d1; 
     stroke: #ffffff;
     stroke-width: 1;
     transition: all 0.3s ease;
@@ -135,7 +135,7 @@ nav{position:sticky;
 }
 
 .region:hover {
-    fill: var(--accentl); /* Utilise ton vert --accentl */
+    fill: var(--accentl); 
     transform: scale(1.01);
 }
 
@@ -143,4 +143,103 @@ nav{position:sticky;
     fill: var(--accent);
     stroke: var(--text);
     stroke-width: 1.5;
+}
+
+/* Accueil */
+.accueil {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 50vh;
+    min-height: 400px;
+    color: white;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+.accueil h1 {
+    font-size: calc(1.5rem + 3vw); /* Typo responsive */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.accueil p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.accueil-btns {
+    display: flex;
+    gap: 1rem;
+    flew-wrap : wrap;
+    justify-content: center;
+}
+
+.hero-title-btn {
+    color: #27ae60 !important; 
+}
+
+.stats-container {
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.title-separator {
+    width: 60px;
+    height: 4px;
+    background-color: #27ae60;
+    border-radius: 2px;
+}
+
+.icon-wrapper i {
+    transition: transform 0.3s ease;
+}
+
+.icon-wrapper:hover i {
+    transform: translateY(-10px);
+}
+
+.stats-container .card {
+    transition: box-shadow 0.3s ease;
+}
+
+.stats-container .card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.btn-main, .btn-outline {
+    display: inline-block;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.btn-main {
+    background-color: white;
+    color: #27ae60;
+    border: 2px solid white;
+}
+
+.btn-main:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.05);
+    color: #219150;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: #27ae60;
+    transform: scale(1.05);
 }
