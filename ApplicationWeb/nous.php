@@ -13,7 +13,7 @@
 <header class="page-header text-center text-black">
     <div class="container">
         <h1 class="fw-bold">Notre Équipe</h1>
-        <p class="lead">Les étudiants derrière le projet Tri Déchets Italie - L3 MIASHS</p>
+        <p class="lead">Les étudiants derrière le projet Tri Déchets - L3 MIASHS</p>
         <div class="title-separator mx-auto"></div>
     </div>
 </header>
