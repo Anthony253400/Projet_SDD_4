@@ -78,7 +78,7 @@ $(document).ready(function () {
 
             $("#decharge").text(data.decharge + " %");
 
-            let texteRedevance = (data.redevance == 1) ? "Activée (Paiement au poids) ⚖️" : "Forfaitaire (Fixe) 💸";
+            let texteRedevance = (data.redevance == 1) ? "Activée (Paiement au poids)" : "Forfaitaire (Fixe)";
             $("#redevance").text(texteRedevance);
 
             
@@ -112,7 +112,7 @@ $(document).ready(function () {
 
         if (choix === "none") {
             $("path").attr("fill", "#D4D4D4"); 
-            $("#legend").html(""); // On vide la légende
+            $("#legend").html("");
             return;
         }
 
@@ -136,14 +136,11 @@ $(document).ready(function () {
             });
 
             if (choix !== "none") {
-    // 1. On récupère le nom de l'option (ex: Taux de tri)
                 var nomCategorie = $("#categorySelect option:selected").text();
 
-    // 2. On met à jour les chiffres Min et Max
                 $("#min-val").text(Math.round(min).toLocaleString());
                 $("#max-val").text(Math.round(max).toLocaleString());
 
-    // 3. On crée la phrase à l'ancienne avec des +
                 var contenuHTML = "Plus le vert est foncé, plus le/la <strong>" + nomCategorie + "</strong> est élevé(e)." + 
                                 "<br>" + 
                                 "<span style='color: #157347; font-weight: bold; display: inline-block; mt-2;'>" +

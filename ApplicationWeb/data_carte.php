@@ -3,7 +3,6 @@ header("Content-Type: application/json");
 $host = "localhost"; $user = "root"; $pass = "root"; $db = "dechets";
 $conn = new mysqli($host, $user, $pass, $db);
 
-// On calcule les stats par région sur la table municipalites (avec s)
 $sql = "SELECT region, 
         AVG(taux_dechets_tries) as taux_tri,
         AVG(revenu_moyen_imposable_habitant) as richesse,

@@ -5,7 +5,6 @@ $conn = new mysqli($host, $user, $pass, $db);
 
 $code = $_GET['code'] ?? '';
 
-// 1. Moyenne nationale de tri (pour la comparaison)
 $resMoy = $conn->query("SELECT AVG(taux_dechets_tries) as moyenne_nationale FROM municipalites");
 $moyenneTable = $resMoy->fetch_assoc();
 $moyenneGlobale = $moyenneTable['moyenne_nationale'];
