@@ -1,5 +1,6 @@
 library(randomForest)
 library(nnet)
+library(jsonlite)
 
 args <- commandArgs(trailingOnly = TRUE)
 if(length(args) < 7) stop("Erreur : Pas assez d'arguments")
@@ -24,20 +25,33 @@ input_df <- data.frame(
 
 options(warn=-1)
 
+get_p <- function(model_obj, df, is_linear = FALSE) {
+  if (is.null(model_obj)) return(0)
+  val <- as.numeric(predict(model_obj, df))
+  if (is_linear) val <- max(0, val)
+  return(round(val, 2))
+}
+
 # Random Forest
 if (model_type == "random_forest") {
     model_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/experts_waste_rf.rds")
     
-    ref_model <- model_list[['paper']]$model
+    ref_model <- model_list[[1]]$model
     input_df$urb <- factor(input_df$urb, levels = ref_model$forest$xlevels$urb)
     input_df$region <- factor(input_df$region, levels = ref_model$forest$xlevels$region)
 
-    p_pap <- round(as.numeric(predict(model_list[['paper']]$model,   input_df)), 2)
-    p_org <- round(as.numeric(predict(model_list[['organic']]$model, input_df)), 2)
-    p_pla <- round(as.numeric(predict(model_list[['plastic']]$model, input_df)), 2)
-    p_gla <- round(as.numeric(predict(model_list[['glass']]$model,   input_df)), 2)
-    
-    cat(paste0('{"paper":', p_pap, ', "organic":', p_org, ', "plastic":', p_pla, ', "glass":', p_gla, '}'))
+    res <- list(
+      paper   = get_p(model_list[['paper']]$model,   input_df),
+      organic = get_p(model_list[['organic']]$model, input_df),
+      plastic = get_p(model_list[['plastic']]$model, input_df),
+      glass   = get_p(model_list[['glass']]$model,   input_df),
+      wood    = get_p(model_list[['wood']]$model,    input_df),
+      metal   = get_p(model_list[['metal']]$model,   input_df),
+      raee    = get_p(model_list[['raee']]$model,    input_df),
+      texile  = get_p(model_list[['texile']]$model,  input_df),
+      other   = get_p(model_list[['other']]$model,   input_df)
+    )
+    cat(toJSON(res, auto_unbox = TRUE))
 
 # Régression logistique multionomiale
 } else if (model_type == "multinomial") {
@@ -48,12 +62,13 @@ if (model_type == "random_forest") {
     
     res_m <- predict(model_m, input_df, type='probs')
     
-    p_org <- round(as.numeric(res_m["organic"]) * 100, 2)
-    p_pap <- round(as.numeric(res_m["paper"]) * 100, 2)
-    p_pla <- round(as.numeric(res_m["plastic"]) * 100, 2)
-    p_gla <- round(as.numeric(res_m["glass"]) * 100, 2)
-
-    cat(paste0('{"organic":', p_org, ', "paper":', p_pap, ', "plastic":', p_pla, ', "glass":', p_gla, '}'))
+    cols <- c("organic", "paper", "plastic", "glass", "wood", "metal", "raee", "texile", "other")
+    res <- list()
+    for(c in cols) {
+      val <- if(c %in% names(res_m)) as.numeric(res_m[c]) else 0
+      res[[c]] <- round(val * 100, 2)
+    }
+    cat(toJSON(res, auto_unbox = TRUE))
 
 # Régression linéaire multiple
 } else if (model_type == "linear") {
@@ -62,10 +77,16 @@ if (model_type == "random_forest") {
     input_df$urb <- as.numeric(urb)
     input_df$region <- as.factor(region)
     
-    p_pap <- round(max(0, as.numeric(predict(linear_list[['paper']]$model,   input_df))), 2)
-    p_org <- round(max(0, as.numeric(predict(linear_list[['organic']]$model, input_df))), 2)
-    p_pla <- round(max(0, as.numeric(predict(linear_list[['plastic']]$model, input_df))), 2)
-    p_gla <- round(max(0, as.numeric(predict(linear_list[['glass']]$model,   input_df))), 2)
-
-    cat(paste0('{"paper":', p_pap, ', "organic":', p_org, ', "plastic":', p_pla, ', "glass":', p_gla, '}'))
+    res <- list(
+      paper   = get_p(linear_list[['paper']]$model,   input_df, TRUE),
+      organic = get_p(linear_list[['organic']]$model, input_df, TRUE),
+      plastic = get_p(linear_list[['plastic']]$model, input_df, TRUE),
+      glass   = get_p(linear_list[['glass']]$model,   input_df, TRUE),
+      wood    = get_p(linear_list[['wood']]$model,    input_df, TRUE),
+      metal   = get_p(linear_list[['metal']]$model,   input_df, TRUE),
+      raee    = get_p(linear_list[['raee']]$model,    input_df, TRUE),
+      texile  = get_p(linear_list[['texile']]$model,  input_df, TRUE),
+      other   = get_p(linear_list[['other']]$model,   input_df, TRUE)
+    )
+    cat(toJSON(res, auto_unbox = TRUE))
 }

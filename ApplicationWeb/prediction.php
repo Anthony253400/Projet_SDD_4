@@ -145,16 +145,17 @@ $(document).ready(function() {
                 $("#loader").hide();
                 $("#resultatsContainer").fadeIn();
 
-                // 4. Mise à jour des résultats dans la page
-                $("#res_org").text(reponse.organic || "0");
-                $("#res_pap").text(reponse.paper || "0");
-                $("#res_pla").text(reponse.plastic || "0");
-                $("#res_ver").text(reponse.glass || "0");
-                $("#res_wood").text(reponse.wood || "0");
-                $("#res_met").text(reponse.metal || "0");
-                $("#res_raee").text(reponse.raee || "0");
-                $("#res_tex").text(reponse.texile || "0");
-                $("#res_oth").text(reponse.other || "0");
+                const getVal = (val) => (val !== undefined && val !== null) ? val : "0";
+
+                $("#res_org").text(getVal(reponse.organic));
+                $("#res_pap").text(getVal(reponse.paper));
+                $("#res_pla").text(getVal(reponse.plastic));
+                $("#res_ver").text(getVal(reponse.glass));
+                $("#res_wood").text(getVal(reponse.wood));
+                $("#res_met").text(getVal(reponse.metal));
+                $("#res_raee").text(getVal(reponse.raee));
+                $("#res_tex").text(getVal(reponse.texile));
+                $("#res_oth").text(getVal(reponse.other));
                 
                 console.log("Affichage mis à jour !");
             },
