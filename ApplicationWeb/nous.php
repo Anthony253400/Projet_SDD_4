@@ -26,9 +26,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Ambre Faizandier</h5>
-                <p class="text-success small fw-bold">Étudiante</p>
+                <p class="text-success small fw-bold">Étudiante L3 MIASHS</p>
                 <p class="text-muted small">ambre.faizandier@etu.univ-montp3.fr</p>
-                <a class="text-muted small" href="https://github.com/Ambre0108">Github</a>
+                <a href="https://github.com/Ambre0108" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
 
@@ -38,9 +40,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Anthony Miranda</h5>
-                <p class="text-success small fw-bold">Étudiant</p>
+                <p class="text-success small fw-bold">Étudiant L3 MIASHS</p>
                 <p class="text-muted small">anthony.miranda@etu.univ-montp3.fr.</p>
-                <a class="text-muted small" href="https://github.com/Anthony253400">Github</a>
+                <a href="https://github.com/Anthony253400" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
 
@@ -50,9 +54,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Nina Valentin</h5>
-                <p class="text-success small fw-bold">Étudiante</p>
+                <p class="text-success small fw-bold">Étudiante L3 MIASHS</p>
                 <p class="text-muted small">nina.valentin@etu.univ-montp3.fr</p>
-                <a class="text-muted small" href="https://github.com/Nina253">Github</a>
+                <a href="https://github.com/Nina253" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
 
@@ -62,9 +68,11 @@
                     <i class="fa-solid fa-user fa-4x text-muted"></i>
                 </div>
                 <h5 class="fw-bold">Victor Croenne</h5>
-                <p class="text-success small fw-bold">Étudiant</p>
+                <p class="text-success small fw-bold">Étudiant L3 MIASHS</p>
                 <p class="text-muted small">victor.croenne@etu.univ-montp3.fr</p>
-                <a class="text-muted small" href="https://github.com/vcroenne">Github</a>
+                <a href="https://github.com/vcroenne" class="btn btn-dark btn-github shadow-sm" target="_blank">
+                    <i class="fa-brands fa-github me-2"></i> GitHub
+                </a>
             </div>
         </div>
     </div>
