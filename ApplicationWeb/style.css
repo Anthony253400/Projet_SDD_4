@@ -51,7 +51,7 @@ nav{position:sticky;
     color: inherit;
     display: inline-block;
 }
-.nav-btn{display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:8px;border:none;background:transparent;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--textm);cursor:pointer;transition:all .18s;white-space:nowrap;position:relative}
+.nav-btn{display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:8px;border:none;background:transparent;font-family:var(--sans);font-size:15px;font-weight:500;color:var(--textm);cursor:pointer;transition:all .18s;white-space:nowrap;position:relative}
 .nav-btn:hover{background:var(--accentbg);color:var(--accent)}
 .nav-btn.active{background:var(--accentbg);color:var(--accent);font-weight:700}
 .nav-btn.active::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:var(--accent);border-radius:2px 2px 0 0}
