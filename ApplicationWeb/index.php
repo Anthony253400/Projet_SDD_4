@@ -38,14 +38,6 @@
 <body>
 <?php include 'navbar.php'; ?>
 
-
-<div class="hero text-center">
-    <h1>♻️ Projet Tri des Déchets</h1>
-    <p>Modèles IA & Analyse des Déchets</p>
-    <a href="prediction.html">Prédiction</a>
-    <a href="graphiques.html">Graphiques</a>
-    <a href="CNN.html">CNN</a>
-</div>
 <div id="italy-map-container">
     
     <svg id="italy-map" viewBox="0 0 612 735" xmlns="http://www.w3.org/2000/svg">

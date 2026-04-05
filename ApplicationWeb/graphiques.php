@@ -46,13 +46,6 @@
 <body>
 <?php include 'navbar.php'; ?>
 
-
-<div class="hero text-center">
-    <h1>♻️ Projet Tri des Déchets</h1>
-    <p>Modèles IA & Analyse des Déchets</p>
-    <a href="index.html">Accueil</a>
-</div>
-
 <div class="container mb-5">
     
     <h2 class="section-title"> Visualisation des Résultats & Analyses</h2>
