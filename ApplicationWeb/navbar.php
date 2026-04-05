@@ -37,6 +37,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </button>
         </a>
 
+        <a href="carte.php">
+            <button class="nav-btn <?php echo ($currentPage == 'carte.php') ? 'active' : ''; ?>" id="nb-map">
+                Carte des données
+            </button>
+        </a>
+
     </div>
   </div>
 </nav>
