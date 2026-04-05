@@ -374,10 +374,5 @@ function updateChart() {
     });
 }
 </script>
-
-<footer class="bg-light py-4 border-top mt-auto text-center small text-muted">
-    Projet SDD4 - L3 MIASHS - Université de Montpellier Paul Valéry
-</footer>
-
 </body>
 </html>
