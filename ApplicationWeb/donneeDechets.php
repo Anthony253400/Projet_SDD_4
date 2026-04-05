@@ -15,7 +15,7 @@ $sql = "SELECT region,
         SUM(quantite_totale_dechets_kg) as total_dechets,
         AVG(cout_total_habitant) as cout_moyen,
         SUM(nb_habitant) as total_pop, 
-        AVG(revenu_moyen_imposable_habitant) as richesse, 
+        AVG(niveau_revenus_habitants) as richesse, 
         AVG(altitude) as altitude,
         MAX(bord_de_mer) as bord_de_mer,
         AVG(geographie) as code_geo
