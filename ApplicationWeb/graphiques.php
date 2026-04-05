@@ -11,13 +11,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
     <style>
-        body { background-color: #f8f9fa; }
+        body { 
+            background-color: #f8f9fa; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        /* --- Bandeau Hero optimisé (plus compact) --- */
+        /* --- Bandeau Hero : Plus d'espace pour le titre --- */
         .hero { 
             background: linear-gradient(135deg, #2ecc71, #27ae60); 
             color: white; 
-            padding: 80px 0; /* On remet un peu de hauteur pour laisser respirer le titre */
+            padding: 60px 0 100px 0; /* Padding bas plus grand pour accueillir le chevauchement */
             margin-bottom: 0; 
         }
 
@@ -32,16 +37,13 @@
             opacity: 0.9;
         }
 
-        /* --- Effet de relief sur la carte d'analyse --- */
+        /* --- Carte d'analyse : Remonte légèrement sans cacher le texte --- */
         .explorer-card {
             border: none;
             border-radius: 20px;
             background: white;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            
-            /* On change le margin-top négatif par une valeur plus douce ou 0 */
-            margin-top: -40px; 
-            
+            margin-top: -50px; 
             position: relative;
             z-index: 10;
         }
@@ -65,13 +67,18 @@
             box-shadow: 0 0 0 0.25rem rgba(39, 174, 96, 0.1);
         }
 
+        /* --- Image réduite et centrée --- */
         #mainGraph {
-            max-width: 100%;
+            max-width: 80% !important; /* Réduit la taille pour ne pas envahir l'écran */
             height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
             border-radius: 12px;
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             background: white;
+            padding: 10px;
         }
 
         #graphTitle {
@@ -92,7 +99,6 @@
             border-radius: 10px;
         }
 
-        /* Style pour la description d'analyse */
         .analysis-box {
             max-width: 900px;
             margin: 35px auto 0;
@@ -133,17 +139,17 @@
 
 <div class="hero text-center">
     <div class="container">
-        <h1>Visualisation de nos Graphiques</h1>
+        <h1>Visualisation des Résultats</h1>
         <p>Sélectionnez une thématique pour explorer nos analyses détaillées</p>
     </div>
 </div>
 
 <div class="container mb-5">
-    <div class="explorer-card p-4 p-md-5">
+    <div class="explorer-card p-4 p-md-5 text-center">
         
         <div class="row justify-content-center mb-5">
-            <div class="col-lg-9 text-center">
-                <label for="graphSelect" class="custom-label">Quelle analyse souhaitez-vous consulter ?</label>
+            <div class="col-lg-9">
+                <label for="graphSelect" class="custom-label">📂 Quelle analyse souhaitez-vous consulter ?</label>
                 <select class="form-select form-select-lg shadow-sm" id="graphSelect" onchange="changerGraphique()">
                     <option value="" selected disabled>-- Sélectionnez un graphique --</option>
                     <option value="../visualisation/images/carte_tri_regions.png">🇮🇹 Répartition du tri par région (Italie)</option>
@@ -158,25 +164,23 @@
         </div>
 
         <div class="display-wrapper border-top pt-4">
-            <div id="displayArea" class="text-center w-100" style="display: none;">
+            <div id="displayArea" class="w-100" style="display: none;">
                 <h3 id="graphTitle" class="fade-in"></h3>
                 <div class="mt-2">
-                    <img src="" id="mainGraph" class="img-fluid fade-in" alt="Graphique d'analyse">
+                    <img src="" id="mainGraph" class="fade-in" alt="Graphique d'analyse">
                 </div>
                 <div id="analysisText" class="analysis-box fade-in"></div>
             </div>
             
-            <div id="placeholderText" class="text-center text-muted py-5">
+            <div id="placeholderText" class="text-muted py-5">
                 <i class="bi bi-bar-chart-steps" style="font-size: 4rem; color: #e9ecef;"></i>
                 <p class="mt-3 fs-5">Choisissez une analyse dans le menu ci-dessus pour afficher les résultats et l'interprétation.</p>
             </div>
         </div>
-
     </div>
 </div>
 
 <script>
-// --- TES DESCRIPTIONS ---
 const descriptions = {
     "../visualisation/images/carte_tri_regions.png": "Ici une carte réalisée avec matplotlib représentant l’Italie ainsi que ses 20 régions délimitées. On obtient une représentation par région du taux de tri des déchets, avec un affichage de plus en plus vert foncé si ce taux est plus élevé. On remarque qu’une tendance se dégage, avec un pourcentage plus élevé au fur et à mesure que l’on se dirige au nord du pays, dans les régions plus riches. La carte est issue du site de l’Institut National de Statistique italien mettant à jour les frontières chaque année.",
     
@@ -204,24 +208,17 @@ function changerGraphique() {
     if (select.value !== "") {
         const imagePath = select.value;
         
-        // On retire les classes d'animation
         [mainImg, titleImg, analysisText].forEach(el => el.classList.remove('fade-in'));
-        
-        void mainImg.offsetWidth; // Reflow pour relancer l'animation
+        void mainImg.offsetWidth; 
 
-        // Mise à jour de l'image et du titre (nettoyage de l'emoji)
         mainImg.src = imagePath;
         const fullText = select.options[select.selectedIndex].text;
         titleImg.innerText = fullText.substring(fullText.indexOf(' ') + 1);
-
-        // Mise à jour de la description
         analysisText.innerHTML = "<strong>Analyse :</strong> " + (descriptions[imagePath] || "Analyse en attente de rédaction.");
 
-        // Affichage
         displayArea.style.display = "block";
         placeholder.style.display = "none";
         
-        // Relance de l'animation
         [mainImg, titleImg, analysisText].forEach(el => el.classList.add('fade-in'));
     }
 }
