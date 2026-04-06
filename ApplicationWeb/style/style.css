@@ -80,7 +80,6 @@ nav {
    LOGO ÉCOSCAN (VERSION FIGÉE & PROTÉGÉE)
 ───────────────────────────────────────── */
 
-/* On force l'état normal, hover et active à être identiques */
 .logo, 
 .logo:hover, 
 .logo:active, 
@@ -90,9 +89,9 @@ nav {
   gap: 10px !important; 
   flex-shrink: 0 !important;
   text-decoration: none !important; 
-  background: transparent !important; /* Annule le fond vert au hover */
-  color: var(--text) !important;       /* Force la couleur du texte "Scan" */
-  transform: none !important;          /* Empêche le logo de bouger */
+  background: transparent !important;
+  color: var(--text) !important;
+  transform: none !important;
   transition: none !important;
 }
 
@@ -191,11 +190,24 @@ nav {
 }
 .btn-success:hover { background:var(--g600) !important; transform:translateY(-1px); }
 
-.btn-github {
-  background:#24292e; border:none;
-  padding:10px 25px; border-radius:8px; transition:background .3s ease;
+.btn-github, 
+.btn-github:hover, 
+.btn-github:active {
+    color: #ffffff !important; 
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
 }
-.btn-github:hover { background:#444; color:#fff; }
+
+.btn-github i {
+    color: #ffffff !important;
+    margin-right: 8px;
+}
+
+.btn:hover {
+    color: #ffffff !important;
+}
 
 /* ─────────────────────────────────────────
    CARD
