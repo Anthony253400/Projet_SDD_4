@@ -93,13 +93,13 @@ try {
                 <label for="graphSelect" class="custom-label fw-bold mb-3 d-block text-secondary small">Quelle analyse souhaitez-vous consulter ?</label>
                 <select class="form-select form-select-lg shadow-sm" id="graphSelect" onchange="changerGraphique()">
                     <option value="" selected disabled>-- Sélectionnez un graphique --</option>
-                    <option value="images/carte_tri_regions.png">🇮🇹 Répartition du tri par région (Italie)</option>
-                    <option value="images/dechets_plus_triés.png">♻️ Répartition du tri par matière</option>
-                    <option value="images/taux_tri_altitude.png">⛰️ Impact de l'altitude sur le tri</option>
-                    <option value="images/Box-Plot(taux-classe).png">🗑️ Taux de collecte des déchets (Box-Plot)</option>
-                    <option value="images/comparaison_cout.png">💰 Coût totaux par habitant en fonction de la taxe</option>
-                    <option value="images/performanceVStaille.png">📊 Petite commune = meilleur tri ?</option>
-                    <option value="images/comparaison_dechets_region.png">🚮 Déchets triés / non triés par région</option>
+                    <option value="../visualisation/images/carte_tri_regions.png">🇮🇹 Répartition du tri par région (Italie)</option>
+                    <option value="../visualisation/images/dechets_plus_triés.png">♻️ Répartition du tri par matière</option>
+                    <option value="../visualisation/images/taux_tri_altitude.png">⛰️ Impact de l'altitude sur le tri</option>
+                    <option value="../visualisation/images/Box-Plot(taux-classe).png">🗑️ Taux de collecte des déchets (Box-Plot)</option>
+                    <option value="../visualisation/images/comparaison_cout.png">💰 Coût totaux par habitant en fonction de la taxe</option>
+                    <option value="../visualisation/images/performanceVStaille.png">📊 Petite commune = meilleur tri ?</option>
+                    <option value="../visualisation/images/comparaison_dechets_region.png">🚮 Déchets triés / non triés par région</option>
                 </select>
             </div>
         </div>
@@ -189,19 +189,19 @@ const rawData = <?= $jsonStats ?>;
 const palette = ['#2ecc71', '#3498db', '#9b59b6', '#f1c40f', '#e67e22', '#e74c3c', '#1abc9c', '#2c3e50', '#ff9ff3', '#feca57'];
 
 const descriptions = {
-    "images/carte_tri_regions.png": "Ici une carte réalisée avec matplotlib représentant l’Italie ainsi que ses 20 régions délimitées. On obtient une représentation par région du taux de tri des déchets, avec un affichage de plus en plus vert foncé si ce taux est plus élevé. On remarque qu’une tendance se dégage, avec un pourcentage plus élevé au fur et à mesure que l’on se dirige au nord du pays, dans les régions plus riches. La carte est issue du site de l’Institut National de Statistique italien mettant à jour les frontières chaque année.",
+    "../visualisation/images/carte_tri_regions.png": "Ici une carte réalisée avec matplotlib représentant l’Italie ainsi que ses 20 régions délimitées. On obtient une représentation par région du taux de tri des déchets, avec un affichage de plus en plus vert foncé si ce taux est plus élevé. On remarque qu’une tendance se dégage, avec un pourcentage plus élevé au fur et à mesure que l’on se dirige au nord du pays, dans les régions plus riches. La carte est issue du site de l’Institut National de Statistique italien mettant à jour les frontières chaque année.",
     
-    "images/dechets_plus_triés.png": "On compare la moyenne de chaque matériau : l'organique domine largement les scores. Comme c'est la matière la plus lourde, c’est elle qui fait monter les moyennes de recyclage. Le papier et le verre suivent, tandis que le plastique semble faible en poids alors qu'il prend beaucoup de place en volume. En conclusion, l’analyse montre que le tri est fortement lié à la densité et au poids des matériaux.",
+    "../visualisation/images/dechets_plus_triés.png": "On compare la moyenne de chaque matériau : l'organique domine largement les scores. Comme c'est la matière la plus lourde, c’est elle qui fait monter les moyennes de recyclage. Le papier et le verre suivent, tandis que le plastique semble faible en poids alors qu'il prend beaucoup de place en volume. En conclusion, l’analyse montre que le tri est fortement lié à la densité et au poids des matériaux.",
     
-    "images/taux_tri_altitude.png": "Le taux de tri diminue à mesure que l’altitude augmente. De 0 à 250 m, le taux moyen atteint 70% tandis qu’en montagne (+750m), il chute à 56%. Cette tendance s’explique par des facteurs logistiques : accessibilité complexe pour les camions de ramassage, infrastructures plus éloignées et pics de fréquentation saisonnière liés au tourisme de montagne.",
+    "../visualisation/images/taux_tri_altitude.png": "Le taux de tri diminue à mesure que l’altitude augmente. De 0 à 250 m, le taux moyen atteint 70% tandis qu’en montagne (+750m), il chute à 56%. Cette tendance s’explique par des facteurs logistiques : accessibilité complexe pour les camions de ramassage, infrastructures plus éloignées et pics de fréquentation saisonnière liés au tourisme de montagne.",
     
-    "images/Box-Plot(taux-classe).png": "Ce graphique représente le taux de déchets collectés par commune. Les déchets organiques sont les plus collectés mais avec de fortes disparités. Le papier et le verre suivent avec une médiane autour de 10%. On note que certaines communes obtiennent des résultats extrêmes bien au-dessus de la moyenne, signalant des performances exceptionnelles localisées.",
+    "../visualisation/images/Box-Plot(taux-classe).png": "Ce graphique représente le taux de déchets collectés par commune. Les déchets organiques sont les plus collectés mais avec de fortes disparités. Le papier et le verre suivent avec une médiane autour de 10%. On note que certaines communes obtiennent des résultats extrêmes bien au-dessus de la moyenne, signalant des performances exceptionnelles localisées.",
     
-    "images/comparaison_cout.png": "On compare les coûts totaux par habitant (€) selon deux systèmes de taxes : PAYT (Pay As You Throw) et Fixe. La taxe au poids (PAYT) permet de mieux maîtriser les coûts pour la majorité des villes. Néanmoins, quelques points extrêmes montrent que le coût dépend aussi d'autres variables structurelles de la commune.",
+    "../visualisation/images/comparaison_cout.png": "On compare les coûts totaux par habitant (€) selon deux systèmes de taxes : PAYT (Pay As You Throw) et Fixe. La taxe au poids (PAYT) permet de mieux maîtriser les coûts pour la majorité des villes. Néanmoins, quelques points extrêmes montrent que le coût dépend aussi d'autres variables structurelles de la commune.",
     
-    "images/performanceVStaille.png": "Ce Bubble Chart montre que les communes utilisant la taxe au poids (PAYT) affichent généralement un meilleur taux de tri. On remarque également que les villes les plus peuplées ont tendance à avoir un taux de tri plus bas, illustrant la difficulté de gérer un système de tri performant à très grande échelle.",
+    "../visualisation/images/performanceVStaille.png": "Ce Bubble Chart montre que les communes utilisant la taxe au poids (PAYT) affichent généralement un meilleur taux de tri. On remarque également que les villes les plus peuplées ont tendance à avoir un taux de tri plus bas, illustrant la difficulté de gérer un système de tri performant à très grande échelle.",
     
-    "images/comparaison_dechets_region.png": "Ce graphique compare les zones les plus productrices de déchets. On observe que le Lazio est la région produisant le plus de déchets totaux (portée par Rome). Cependant, des régions comme la Lombardie, la Toscane ou la Vénétie affichent une part beaucoup plus importante de déchets triés par rapport à leur production totale."
+    "../visualisation/images/comparaison_dechets_region.png": "Ce graphique compare les zones les plus productrices de déchets. On observe que le Lazio est la région produisant le plus de déchets totaux (portée par Rome). Cependant, des régions comme la Lombardie, la Toscane ou la Vénétie affichent une part beaucoup plus importante de déchets triés par rapport à leur production totale."
 };
 
 function changerGraphique() {
