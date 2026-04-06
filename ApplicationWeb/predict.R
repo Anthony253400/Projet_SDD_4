@@ -34,7 +34,7 @@ get_p <- function(model_obj, df, is_linear = FALSE) {
 
 # Random Forest
 if (model_type == "random_forest") {
-    model_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/experts_waste_rf.rds")
+    model_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/modeles/experts_waste_rf.rds")
     
     ref_model <- model_list[[1]]$model
     input_df$urb <- factor(input_df$urb, levels = ref_model$forest$xlevels$urb)
@@ -55,7 +55,7 @@ if (model_type == "random_forest") {
 
 # Régression logistique multionomiale
 } else if (model_type == "multinomial") {
-    model_m <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/model_multinom.rds")
+    model_m <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/modeles/model_multinom.rds")
     
     input_df$urb <- as.numeric(urb) 
     input_df$region <- as.factor(region)
@@ -72,7 +72,7 @@ if (model_type == "random_forest") {
 
 # Régression linéaire multiple
 } else if (model_type == "linear") {
-    linear_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/model_linear.rds")
+    linear_list <- readRDS("C:/MAMP/htdocs/Projet_SDD_4/ApplicationWeb/modeles/model_linear.rds")
     
     input_df$urb <- as.numeric(urb)
     input_df$region <- as.factor(region)
