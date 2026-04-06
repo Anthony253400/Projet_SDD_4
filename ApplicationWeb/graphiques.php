@@ -1,32 +1,29 @@
 <?php
+# config Mac/ Windows
 $host = 'localhost';
 $dbname = 'dechets';
 
-# config pour Mac et Windows
 $configs = [
-    ['port' => '8889', 'user' => 'root', 'pass' => 'root'],
-    ['port' => '3306', 'user' => 'root', 'pass' => '']
+    ['port' => '8889', 'user' => 'root', 'pass' => 'root'], 
+    ['port' => '3306', 'user' => 'root', 'pass' => ''],     
+    ['port' => '3306', 'user' => 'root', 'pass' => 'root'], 
+    ['port' => '3308', 'user' => 'root', 'pass' => '']      
 ];
 
 $pdo = null;
 $error_db = null;
 
-# boucle pour trouver la bonne connexion
 foreach ($configs as $config) {
     try {
         $dsn = "mysql:host=$host;port={$config['port']};dbname=$dbname;charset=utf8";
         $pdo = new PDO($dsn, $config['user'], $config['pass']);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        # connexion réussie
-        $error_db = null;
-        break; 
+        $error_db = null; 
+        break;
     } catch (PDOException $e) {
         $error_db = $e->getMessage();
     }
-}
-if (!$pdo) {
-    die("Erreur de connexion SQL : " . $error_db);
 }
 
 try {
@@ -275,20 +272,14 @@ function updateChart() {
     });
 }
 function resetComparison() {
-    // 1. Décocher toutes les régions
     document.querySelectorAll('.region-checkbox').forEach(cb => cb.checked = false);
-    
-    // 2. Remettre les sélecteurs par défaut
     document.getElementById('variableSelect').selectedIndex = 0;
     document.getElementById('chartType').selectedIndex = 0;
-    
-    // 3. Détruire le graphique s'il existe
+
     if (myChartInstance) {
         myChartInstance.destroy();
         myChartInstance = null;
     }
-    
-    // 4. Réinitialiser l'affichage (cacher canvas, montrer message)
     document.getElementById('dynamicChart').style.display = 'none';
     document.getElementById('emptyChartMessage').style.display = 'block';
 }
