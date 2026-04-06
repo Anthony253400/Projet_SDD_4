@@ -17,7 +17,7 @@
 <header class="accueil">
     <div class="container">
         <h1 class="fw-bold">L'IA au service de l'écologie</h1>
-        <p class="lead">Analysez et prédisez la gestion des déchets en Italie</p>
+        <p class="lead">Analyse et prédiction de la gestion des déchets en Italie</p>
     </div>
 </header>
 
