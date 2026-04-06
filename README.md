@@ -43,7 +43,7 @@ Le projet repose sur une architecture hybride permettant de faire communiquer R 
 ## Résultats 
 
 ### Classification d'images (CNN)
-* **Performance :** Accuracy de **XX%** sur le jeu de test.
+* **Performance :** Accuracy de **90.54%** sur le jeu de test.
 * **Robustesse :** Le modèle distingue efficacement les matières principales (Organique, Verre, Métal) malgré des arrière-plans variés.
 
 ### Prédiction des flux (Modèles R)
