@@ -47,7 +47,8 @@ Le projet repose sur une architecture hybride permettant de faire communiquer R 
 * **Robustesse :** Le modèle distingue efficacement les matières principales (Organique, Verre, Métal) malgré des arrière-plans variés.
 
 ### Prédiction des flux (Modèles R)
-* **Fiabilité :** Le modèle **Random Forest** a obtenu les meilleurs résultats avec une erreur moyenne (RMSE) de **Y** sur les prévisions de tonnage.
+* **Fiabilité :** Le modèle **Random Forest** a obtenu les meilleurs résultats avec une erreur moyenne (RMSE) de 53,58% (score rapporté à l'étendue de la classe, soit l'écart entre le tonnage minimum et maximum)  sur les prévisions de tonnage.
+
 * **Analyse :** Les variables "Population" et "Revenu moyen" se sont révélées être les prédicteurs les plus influents sur la production de déchets.
 
 ### Impact Utilisateur
