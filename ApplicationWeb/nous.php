@@ -114,7 +114,7 @@
 
 <footer class="bg-light py-4 border-top">
     <div class="container text-center">
-        <p class="text-muted mb-0 small">Projet SDD4 - L3 MIASHS - 2026</p>
+        <p class="text-muted mb-0 small">Projet SDD4 - L3 MIASHS - Université de Montpellier Paul Valéry</p>
     </div>
 </footer>
 
