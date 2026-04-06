@@ -8,8 +8,8 @@ L'objectif est de s'attaquer au problème des déchets sous deux angles :
 2. **Pour les citoyens :** Lever le doute sur la consigne de tri via la reconnaissance d'image.
 
 ## Accès au Projet
-Le projet est entièrement déployé en ligne grâce à une architecture distribuée :
-* **Interface Web :** Hébergée sur [InfinityFree](https://tri-facile.rf.gd/) (PHP/MySQL).
+Le projet est entièrement déployé en ligne : [TriFacile](https://tri-facile.rf.gd/). Nous avons utilisé :
+* **Interface Web :** Hébergée sur InfinityFree.
 * **Moteur d'IA (Back-end) :** API FastAPI hébergée sur Render.
 * **Base de Données :** MySQL gérée à distance via l'interface InfinityFree.
 
@@ -23,7 +23,7 @@ Analyse prédictive basée sur des variables socio-économiques (population, zon
 Application web permettant de téléverser une photo d'un déchet pour obtenir :
 * Sa catégorie (Plastique, Verre, Papier, etc.).
 * La consigne de tri associée.
-* **Boucle d'apprentissage :** Possibilité pour l'utilisateur de contester la réponse afin d'enrichir une base de données de feedback pour les futurs entraînements.
+* Possibilité pour l'utilisateur de contester la réponse afin d'enrichir une base de données de feedback pour les futurs entraînements.
 
 ## Données utilisées
 
