@@ -1,16 +1,40 @@
 <?php
 $host = 'localhost';
-$port = '8889';
 $dbname = 'dechets';
-$user = 'root';
-$pass = 'root';
+
+# config pour Mac et Windows
+$configs = [
+    ['port' => '8889', 'user' => 'root', 'pass' => 'root'],
+    ['port' => '3306', 'user' => 'root', 'pass' => '']
+];
+
+$pdo = null;
+$error_db = null;
+
+# boucle pour trouver la bonne connexion
+foreach ($configs as $config) {
+    try {
+        $dsn = "mysql:host=$host;port={$config['port']};dbname=$dbname;charset=utf8";
+        $pdo = new PDO($dsn, $config['user'], $config['pass']);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        # connexion réussie
+        $error_db = null;
+        break; 
+    } catch (PDOException $e) {
+        $error_db = $e->getMessage();
+    }
+}
+if (!$pdo) {
+    die("Erreur de connexion SQL : " . $error_db);
+}
 
 try {
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    # récupérer liste régions
     $queryRegions = $pdo->query("SELECT DISTINCT region FROM municipalites ORDER BY region ASC");
     $allRegions = $queryRegions->fetchAll(PDO::FETCH_COLUMN);
 
+    # récupérer autres données 
     $queryStats = $pdo->query("SELECT region, 
                                AVG(cout_total_habitant) as cout_moyen, 
                                AVG(cout_dechets_tries) as tri_moyen, 
@@ -142,9 +166,12 @@ try {
                     <option value="polarArea">Radar Polaire</option>
                 </select>
             </div>
-            <div class="col-md-3 d-flex align-items-end">
-                <button class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow-sm" onclick="updateChart()">
+            <div class="col-md-3 d-flex align-items-end gap-2">
+                <button class="btn btn-success flex-grow-1 py-3 fw-bold rounded-pill shadow-sm" onclick="updateChart()">
                     <i class="bi bi-play-fill me-2"></i>Comparer
+                </button>
+                <button class="btn btn-outline-secondary py-3 fw-bold rounded-pill shadow-sm" onclick="resetComparison()" title="Réinitialiser">
+                    <i class="bi bi-arrow-counterclockwise"></i>
                 </button>
             </div>
         </div>
@@ -246,6 +273,24 @@ function updateChart() {
             scales: (type === 'bar') ? { y: { beginAtZero: true } } : {}
         }
     });
+}
+function resetComparison() {
+    // 1. Décocher toutes les régions
+    document.querySelectorAll('.region-checkbox').forEach(cb => cb.checked = false);
+    
+    // 2. Remettre les sélecteurs par défaut
+    document.getElementById('variableSelect').selectedIndex = 0;
+    document.getElementById('chartType').selectedIndex = 0;
+    
+    // 3. Détruire le graphique s'il existe
+    if (myChartInstance) {
+        myChartInstance.destroy();
+        myChartInstance = null;
+    }
+    
+    // 4. Réinitialiser l'affichage (cacher canvas, montrer message)
+    document.getElementById('dynamicChart').style.display = 'none';
+    document.getElementById('emptyChartMessage').style.display = 'block';
 }
 </script>
 </body>
