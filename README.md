@@ -36,8 +36,6 @@ Le projet repose sur une architecture hybride permettant de faire communiquer R 
 * **Modèles :** Scripts **R** (Random Forest, Régression Linéaire Multiple et Régression Logistique Multinomiale) et **Python** (CNN).
 * **Base de données :** MySQL (MAMP).
 
-## Installation
- ...
 
 ## Résultats 
 Classification d'images : Accuracy de  ... % sur le jeu de test.
