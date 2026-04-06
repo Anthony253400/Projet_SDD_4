@@ -11,7 +11,7 @@
 <?php include 'navbar.php'; ?>
 
    <div id="controls" class="card shadow-sm p-3 mb-3">
-      <label class="fw-bold mb-2"><i class="fa-solid fa-filter"></i> Analyser par :</label>
+      <label>Analyser par :</label>
       <select id="categorySelect" class="form-select">
          <option value="none">-- Choisir une catégorie --</option>
          <option value="taux_tri">Taux de tri (%)</option>
@@ -658,6 +658,16 @@
                <li class="list-group-item d-flex justify-content-between">
                   <span>Revenu moyen / hab</span>
                   <span id="richesse" class="fw-bold text-primary">-</span>
+               </li>
+
+               <li class="list-group-item bg-light"><strong>🌱 Performance Écologique</strong></li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Part en décharge</span>
+                  <span id="decharge" class="fw-bold">-</span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between">
+                  <span>Type de taxe</span>
+                  <span id="redevance" class="fw-bold">-</span>
                </li>
 
                <li class="list-group-item bg-light"><strong>📍 Géographie</strong></li>

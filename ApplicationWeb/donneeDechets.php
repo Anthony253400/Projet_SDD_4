@@ -5,7 +5,6 @@ $conn = new mysqli($host, $user, $pass, $db);
 
 $code = $_GET['code'] ?? '';
 
-// 1. Moyenne nationale de tri (pour la comparaison)
 $resMoy = $conn->query("SELECT AVG(taux_dechets_tries) as moyenne_nationale FROM municipalites");
 $moyenneTable = $resMoy->fetch_assoc();
 $moyenneGlobale = $moyenneTable['moyenne_nationale'];
@@ -18,7 +17,9 @@ $sql = "SELECT region,
         AVG(niveau_revenus_habitants) as richesse, 
         AVG(altitude) as altitude,
         MAX(bord_de_mer) as bord_de_mer,
-        AVG(geographie) as code_geo
+        AVG(geographie) as code_geo,
+        AVG(part_dechets_decharge) as decharge,
+        MAX(redevance_incitative) as redevance
         FROM municipalites
         WHERE region = ? 
         GROUP BY region";
@@ -39,7 +40,9 @@ if ($data) {
         "richesse" => round($data['richesse'], 2),
         "altitude" => round($data['altitude'], 0),
         "bord_de_mer" => $data['bord_de_mer'],
-        "code_geo" => round($data['code_geo'], 0), // Pour savoir si montagne/plaine
+        "code_geo" => round($data['code_geo'], 0),
+        "decharge" => round($data['decharge'], 1), // Nouveau
+        "redevance" => $data['redevance'],
         "moyenne_nationale" => round($moyenneGlobale, 2)
     ]);
 } else {
