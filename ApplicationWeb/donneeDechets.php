@@ -41,7 +41,7 @@ if ($data) {
         "altitude" => round($data['altitude'], 0),
         "bord_de_mer" => $data['bord_de_mer'],
         "code_geo" => round($data['code_geo'], 0),
-        "decharge" => round($data['decharge'], 1), // Nouveau
+        "decharge" => round($data['decharge'], 1), 
         "redevance" => $data['redevance'],
         "moyenne_nationale" => round($moyenneGlobale, 2)
     ]);

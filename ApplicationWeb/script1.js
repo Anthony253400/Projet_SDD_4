@@ -28,9 +28,9 @@ $(document).ready(function () {
 
     
     $(".region").click(function () {
-        let svgId = $(this).attr("id"); // Récupère l'ID français (ex: "Sicile")
+        let svgId = $(this).attr("id"); 
         console.log("ID cliqué : '" + svgId + "'");
-        let dbName = regionMapping[svgId]; // Traduit en italien (ex: "Sicilia")
+        let dbName = regionMapping[svgId]; 
 
         if (!dbName) {
             console.warn("Aucune correspondance pour l'ID HTML :", svgId);

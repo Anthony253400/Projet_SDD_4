@@ -13,7 +13,7 @@
    <div id="controls" class="card shadow-sm p-3 mb-3">
       <label>Analyser par :</label>
       <select id="categorySelect" class="form-select">
-         <option value="none">-- Choisir une catégorie --</option>
+         <option value="none">Choisir une catégorie</option>
          <option value="taux_tri">Taux de tri (%)</option>
          <option value="richesse">Richesse (Revenu moyen)</option>
          <option value="population">Densité de population</option>
