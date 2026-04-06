@@ -1,7 +1,6 @@
 <?php
-// --- CONFIGURATION CONNEXION MAMP ---
 $host = 'localhost';
-$port = '8889'; // Port par défaut MySQL sur MAMP
+$port = '8889';
 $dbname = 'dechets';
 $user = 'root';
 $pass = 'root';
@@ -9,13 +8,9 @@ $pass = 'root';
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // 1. Récupérer la liste des régions (Table: municipalites)
     $queryRegions = $pdo->query("SELECT DISTINCT region FROM municipalites ORDER BY region ASC");
     $allRegions = $queryRegions->fetchAll(PDO::FETCH_COLUMN);
 
-    // 2. Récupérer les données agrégées par région pour le comparateur
-    // AJOUT DE L'ALTITUDE DANS LA REQUÊTE SQL
     $queryStats = $pdo->query("SELECT region, 
                                AVG(cout_total_habitant) as cout_moyen, 
                                AVG(cout_dechets_tries) as tri_moyen, 
@@ -42,7 +37,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyses Graphiques | L3 MIASHS</title>
     
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
