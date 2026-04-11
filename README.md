@@ -27,8 +27,8 @@ Application web permettant de téléverser une photo d'un déchet pour obtenir :
 
 ## Données utilisées
 
-- *Garbage Classification Dataset* : Utilisé pour l'entraînement du modèle de Vision par Ordinateur. Il contient des images de papier, carton, plastique, métal, verre et déchets organiques.
-(https://www.kaggle.com/datasets/hassnainzaidi/garbage-classification)
+- *Garbage Images Dataset (2000/class)* : Utilisé pour l'entraînement du modèle de Vision par Ordinateur. Il contient des images de papier, carton, plastique, métal, verre et déchets organiques.
+([https://www.kaggle.com/datasets/hassnainzaidi/garbage-classification](https://www.kaggle.com/datasets/zlatan599/garbage-dataset-classification?resource=download&select=Garbage_Dataset_Classification))
 
 - *Municipal Waste Management Cost Prediction* : Utilisé pour la partie analyse prédictive des flux dechets à l'échelle d'une ville.
 (https://www.kaggle.com/datasets/shashwatwork/municipal-waste-management-cost-prediction)
