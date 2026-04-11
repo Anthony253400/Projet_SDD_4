@@ -34,7 +34,7 @@
         <div class="col-md-4">
             <div class="card shadow border-0 p-3 rounded-4">
                 <div class="card-body">
-                    <h2 class="fw-bold text-success display-5">+7 000</h2>
+                    <h2 class="fw-bold text-success display-5">+4 000</h2>
                     <p class="text-muted mb-0 fw-bold">Communes analysées</p>
                 </div>
             </div>
