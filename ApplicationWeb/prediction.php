@@ -54,11 +54,11 @@
 
                     <div class="mb-3">
                         <label class="form-label">Région</label>
-                        <select class="form-select" id="region" required style="border: 1px solid #ced4da;">
+                        <select class="form-select" id="region" required>
                             <option value="" disabled selected>Choisissez une région...</option>
                             <option value="Toscane">Toscane</option>
                             <option value="Piemont">Piedmont</option>
-                            <option value="Vallee d'Aoste">Vallée d'Aoste</option>
+                            <option value="Vallee d'Aoste">Vallée d'Aoste</option> 
                             <option value="Lombardie">Lombardie</option>
                             <option value="Trentin-Haut-Adige">Trentin-Haut-Adige</option>
                             <option value="Venetie">Vénétie</option>
